@@ -12,6 +12,7 @@
     <script>
         $(document).ready(function(){
             $("#Yanis").val("Yanis Sibachir");
+			  $("#Michael").val("Michael Tang");
 
             $("#button").click(function(){
                 document.write("If you can see this text you can Commit and Push");
@@ -23,6 +24,7 @@
 <body>
 
 <p>Name: <input id="Yanis" type="text"></p>
+<p>Name: <input id="Michael" type="text"></p>
 
 <button id="button" class="button">Verify</button>
 </body>
