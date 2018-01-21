@@ -27,6 +27,7 @@
 <p>Name: <input id="Yanis" type="text"></p>
 <p>Name: <input id="Michael" type="text"></p>
 <p>Name: <input id="Karl" type="text"></p>    
+<p>Name: <input id="Tristan" type="text"></p>    
 
 <button id="button" class="button">Verify</button>
 </body>
