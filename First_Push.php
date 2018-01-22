@@ -15,6 +15,7 @@
 			  $("#Michael").val("Michael Tang");
                 $("#Karl").val("Karl Joey Chami");
 				 $("#Tristan").val("Tristan Vu");
+				 $("#Skander").val("Skander Bm");
           $("#Berfin").val("Berfin Saricam");
                     $("#Wu").val("Wu Wen Tang");
                     $("#Kasthurie").val("Kasthurie Paramasivampillai");
@@ -33,6 +34,7 @@
 <p>Name: <input id="Karl" type="text"></p>    
 
 <p>Name: <input id="Tristan" type="text"></p>    
+<p>Name: <input id="Skander" type="text"></p>    
 
 <p>Name: <input id="Berfin" type="text"></p>  
 <p>Name: <input id="Wu" type="text"></p> 
