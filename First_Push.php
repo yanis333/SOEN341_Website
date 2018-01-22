@@ -14,7 +14,7 @@
             $("#Yanis").val("Yanis Sibachir");
 			  $("#Michael").val("Michael Tang");
                 $("#Karl").val("Karl Joey Chami");
-
+				 $("#Tristan").val("Tristan Vu");
             $("#button").click(function(){
                 document.write("If you can see this text you can Commit and Push");
             });
