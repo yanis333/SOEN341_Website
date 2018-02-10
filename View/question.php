@@ -70,9 +70,9 @@
  			border-left: 6px solid red;
  		}
  		.questioncontainer>div {
-  			background-color: #f1f1f1;		
-  			margin: 3%;
-  			padding:2%;			
+  			background-color: #f1f1f1;	
+  			/*margin: 3%;
+  			padding:2%;	*/		
   		}
 
 
@@ -81,19 +81,24 @@
  			flex-direction: row;
  			justify-content: space-between;
  			/*border: 1px solid blue; */
+ 			/*margin: 4%; */
+ 			 margin-right: 2%;
+		    margin-top: 2%;
+		    margin-left: 2%;
  		}
- 		.questioninfocontainer>div{}
  		.userboxed{
 
  			flex:0 1 10%;
  			height: 10%;
  			font-size: 16px;
  			cursor: pointer;
+ 			padding-right: 5%;
  		}
  		.descboxed{
  			background-color: white;
  			overflow: auto;
- 			margin: 5%;
+ 			/*margin: 5%; */
+
  			padding: 3%;
   			flex:0 1 80%;
   			border-radius: 8px;
@@ -105,10 +110,11 @@
  			display:flex;
  			flex-direction: row;
  			justify-content: flex-end;
+ 			margin-right: 4%;
  			/*border: 1px solid red; */
- 			margin-top: 10%
+ 			
  		}
- 		.buttoncontainer>div{}
+
  		.displayupvote{
  			background-color: white;
 		    border: none;
