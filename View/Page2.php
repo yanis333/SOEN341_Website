@@ -71,21 +71,21 @@
 			  $("#questiontitle").css('border-color', 'red');
 			  timer = setTimeout(function() {
 			     $("#questiontitle").css('border-color', '');
-		      }, 2000); 
+		      }, 2100); 
 		   }
 		   if($("#description").val()==""){
 			  $("#check2").show(); 
 			  $("#description").css('border-color', 'red');
 			  timer = setTimeout(function() {
 			     $("#description").css('border-color', '');
-		      }, 2000); 
+		      }, 2100); 
 		   }
 		   if($("#tags").val()==""){
 			  $("#check3").show(); 
 			  $("#tags").css('border-color', 'red');
 			  timer = setTimeout(function() {
 			     $("#tags").css('border-color', '');
-		      }, 2000); 
+		      }, 2100); 
 		   }
 		  
 	   });   
