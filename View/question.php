@@ -153,6 +153,7 @@
 		    cursor: pointer;
 		    border-radius: 7px;
  		}
+ 		li{list-style-type: none;}
 
 		</style>
 
@@ -177,7 +178,8 @@
 		<div>
 			<div class="titlebox"> <p> yanis</p></div>
 			<div class="replybox"> 	
-
+			<ul>
+			<li>
 				<div class="questioncontainer"  id="helpful">
 					<div class="questioninfocontainer">
 						<div class="userboxed" > Username1 </div>
@@ -198,7 +200,8 @@
 					<input type="hidden"/>
 				</div>				
 			
-
+				</li>
+				<li>
 			<div class="questioncontainer" id="unhelpful">
 					<div class="questioninfocontainer">
 						<div class="userboxed" > Username2 </div>
@@ -214,6 +217,8 @@
 				</div>
 				<input type="hidden"/>		
 			</div>
+			</li>
+			</ul>
 
 </div>
 
