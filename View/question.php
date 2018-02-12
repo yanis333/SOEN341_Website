@@ -128,7 +128,7 @@
 		    border-radius: 7px;
  		}
  		.plusbutton{
- 			background-color: green;
+ 			background-color: forestgreen;
 		    border: none;
 		    color: white;
 		    padding: 6px 30px;
@@ -140,6 +140,7 @@
 		    cursor: pointer;
 		    border-radius: 7px;
  		}
+        .plusbutton:hover{background-color: darkgreen;}
  		.minusbutton{
  			background-color: red;
 		    border: none;
@@ -153,21 +154,111 @@
 		    cursor: pointer;
 		    border-radius: 7px;
  		}
+        .minusbutton:hover{
+            background-color: darkred;}
  		li{list-style-type: none;}
+        .titleinfo{
+            width: 100%;
+            height: 20%;
+            border: black 1px solid;
+        }
+        .title{
+            text-align:center;
+        }
+        .description{
+            margin-left: 20%;
+            word-wrap: break-word;
+        }
+        .usernamelabel{
+            margin-left: 20%;
+        }
+        .replydescription {
+            width: 100%;
+        }
+
 
 		</style>
-
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<script type="text/javascript">
 			$(document).ready(function(){
-					$.post("../controller/replyinfo.php",function(data){
-						
-						var info = JSON.parse(data);
-						var str="";
+                inforeply();
+                $("#addreply").click(function(){
+                    $.post("../Controller/addreply.php",{
+                            desc: $("#inputReplyInfo").val()
+                        },
+                        function(data){
+                            window.location.href="question.php";
+                        });
+                });
 
-					});
+                    function inforeply() {
+                        $.post("../controller/replyinfo.php", function (data) {
+
+                            var info = JSON.parse(data);
+                            str = "";
+
+                            for (var x = info[0].length-1; x >= 0; x--) {
+                                if(info[1]){
+                                 str+= "<li>";
+                                if(info[0][x]['validate']==0 )
+                                    str+="<div class=\"questioncontainer\" id=\"unhelpful\">";
+                                else{
+                                    str+="<div class=\"questioncontainer\" id=\"helpful\">";
+                                }
+                                str+="<div class=\"questioninfocontainer\"><div class=\"userboxed\" >"+ info[0][x]['username'] +"</div><div class=\"descboxed\">"+ info[0][x]['description_reply'] +"</div></div><div class=\"buttoncontainer\" >";
+                                if(info[1]==true)
+                                    str+="<button class= \"pbuttonboxed plusbutton\" onclick='approve("+info[0][x]['ID']+")'>Approved</button><button class= \"mbuttonboxed minusbutton\" onclick='decline("+info[0][x]['ID']+")'>Decline</button>";
+                                str+="<div class=\"displayupvote\"> "+info[0][x]['total_positive'] +" </div><button class=\"pbuttonboxed plusbutton\" onclick='upvote("+info[0][x]['ID']+")'>+</button><button class= \"mbuttonboxed minusbutton\" onclick='downvote("+info[0][x]['ID']+")'>-</button></div></div><input type=\"hidden\"/></li>";
+                            }
+                            else{
+                                    if(info[0][x]['validate']==1 ) {
+                                        str += "<li><div class=\"questioncontainer\" id=\"helpful\">";
+                                        str += "<div class=\"questioninfocontainer\"><div class=\"userboxed\" >" + info[0][x]['username'] + "</div><div class=\"descboxed\">" + info[0][x]['description_reply'] + "</div></div><div class=\"buttoncontainer\" >";
+                                        str += "<div class=\"displayupvote\"> " + info[0][x]['total_positive'] + " </div><button class=\"pbuttonboxed plusbutton\" onclick='upvote(" + info[0][x]['ID'] + ")'>+</button><button class= \"mbuttonboxed minusbutton\" onclick='downvote(" + info[0][x]['ID'] + ")'>-</button></div></div><input type=\"hidden\"/></li>";
+                                    }}}
+                            $("#test23").append(str);
+
+                        });
+                    }
+
  
 			});
+
+			function approve(id){
+                var xhttp = new XMLHttpRequest();
+                xhttp.open("POST", "../controller/approveReply.php", true);
+
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send("value="+id);
+                window.location.href="question.php";            }
+
+			function decline(id){
+                var xhttp = new XMLHttpRequest();
+                xhttp.open("POST", "../controller/declineReply.php", true);
+
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send("value="+id);
+                window.location.href="question.php";
+            }
+
+			function upvote(id){
+                var xhttp = new XMLHttpRequest();
+                xhttp.open("POST", "../controller/upvoteReply.php", true);
+
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send("value="+id);
+                window.location.href="question.php";            }
+
+			function downvote(id){
+                var xhttp = new XMLHttpRequest();
+                xhttp.open("POST", "../controller/downvoteReply.php", true);
+
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send("value="+id);
+                window.location.href="question.php";            }
+
 		</script>
 	</head>
 	<body> 
@@ -176,75 +267,54 @@
 			<label class="username"> Username </label>
 		</nav>
 		<div>
-			<div class="titlebox"> <p> yanis</p></div>
+			<div class="titlebox">     <div class="titleinfo">
+
+                    <h1 class="title" id="titleinfoTitle" >Title</h1>
+                    <br>
+                    <label class="usernamelabel">By: </label><label id="userinfotitle"></label><label class="usernamelabel">Date: </label><label id="dateinfotitle"></label>
+                    <br>
+                    <br>
+                    <label id="descinfoTitle" class="description">Description:</label>
+                    <p id="descinfoTitle" class="description"></p>
+                    <div class="container" style="text-align: center">
+                        <button type="button" class="btn btn-info btn-lg " data-toggle="modal" data-target="#myModal">reply</button>
+
+                    </div>
+
+                </div>
+                <div class="container">
+                    <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Reply</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Enter your reply:</p>
+                                    <textarea id="inputReplyInfo" class="replydescription"></textarea>
+                                </div>
+                                <div class="modal-footer">
+
+                                    <button type="button" id="addreply" class="btn btn-default" data-dismiss="modal">Add</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div></div>
 			<div class="replybox"> 	
-			<ul>
-			<li>
-				<div class="questioncontainer"  id="helpful">
-					<div class="questioninfocontainer">
-						<div class="userboxed" > Username1 </div>
-						<div class="descboxed"> Helpful description 
-						<br>
-						<br> blahblahblahblahblahblah
-						<br> blahblahblahblahblahblah  
-						<br>
-						<br> blahblahblah
-						</div>
-					</div>
+			<ul id="test23">
 
-					<div class="buttoncontainer">
-						<div class="displayupvote"> 20 </div>
-						<div class="pbuttonboxed"><button class="plusbutton">+</button></div>	
-						<div class="mbuttonboxed"><button class= "minusbutton">-</button></div>						
-					</div>
-					<input type="hidden"/>
-				</div>				
-			
-				</li>
-				<li>
-			<div class="questioncontainer" id="unhelpful">
-					<div class="questioninfocontainer">
-						<div class="userboxed" > Username2 </div>
-						<div class="descboxed"> Unhelpful description 
-						</div>
-					</div>
 
-					<div class="buttoncontainer" >
-						<div class="displayupvote"> -4 </div>
-						<div class="pbuttonboxed"><button class="plusbutton">+</button></div>	
-						<div class="mbuttonboxed"><button class= "minusbutton">-</button></div>						
-					</div>
-				</div>
-				<input type="hidden"/>		
-			</div>
-			</li>
+
+
 			</ul>
 
 </div>
 
-<!--				<ul id="replylist">
-
-					<div class="boxed">
-
-  						<div class="userboxed">
-  							Username
-  						</div>
-
-  						<div class="descriptionbuttons">
-	  						<div class="descriptionboxed">
-	  							<p>jhvdkwdhfjkewhfkhwefjhejkfhejfhwekhfjkwhfkhwefhewjfhkwehfkwehfjkwhfjhjwhfhwefjkhwefkj</p>
-	  						</div>
-	  						<div class="buttons">
-								<button class="plusbutton">+</button>
-	  							<button class= "minusbutton">-</button>
-	  						</div>
-  						</div>
-
-					</div>
-
-					<input hidden="" type="" name="">
-				</ul>
--->
 			<div class ="recommendbox"> <p>.. </p></div>
 		</div>
 	</body>
