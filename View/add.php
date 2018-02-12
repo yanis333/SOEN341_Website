@@ -53,6 +53,7 @@
    #tags:focus { border: 2px solid red; }
    </style> 
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  
    <script>
     $(document).ready(function() { 
 
@@ -63,7 +64,9 @@
 	  var timer;
 	  
 	  
-	   $("#submit").click(function(){
+	   $("#submit").click(function(e){
+		   
+	
 		   clearTimeout(timer);
 		   
 		   if($("#questiontitle").val()==""){
@@ -71,7 +74,11 @@
 			  $("#questiontitle").css('border-color', 'red');
 			  timer = setTimeout(function() {
 			     $("#questiontitle").css('border-color', '');
-		      }, 2000); 
+		      }, 2000);
+				
+			 e.preventDefault();
+		   }else{
+			   $("#check1").hide();
 		   }
 		   if($("#description").val()==""){
 			  $("#check2").show(); 
@@ -79,6 +86,9 @@
 			  timer = setTimeout(function() {
 			     $("#description").css('border-color', '');
 		      }, 2000); 
+		 e.preventDefault();
+		   }else{
+			   	   $("#check2").hide();
 		   }
 		   if($("#tags").val()==""){
 			  $("#check3").show(); 
@@ -86,9 +96,27 @@
 			  timer = setTimeout(function() {
 			     $("#tags").css('border-color', '');
 		      }, 2000); 
+			   e.preventDefault();
+		   }else{
+			   	   $("#check3").hide();
 		   }
-		  
+		 if(!($("#tags").val()=="")&& !($("#description").val()=="")&&!($("#questiontitle").val()=="")){
+		   $.post('../Controller/adddb.php',
+		{	
+		questiontitledb : $("#questiontitle").val(),
+		descriptiondb : $("#description").val()
+		},
+			
+                function(data){
+				alert("ALice");
+				
+                });
+		 }
+		 
 	   });   
+	  
+	  
+	  
 	  
 	 
 	}); 
@@ -118,7 +146,7 @@
 	<h hidden id="check3"><br />Please enter at least one tag.</h>
     <br /><input type="text" id="tags" placeholder="at least two tags such as (php java c), max 5 tags" /><br />
 	
-	<br /><input type="button" id="submit" value="Post Your Question" /><br /><br />
+	<br /><button id="submit"> Post your question </button><br /><br />
 
   </div>
 </form>    
