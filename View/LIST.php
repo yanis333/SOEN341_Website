@@ -9,9 +9,10 @@
     background-color:pink;
     text-align: center;
     color:#fffccc;
-    font-size: 140%;
-    margin: 30%;
-    padding: 50%px;
+    /*font-size: 140%;
+        margin: 30%;
+    padding: 50%;*/
+
 }
 	</style>
 	
@@ -45,9 +46,13 @@
 
 
 </script>
+<?php include('header.php'); ?>
 </head>
 
 <body>
+
+
+
 		<nav>
 			<img src="../Img/LogoOMQ.png" alt="Logo" height="80px" width="80px"/>
 <b>Enter Search term: </br>
@@ -55,7 +60,8 @@
 <br>
 <button id="search_button" value= "search">search</button>
 </b>
-<div id="text" type="text"</div>
+
+<div id="text" type="text"></div>
 </body>
 
 </html>
