@@ -5,6 +5,7 @@
 
 <link rel="stylesheet" type="text/css" href="login.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 <style>
 .button {
     background-color: #ff6666;
@@ -98,42 +99,7 @@
     
 
 <body>
-  
-    <!-- nav bar -->
-    <nav id="header">
-        <ul>
-            <li class= "inactiveLink"> <a href="#">Welcome to OMQ <img src="../Img/LogoOMQ.png" alt="Logo" height="10px" width="20px"/></a></li>
-        <li><a href="#">Home</a></li>
-  <li><a href="#">Add a question</a></li>
-  <li><a href="#">Search a question</a></li>
-  <li><a href="#">Profile</a></li>
-    <div id="loginsection">
-    <li class="rightFloat"><a href="#" id="register"> Register</a></li>
-    <li class="rightFloat"><a href="#" id="myBtn">Login</a></li>
-    </div>
-        <div id="myModal" class="modal">
-            <div class="modal-content">
-                <span class ="close"> &times;</span>
-                <div id="formSection">
-                    <form id="login">
-                    <input type="text" id ="username" required placeholder="Username" ><br><br>
-                     <input type="password"  id="password" required placeholder ="Password"><br><br>
-                    <button class="rightFloat"> Login </button>
-                </form>
-                </div>
-            </div>
-        </div>
-    <div class="welcome">
-        <li class= "rightFloat">
-        <a href="#" id = "logout"> logout </a>
-        </li>
-
-        <li class= "rightFloat inactiveLink">
-            <a href="#" id="hello"></a>
-        </li>
-    </div>
-    <ul>
-    </nav>
+<?php include('header.php'); ?>
 
 <div id="content">
     

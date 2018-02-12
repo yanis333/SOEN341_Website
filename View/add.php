@@ -93,14 +93,14 @@
 	 
 	}); 
 </script>
+
    </head>
 <body bgcolor="#ffeaea">
-<header>
-   <h1>OMQ- Open Mind Questions</h1>
-</header>   
+<?php include('header.php'); ?>
 <form id="askquestion">  
    
   <div>
+ 	<h2 hidden id="check0"><br/>Successful</h2>
     <br /><h id="titlelabel">Title</h>
 	<h hidden id="check1"><br />Title is missing.</h>
     <br/ ><input type="text"  id="questiontitle" placeholder="What's your question?" /><br />

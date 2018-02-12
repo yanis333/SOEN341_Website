@@ -221,30 +221,6 @@
 			</ul>
 
 </div>
-
-<!--				<ul id="replylist">
-
-					<div class="boxed">
-
-  						<div class="userboxed">
-  							Username
-  						</div>
-
-  						<div class="descriptionbuttons">
-	  						<div class="descriptionboxed">
-	  							<p>jhvdkwdhfjkewhfkhwefjhejkfhejfhwekhfjkwhfkhwefhewjfhkwehfkwehfjkwhfjhjwhfhwefjkhwefkj</p>
-	  						</div>
-	  						<div class="buttons">
-								<button class="plusbutton">+</button>
-	  							<button class= "minusbutton">-</button>
-	  						</div>
-  						</div>
-
-					</div>
-
-					<input hidden="" type="" name="">
-				</ul>
--->
 			<div class ="recommendbox"> <p>.. </p></div>
 		</div>
 	</body>
