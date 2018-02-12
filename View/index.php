@@ -25,7 +25,7 @@
 
 <script> 
         // when windows loads, gets information about the modal.
-    window.onload = function(){
+    indow.onload = function(){
         var modal = document.getElementById('myModal');
 
         // Get the button that opens the modal
