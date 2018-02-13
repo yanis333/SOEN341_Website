@@ -114,7 +114,7 @@ ul {
             });  
     });
     
-
+ 
     $('#register').submit(function(){
             var modal = document.getElementById('register_modal'); // get the modal to close it
     
