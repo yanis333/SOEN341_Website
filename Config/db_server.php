@@ -27,5 +27,5 @@ class DB{
 
 
 }
-
+$db = new DB();
 ?>

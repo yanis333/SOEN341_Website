@@ -10,7 +10,7 @@
     text-align: center;
     color:#fffccc;
     font-size: 140%;
-    margin: 30%;
+    margin: 15%;
     padding: 50%px;
 }
 	</style>
@@ -19,28 +19,29 @@
 
 <script type="text/javascript">
 	$(document).ready(function(){
+		
     $('#search_button').click(function(){
     	
-    var search_question = $('#search_box').val();
-    $('#text').text(search_question);
+    
 
-          //his sends the searched value into the backend called searchDB.php
-          $.post('../Controller/SearchDB.php',{search:search_question},
+          //this sends the searched value into the backend called searchDB.php
+          $.post('../Controller/list_backend.php',{search:$('#search_box').val()},
             function(data){
-                    
-                // start a session and display the welcome message if everything goes well
-            if(data){
-              alert("something is good")
-            }
-
-            // otherwise alert something went wrong
-            else{
-                alert("Something is wrong");
+              var test = JSON.parse(data);
+              if(test[0]==null)
+                  alert("Sorry, there are no results for your search. Try using keywords!");
+              else {
+                  for (var i = 0; i<test.length; i++){
+                     
+                        $("#myTable > tbody").append("<tr><td>" + test[i]['title']+"</td></tr>");
+                  }
              
-            }
+              }
+                    
             });  
                 
 }); 
+        
     });
 
 
@@ -55,7 +56,13 @@
 <br>
 <button id="search_button" value= "search">search</button>
 </b>
-<div id="text" type="text"</div>
+<div id="text" type="text"> </div>
+
+<table id="myTable">
+    <tbody>
+        <tr><td>Search results</td></tr>
+    </tbody>
+</table>
 </body>
 
 </html>
