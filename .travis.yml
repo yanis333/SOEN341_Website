@@ -9,11 +9,11 @@ php:
 before_script:
   - composer self-update
   - composer install --no-interaction
-
+ - composer install
 
 
 script:
-  - phpunit --bootstrap vendor\autoload.php test\emailTest
+  - phpunit C:\wamp64\www\SOEN341_Website\vendor\autoload.php
   #- jshint resources/assets/js/modules/*
 
 notifications:
