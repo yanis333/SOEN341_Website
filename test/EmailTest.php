@@ -1,6 +1,6 @@
 <?php
 
-require "/../View/Email.php";
+require "Email.php";
 final class EmailTest extends PHPUnit_Framework_TestCase 
 {
     public function testCanBeCreatedFromValidEmailAddress()
@@ -13,7 +13,7 @@ final class EmailTest extends PHPUnit_Framework_TestCase
 
     public function testCannotBeCreatedFromInvalidEmailAddress()
     {
-      
+        
 
         Email::fromString('invalid');
     }
