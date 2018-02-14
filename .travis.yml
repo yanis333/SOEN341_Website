@@ -13,9 +13,7 @@ before_script:
 
 
 script:
-  - vendor/bin/phpunit --coverage-text
-  #- phpcs --ignore=app/Http/Controllers/Auth,app/Http/Controllers/Controller.php app/Http/Controllers
-  - npm run production
+  - vendor/bin/phpunit --bootstrap vendor\autoload.php test\emailTest
   #- jshint resources/assets/js/modules/*
 
 notifications:
