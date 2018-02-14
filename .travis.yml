@@ -12,7 +12,7 @@ before_script:
  
 
 script:
-  - phpunit .\vendor\bin\phpunit --bootstrap vendor/autoload.php test\EmailTest
+  - phpunit --bootstrap vendor/autoload.php test\EmailTest
   #- jshint resources/assets/js/modules/*
 
 notifications:
