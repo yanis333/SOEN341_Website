@@ -9,16 +9,10 @@ php:
 before_script:
   - composer self-update
   - composer install --no-interaction
-  - cp .env.travis .env
-  - pear install pear/PHP_CodeSniffer
-  - phpenv rehash
-  - nvm install 8.9.4
-  - npm install npm@latest -g
-  - npm install -g jshint
-  - npm install
+
+
 
 script:
-  - php artisan key:generate
   - vendor/bin/phpunit --coverage-text
   #- phpcs --ignore=app/Http/Controllers/Auth,app/Http/Controllers/Controller.php app/Http/Controllers
   - npm run production
