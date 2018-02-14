@@ -13,8 +13,8 @@ final class EmailTest extends PHPUnit_Framework_TestCase
 
     public function testCannotBeCreatedFromInvalidEmailAddress()
     {
-        
-
+        $this->fail('Message');  
+            
         Email::fromString('invalid');
     }
 
