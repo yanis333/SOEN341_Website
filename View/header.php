@@ -114,7 +114,6 @@ ul {
             });  
     });
     
-
     $('#register').submit(function(){
             var modal = document.getElementById('register_modal'); // get the modal to close it
     
@@ -168,7 +167,7 @@ ul {
     <li class="rightFloat"><a href="#" id="myBtn">Login</a></li>
     </div>
 	<div id="register_modal" class="modal">
-            <div class="modal-content-register">
+            <div class="modal-content">
                 <span class ="close"> &times;</span>
                 <div id="formSection">
                     <form id="register">

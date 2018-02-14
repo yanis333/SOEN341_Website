@@ -9,9 +9,9 @@
     background-color:pink;
     text-align: center;
     color:#fffccc;
-    font-size: 140%;
-    margin: 15%;
-    padding: 50%px;
+    /*font-size: 140%;
+        margin: 30%;
+    padding: 50%;*/
 }
 	</style>
 	
@@ -22,9 +22,6 @@
 		
     $('#search_button').click(function(){
     	
-    
-
-          //this sends the searched value into the backend called searchDB.php
           $.post('../Controller/list_backend.php',{search:$('#search_box').val()},
             function(data){
               var test = JSON.parse(data);
@@ -37,14 +34,11 @@
                   }
              
               }
-                    
-            });  
+            });   
                 
 }); 
         
     });
-
-
 </script>
 </head>
 
@@ -58,7 +52,8 @@
 </b>
 <div id="text" type="text"> </div>
 
-<table id="myTable">
+<div id="text" type="text"></div>
+    <table id="myTable">
     <tbody>
         <tr><td>Search results</td></tr>
     </tbody>
