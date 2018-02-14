@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html>
 <head>
 
@@ -28,24 +28,43 @@ ul {
 }
 .button:hover{background-color:#ff0000}
 </style>
-
+	
 <script> 
         // when windows loads, gets information about the modal.
     window.onload = function(){
+		
+		
+		var modalr = document.getElementById('register_modal');
+
+        // Get the button that opens the modal
+        var btnr = document.getElementById("register_btn");
+
+        // Get the <span> element that closes the modal
+        var spanr	 = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on <span> (x), close the modal
+		
         var modal = document.getElementById('myModal');
 
         // Get the button that opens the modal
         var btn = document.getElementById("myBtn");
 
         // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
+        var span = document.getElementsByClassName("close")[1];
 
         // When the user clicks on the button, open the modal 
+		 btnr.onclick = function() {
+            modalr.style.display = "block";
+        }
         btn.onclick = function() {
             modal.style.display = "block";
         }
 
         // When the user clicks on <span> (x), close the modal
+		spanr.onclick = function() {
+             modalr.style.display = "none";
+        }
+		
         span.onclick = function() {
              modal.style.display = "none";
         }
@@ -55,9 +74,14 @@ ul {
             if (event.target == modal) {
                  modal.style.display = "none";
             }
+			else if (event.target==modalr)
+				modalr.style.display = "none";
         } 
     };
 
+	
+	
+	
     // when the login button is clicked
     $(document).ready(function(){
         $('.welcome').hide();
@@ -89,6 +113,34 @@ ul {
             }
             });  
     });
+    
+ 
+    $('#register').submit(function(){
+            var modal = document.getElementById('register_modal'); // get the modal to close it
+    
+            // get username, password, email value
+            var username = $('#register_username').val();
+            var password = $('#register_password').val();
+			var password_verify = $('#register_password_verify').val();
+			var email = $('#register_email').val();
+			if(password==password_verify){
+            // send those values to the RegisterBE.php file
+            $.post("../controller/RegisterBE.php",{username:username, password:password, email:email}, function(data){
+					if(data==true){
+						alert("Account succesfully created");
+						document.getElementById('register_username').value = "";
+						document.getElementById('register_password').value = "";
+						document.getElementById('register_email').value = "";
+					}
+					else{
+						alert("username/email already taken");
+					}
+				});	
+            }
+            else{
+                alert("password don't match");
+            }
+    });
 
         // logout button, destroys the session
         $('#logout').click(function(){
@@ -112,9 +164,23 @@ ul {
   <li><a href="list.php">Search a question</a></li>
   <li hidden><a href="#">Profile</a></li>
     <div id="loginsection">
-    <li class="rightFloat"><a href="#" id="register"> Register</a></li>
+    <li class="rightFloat"><a href="#" id="register_btn"> Register</a></li>
     <li class="rightFloat"><a href="#" id="myBtn">Login</a></li>
     </div>
+	<div id="register_modal" class="modal">
+            <div class="modal-content">
+                <span class ="close"> &times;</span>
+                <div id="formSection">
+                    <form id="register">
+                    <input type="text" id ="register_username" required placeholder="Username" ><br><br>
+                     <input type="password"  id="register_password" required placeholder ="Password"> <br><br>
+					 <input type="password"  id="register_password_verify" required placeholder ="Verify Password"> <br><br>
+					 <input type="text"  id="register_email" required placeholder ="Email"><br><br>
+                    <button class="rightFloat"> Register </button>
+                </form>
+                </div>
+            </div>
+	</div>
         <div id="myModal" class="modal">
             <div class="modal-content">
                 <span class ="close"> &times;</span>
