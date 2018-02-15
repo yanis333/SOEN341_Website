@@ -8,6 +8,7 @@
 		body {
     background-color:pink;
     text-align: center;
+
     color:#fffccc;}
 
     #Title:hover { 
@@ -62,6 +63,7 @@
       $("#myTable321").empty();
     	
   //this sends the searched value into the backend called searchDB.php
+
   var str="";
           $.post('../Controller/list_backend.php',{search:$('#search_box').val()},
             function(data){
@@ -76,6 +78,7 @@
 
                   }
                   $("#myTable321").append(str);
+
 
               }
                     
@@ -101,6 +104,7 @@
 <br>
 <button id="search_button" value= "search">search</button>
 </b>
+
 
 <div style="margin-top: 2%;">
     <ul id="myTable321">

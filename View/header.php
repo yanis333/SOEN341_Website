@@ -19,7 +19,9 @@
     border-radius: 12px;
     
 }
+
 .mainheader {
+
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -155,7 +157,9 @@
 <body>
 
 <nav id="header">
+
         <ul class="mainheader">
+
         <!--   <li class= "inactiveLink"> 
                 <li><a href="index.php">Home</a></li> -->
             <li > <a href="index.php"> <img src="../Img/LogoOMQ.png" alt="Logo" height="40px" width="40px"/></a></li> 
