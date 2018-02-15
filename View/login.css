@@ -21,6 +21,10 @@
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
+
+
+
+
 /* Modal Content/Box */
 .modal-content {
     background-color: rgb(155, 201, 82);
@@ -34,7 +38,7 @@
 
 /* The Close Button */
 .close {
-    color: #aaa;
+    color: green;
     float: right;
     font-size: 20px;
     font-weight: bold;
@@ -52,13 +56,7 @@
 body{
     background-color:pink;
 }
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    background-color: #333;
-    width:100%; 
-}
+
 
 li {
     float: left;
@@ -120,7 +118,7 @@ border:1px red;
 #center{
     display:flex;
     flex-direction:column;
-    border:1px green;
+    border:1px black;
     flex:0 1 50%;
 
 }

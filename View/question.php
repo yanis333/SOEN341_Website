@@ -284,6 +284,7 @@
 		<div>
 			<div class="titlebox">     <div class="titleinfo">
 
+
                     <h1 class="title" id="titleinfoTitle" >Title</h1>
                     <br>
                     <label class="usernamelabel">By: </label><label id="userinfotitle"></label><label class="usernamelabel">Date: </label><label id="dateinfotitle"></label><label id="idtitleinfo"></label>
