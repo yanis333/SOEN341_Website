@@ -182,8 +182,12 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<script type="text/javascript">
-			$(document).ready(function(){
-                inforeply();
+
+
+                $(document).ready(function(){
+                    inforeply();
+
+
                 $("#addreply").click(function(){
                     $.post("../Controller/addreply.php",{
                             desc: $("#inputReplyInfo").val()
@@ -194,6 +198,17 @@
                 });
 
                     function inforeply() {
+                        $.post("../Controller/TitleInfo.php",
+                            function(data){
+                                var info = JSON.parse(data);
+
+                                $("#titleinfoTitle").html(info['title']);
+                                $("#userinfotitle").html(info['user']);
+                                $("#dateinfotitle").html(info['date']);
+                                $("#idtitleinfo").html(info['ID']);
+                                $("#descinfoTitleinput").html(info['description']);
+
+                            });
                         $.post("../controller/replyinfo.php", function (data) {
 
                             var info = JSON.parse(data);
@@ -271,11 +286,11 @@
 
                     <h1 class="title" id="titleinfoTitle" >Title</h1>
                     <br>
-                    <label class="usernamelabel">By: </label><label id="userinfotitle"></label><label class="usernamelabel">Date: </label><label id="dateinfotitle"></label>
+                    <label class="usernamelabel">By: </label><label id="userinfotitle"></label><label class="usernamelabel">Date: </label><label id="dateinfotitle"></label><label id="idtitleinfo"></label>
                     <br>
                     <br>
                     <label id="descinfoTitle" class="description">Description:</label>
-                    <p id="descinfoTitle" class="description"></p>
+                    <label id="descinfoTitleinput"></label>
                     <div class="container" style="text-align: center">
                         <button type="button" class="btn btn-info btn-lg " data-toggle="modal" data-target="#myModal">reply</button>
 

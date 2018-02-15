@@ -17,6 +17,6 @@ while($row = $result->fetch_assoc()){
 }
 $db->close();
 $arrainfo[0]=$arraytlist;
-$arrainfo[1]= false;
+$arrainfo[1]= true;
 echo json_encode($arrainfo);
 
