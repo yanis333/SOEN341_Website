@@ -1,6 +1,7 @@
 
 <?php
 	include '../config/db_server.php';
+	session_start();
 	$db = new DB();
 	
 	//gets information sent from java script in the index
@@ -10,18 +11,22 @@
 	
 	$result = $db->query("SELECT username,email FROM user WHERE username='".$username."' OR email='".$email."'");
 	$row = $result->fetch_assoc();
-	
+	$arrvalue=array();
 	if($row!=null){
-		echo false;
+        $arrvalue[0] =false;
+
 	}
 	else{
-		echo true;
+		
 	$sql = "INSERT INTO user (username, password, email) VALUES ('$username', '$password','$email')";
 
 	$db->query($sql);
+        $arrvalue[0] = true;
+        $arrvalue[1] = $username;
+		$_SESSION['username']=$username;
+
 	}
-	//insert username, password and email into the user table of the database
-	
+	echo json_encode($arrvalue);
 	$db->close();
 	
 

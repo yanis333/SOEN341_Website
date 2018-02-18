@@ -1,7 +1,6 @@
 <?php  include '../Config/db_server.php';
-   
+   session_start();
     $db = new DB();
-    session_start();
     $username = $_POST['username'];
     $password = $_POST['password'];
 
@@ -12,17 +11,16 @@
 
    // if query returns 1 value
 	if($row!=null){
-    $arr[] = json_encode($row['username']);
-     $_SESSION['username'] = $username; // start a session
-	
- 	if(isset($_SESSION['username'])){
- 	   echo json_encode($username); // if session is set return the username
- 	  }
+    $arr[1] = $row['username'];
+    $arr[0] = true;
+    $_SESSION['username'] = $row['username'];
+
+
     }
     else{
-    echo false;
+        $arr[0] = false;
     }
-
+echo json_encode($arr);
 
    
 

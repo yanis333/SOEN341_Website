@@ -2,213 +2,326 @@
 <html>
 <head>
 
-<link rel="stylesheet" type="text/css" href="login.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<style>
-.button {
-    background-color: #ff6666;
-    border:none;
-    color: white;
-    padding: 15px;
-    text-align: center;
-    display: inline-block;
-    font-size: 10px;
-    margin-top: 5px;
-    margin-left: 50px;
-    cursor: pointer;
-    border-radius: 12px;
-    
-}
 
-.mainheader {
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
 
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    background-color:#7f345a;
-    width:100%; 
-}
-.button:hover{background-color:#ff0000}
-</style>
-	
-<script> 
-        // when windows loads, gets information about the modal.
-    window.onload = function(){
-		
-		
-		var modalr = document.getElementById('register_modal');
+        .headerpageright{
+            display:flex;
 
-        // Get the button that opens the modal
-        var btnr = document.getElementById("register_btn");
-
-        // Get the <span> element that closes the modal
-        var spanr	 = document.getElementsByClassName("close")[0];
-
-        // When the user clicks on <span> (x), close the modal
-		
-        var modal = document.getElementById('myModal');
-
-        // Get the button that opens the modal
-        var btn = document.getElementById("myBtn");
-
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[1];
-
-        // When the user clicks on the button, open the modal 
-		 btnr.onclick = function() {
-            modalr.style.display = "block";
-        }
-        btn.onclick = function() {
-            modal.style.display = "block";
         }
 
-        // When the user clicks on <span> (x), close the modal
-		spanr.onclick = function() {
-             modalr.style.display = "none";
-        }
-		
-        span.onclick = function() {
-             modal.style.display = "none";
+
+        body{
+            background-color:pink;
         }
 
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                 modal.style.display = "none";
-            }
-			else if (event.target==modalr)
-				modalr.style.display = "none";
-        } 
-    };
 
-	
-	
-	
-    // when the login button is clicked
-    $(document).ready(function(){
-        $('.welcome').hide();
-        $('#login').submit(function(){
-            var modal = document.getElementById('myModal'); // get the modal to close it
-    
-            // get username and password value
-            var username = $('#username').val();
-            var password = $('#password').replaceWith($('#password').clone().attr('type', 'text')).val();
+        .onglet{
+            float: left;
+        }
 
-            // send those values to the logindb.php file
-            $.post('../Controller/logindb.php',{username:username, password:password},
-            function(data){
-                    
-                // start a session and display the welcome message if everything goes well
-            if(data){
-                <?php session_start(); ?>
-                 var name =JSON.parse(data);
-                $('#loginsection').hide(); // hide the login/register button
-                $('#hello').html("Welcome " + name); // query went well 
-                modal.style.display = "none";
-                $('.welcome').show();      // show the welcome div
-            }
+        .inputlogincss {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        .elementLiA {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            margin-right:5px;
+        }
 
-            // otherwise alert something went wrong
-            else{
-                alert("Username/Password error");
-                password=$('#password').replaceWith($('#password').clone().attr('type', 'password')).val();
-            }
-            });  
-    });
-    
- 
-    $('#register').submit(function(){
-            var modal = document.getElementById('register_modal'); // get the modal to close it
-    
-            // get username, password, email value
-            var username = $('#register_username').val();
-            var password = $('#register_password').val();
-			var password_verify = $('#register_password_verify').val();
-			var email = $('#register_email').val();
-			if(password==password_verify){
-            // send those values to the RegisterBE.php file
-            $.post("../controller/RegisterBE.php",{username:username, password:password, email:email}, function(data){
-					if(data==true){
-						alert("Account succesfully created");
-						document.getElementById('register_username').value = "";
-						document.getElementById('register_password').value = "";
-						document.getElementById('register_email').value = "";
-					}
-					else{
-						alert("username/email already taken");
-					}
-				});	
-            }
-            else{
-                alert("password don't match");
-            }
-    });
+        .elementLiA:hover:not(.active) {
+            background-color: #111;
+            height:100%;
+        }
 
-        // logout button, destroys the session
-        $('#logout').click(function(){
-            <?php session_destroy(); ?>
-            $('#loginsection').show();
-            $('.welcome').hide();
-            window.location.reload();
+
+        .buttonlogincss {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .buttonlogincss:hover {
+            opacity: 0.8;
+        }
+        .rightFloat{
+            float:right;
+
+        }
+
+
+        .cancelbtnlogincss {
+            width: auto;
+            padding: 10px 18px;
+            background-color: #f44336;
+        }
+
+
+        .containerlogincss {
+            padding: 16px;
+        }
+
+
+
+        .modallogincss {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            margin-left: 25%;
+            width: 50%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            padding-top: 60px;
+        }
+
+        .titlelogin{
+            color: black;
+            float: left;
+        }
+
+
+
+        .modal-contentlogincss {
+            background-color: #fefefe;
+            margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+        }
+        .animatelogincss {
+            -webkit-animation: animatezoom 0.6s;
+            animation: animatezoom 0.6s
+        }
+
+        .closelogincss:hover,
+        .closelogincss:focus {
+            color: red;
+            cursor: pointer;
+        }
+
+
+        .animatelogincss {
+            -webkit-animation: animatezoom 0.6s;
+            animation: animatezoom 0.6s
+        }
+        .modalheader {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+
+
+
+        .modal-contentheader {
+            background-color: #fefefe;
+            margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+        }
+
+        .mainheader {
+
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            background-color:#7f345a;
+            width:100%;
+        }
+    </style>
+
+    <script>
+        $(document).ready(function(){
+            $.post('../Controller/OAuth.php',
+                function(data){
+                    var valueinfo =JSON.parse(data);
+                    if(valueinfo[0]){
+                        $('#Mainusername').html("Welcome " + valueinfo[1]);
+                        $("#myBtnlogin").hide();
+                        $("#register_btn").hide();
+                        $("#Mainusernamelist").show();
+                        $("#Mainusernamelistlogout").show();
+                        $("#loginform").hide();
+
+
+                    }
+                });
+            $('#myBtnlogin').click(function () {
+                $("#loginform").show();
+                $("#register_modal").hide();
+                $("#didnotEnterAllLogininfo").hide();
+                $("#register_modal").hide();
+
+
+            });
+            $('#register_btn').click(function () {
+                $("#register_modal").hide();
+                $("#register_modal").show();
+                $("#didnotEnterAllRegisterinfo").hide();
+                $("#loginform").hide();
+
+
+            });
+            $('#cancelbtnlogin').click(function () {
+                $("#loginform").hide();
+            });
+            $('#cancelbtnRegister').click(function () {
+                $("#register_modal").hide();
+            });
+            $('#Logout').click(function () {
+                $.post('../Controller/OAuthLogout.php',
+                    function(data){
+                        $("#myBtnlogin").show();
+                        $("#register_btn").show();
+                        $("#Mainusernamelist").hide();
+                        $("#Mainusernamelistlogout").hide();
+                        $("#loginform").hide();
+                        window.location.href="index.php";
+
+
+
+                    });
+            });
+            $("#loginbtnfromtheform").click(function () {
+                if($("#usernamelogin").val() !="" && $("#passwordlogin").val()!=""){
+                    $.post('../Controller/logindb.php',{username:$("#usernamelogin").val(), password:$("#passwordlogin").val()},
+                        function(data){
+                            var valueinfo =JSON.parse(data);
+                            if(valueinfo[0]){
+                                $('#Mainusername').html("Welcome " + valueinfo[1]);
+                                $("#myBtnlogin").hide();
+                                $("#register_btn").hide();
+                                $("#Mainusernamelist").show();
+                                $("#Mainusernamelistlogout").show();
+                                $("#loginform").hide();
+
+
+                            }
+                            else{
+                                alert("Username/Password error");
+                            }
+                        });
+                }else{
+                    $("#didnotEnterAllLogininfo").show();
+                }
+
+
+            });
+
+            $("#Registerbtnfromtheform").click(function () {
+                if($("#register_username").val() != "" && $("#register_password").val() != "" && $("#register_password_verify").val() != "" && $("#register_email").val() != "" && ($("#register_password").val() == $("#register_password_verify").val())){
+                    $.post('../Controller/RegisterBE.php',{ username:$("#register_username").val(), password:$("#register_password").val(), email:$("#register_email").val()},
+                        function(data){
+                            var valueinfo =JSON.parse(data);
+                            if(valueinfo[0]){
+                                $('#Mainusername').html("Welcome " + valueinfo[1]);
+                                $("#myBtnlogin").hide();
+                                $("#register_btn").hide();
+                                $("#Mainusernamelist").show();
+                                $("#Mainusernamelistlogout").show();
+                                $("#register_modal").hide();
+
+                            }
+                            else{
+                                alert("Username or email already exist");
+                            }
+                        });
+                }
+                else{
+                    $("#didnotEnterAllRegisterinfo").show();
+                }
+            });
         });
-    });
     </script>
 </head>
 <body>
 
-<nav id="header">
+<nav id="header" class="headerpageright">
 
-        <ul class="mainheader">
+    <ul class="mainheader">
+        <li > <img src="../Img/Logo-OMQ.png" style="cursor: pointer; float: left;" onclick="window.location.href='index.php'" alt="Logo" height="40px" width="40px"/></li>
 
-        <!--   <li class= "inactiveLink"> 
-                <li><a href="index.php">Home</a></li> -->
-            <li > <a href="index.php"> <img src="../Img/LogoOMQ.png" alt="Logo" height="40px" width="40px"/></a></li> 
+        <li class="onglet"><a class="elementLiA" href="add.php">Add a question</a></li>
+        <li class="onglet"><a class="elementLiA" href="LIST.php">Search a question</a></li>
+        <li hidden><a class="elementLiA" href="#">Profile</a></li>
+        <li  class="rightFloat">
+            <a class="elementLiA" href="#" id="register_btn"> Register</a></li>
+        <li id="loginsection" class="rightFloat">
+            <a class="elementLiA" href="#" id="myBtnlogin">Login</a>
+        </li>
+        <div id="register_modal" class="modallogincss">
 
-  <li><a href="add.php">Add a question</a></li>
-  <li><a href="list.php">Search a question</a></li>
-  <li hidden><a href="#">Profile</a></li>
-    <div id="loginsection">
-    <li class="rightFloat"><a href="#" id="register_btn"> Register</a></li>
-    <li class="rightFloat"><a href="#" id="myBtn">Login</a></li>
-    </div>
-	<div id="register_modal" class="modal">
-            <div class="modal-content">
-                <span class ="close"> &times;</span>
-                <div id="formSection">
-                    <form id="register">
-                    <input type="text" id ="register_username" required placeholder="Username" ><br><br>
-                     <input type="password"  id="register_password" required placeholder ="Password"> <br><br>
-					 <input type="password"  id="register_password_verify" required placeholder ="Verify Password"> <br><br>
-					 <input type="text"  id="register_email" required placeholder ="Email"><br><br>
-                    <button class="rightFloat"> Register </button>
-                </form>
+            <form class="modal-contentlogincss animatelogincss" >
+
+                <div class="containerlogincss">
+                    <h4 id="didnotEnterAllRegisterinfo" style="color: red;" hidden>Enter information in all field</h4>
+                    <label class="titlelogin" ><b>Username</b></label>
+                    <input id="register_username" class="inputlogincss" type="text" placeholder="Username">
+
+                    <label class="titlelogin" ><b>Password</b></label>
+                    <input id="register_password" class="inputlogincss" type="password" placeholder="Password">
+                    <label class="titlelogin" ><b>Confirm Password</b></label>
+                    <input id="register_password_verify" class="inputlogincss" type="password" placeholder="Confirm Password">
+                    <label class="titlelogin" ><b>Email</b></label>
+                    <input id="register_email" class="inputlogincss" type="password" placeholder="Email">
+
+                    <button id="Registerbtnfromtheform" class="buttonlogincss">Register</button>
                 </div>
-            </div>
-	</div>
-        <div id="myModal" class="modal">
-            <div class="modal-content">
-                <span class ="close"> &times;</span>
-                <div id="formSection">
-                    <form id="login">
-                    <input type="text" id ="username" required placeholder="Username" ><br><br>
-                     <input type="password"  id="password" required placeholder ="Password"><br><br>
-                    <button class="rightFloat"> Login </button>
-                </form>
+
+                <div class="containerlogincss" style="background-color:#f1f1f1">
+                    <button id="cancelbtnRegister" class="cancelbtnlogincss">Cancel</button>
                 </div>
-            </div>
+            </form>
         </div>
-    <div class="welcome">
-        <li class= "rightFloat">
-        <a href="#" id = "logout"> logout </a>
-        </li>
+        <div id="loginform" class="modallogincss">
 
-        <li class= "rightFloat inactiveLink">
-            <a href="#" id="hello"></a>
-        </li>
-    </div>
-    <ul>
-    </nav>
+            <form class="modal-contentlogincss animatelogincss" >
 
-    </body>
+                <div class="containerlogincss">
+                    <h4 id="didnotEnterAllLogininfo" style="color: red;" hidden>Enter information in all field</h4>
+                    <label class="titlelogin" ><b>Username</b></label>
+                    <input id="usernamelogin" class="inputlogincss" type="text" placeholder="Enter Username"  >
 
-    </html>
+                    <label class="titlelogin" ><b>Password</b></label>
+                    <input id="passwordlogin" class="inputlogincss" type="password" placeholder="Enter Password"  >
+
+                    <button id="loginbtnfromtheform" class="buttonlogincss">Login</button>
+                </div>
+
+                <div class="containerlogincss" style="background-color:#f1f1f1">
+                    <button id="cancelbtnlogin" class="cancelbtnlogincss">Cancel</button>
+                    <span >Forgot <a href="#">password?</a></span>
+                </div>
+            </form>
+        </div>
+        <li  class="rightFloat" id="Mainusernamelistlogout" hidden>
+            <a class="elementLiA" href="#" id="Logout" > Logout</a></li>
+        <li  class="rightFloat" id="Mainusernamelist" hidden>
+            <a class="elementLiA" href="#" id="Mainusername" > username</a></li>
+        <ul>
+</nav>
+
+</body>
+
+</html>
