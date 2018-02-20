@@ -193,7 +193,11 @@
                         desc: $("#inputReplyInfo").val()
                     },
                     function(data){
-                        window.location.href="question.php";
+                    var valueIfCanReply = JSON.parse(data);
+                        if(valueIfCanReply[0]){
+                        window.location.href="question.php";}
+                        else{
+                            alert("To reply you need to be connected");}
                     });
             });
 
@@ -215,7 +219,7 @@
                     str = "";
 
                     for (var x = info[0].length-1; x >= 0; x--) {
-                        if(info[1]){
+
                             str+= "<li>";
                             if(info[0][x]['validate']==0 )
                                 str+="<div class=\"questioncontainer\" id=\"unhelpful\">";
@@ -227,12 +231,6 @@
                                 str+="<button class= \"pbuttonboxed plusbutton\" onclick='approve("+info[0][x]['ID']+")'>Approved</button><button class= \"mbuttonboxed minusbutton\" onclick='decline("+info[0][x]['ID']+")'>Decline</button>";
                             str+="<div class=\"displayupvote\"> "+info[0][x]['total_positive'] +" </div><button class=\"pbuttonboxed plusbutton\" onclick='upvote("+info[0][x]['ID']+")'>+</button><button class= \"mbuttonboxed minusbutton\" onclick='downvote("+info[0][x]['ID']+")'>-</button></div></div><input type=\"hidden\"/></li>";
                         }
-                        else{
-                            if(info[0][x]['validate']==1 ) {
-                                str += "<li><div class=\"questioncontainer\" id=\"helpful\">";
-                                str += "<div class=\"questioninfocontainer\"><div class=\"userboxed\" >" + info[0][x]['username'] + "</div><div class=\"descboxed\">" + info[0][x]['description_reply'] + "</div></div><div class=\"buttoncontainer\" >";
-                                str += "<div class=\"displayupvote\"> " + info[0][x]['total_positive'] + " </div><button class=\"pbuttonboxed plusbutton\" onclick='upvote(" + info[0][x]['ID'] + ")'>+</button><button class= \"mbuttonboxed minusbutton\" onclick='downvote(" + info[0][x]['ID'] + ")'>-</button></div></div><input type=\"hidden\"/></li>";
-                            }}}
                     $("#test23").append(str);
 
                 });
