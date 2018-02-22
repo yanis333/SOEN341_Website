@@ -176,6 +176,10 @@
             width: 100%;
         }
 
+        .checked{
+            font-size:10px;
+        }
+
 
     </style>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -216,28 +220,65 @@
                 $.post("../controller/replyinfo.php", function (data) {
 
                     var info = JSON.parse(data);
-                    str = "";
-
+                    reply = "";
+                    bestreply="";
                     for (var x = info[0].length-1; x >= 0; x--) {
-
-                            str+= "<li>";
+                        if(info[0][x]['best']== 1){
+                            if(info[1]){
+                                bestreply+= "<li>";
                             if(info[0][x]['validate']==0 )
-                                str+="<div class=\"questioncontainer\" id=\"unhelpful\">";
+                            bestreply += "<div class=\"questioncontainer\" id=\"unhelpful\">";
                             else{
-                                str+="<div class=\"questioncontainer\" id=\"helpful\">";
+                                bestreply += "<div class=\"questioncontainer\" id=\"helpful\">";
                             }
-                            str+="<div class=\"questioninfocontainer\"><div class=\"userboxed\" >"+ info[0][x]['username'] +"</div><div class=\"descboxed\">"+ info[0][x]['description_reply'] +"</div></div><div class=\"buttoncontainer\" >";
-                            if(info[1]==true)
-                                str+="<button class= \"pbuttonboxed plusbutton\" onclick='approve("+info[0][x]['ID']+")'>Approved</button><button class= \"mbuttonboxed minusbutton\" onclick='decline("+info[0][x]['ID']+")'>Decline</button>";
-                            str+="<div class=\"displayupvote\"> "+info[0][x]['total_positive'] +" </div><button class=\"pbuttonboxed plusbutton\" onclick='upvote("+info[0][x]['ID']+")'>+</button><button class= \"mbuttonboxed minusbutton\" onclick='downvote("+info[0][x]['ID']+")'>-</button></div></div><input type=\"hidden\"/></li>";
+                            bestreply += "<div class=\"questioninfocontainer\"><div class=\"userboxed\" >"+ info[0][x]['username']+"<img src = '../Img/checked.png' style='width:20px;height:20px;'> " +"</div><div class=\"descboxed\">"+ info[0][x]['description_reply'] +"</div></div><div class=\"buttoncontainer\" >";
+                            bestreply += "<button class= \"pbuttonboxed plusbutton\" onclick='approve("+info[0][x]['ID']+")'>Approved</button><button class= \"mbuttonboxed minusbutton\" onclick='decline("+info[0][x]['ID']+")'>Decline</button>";
+                            bestreply += "<div class=\"displayupvote\"> "+info[0][x]['total_positive'] +" </div><button class=\"pbuttonboxed plusbutton\" onclick='upvote("+info[0][x]['ID']+")'>+</button><button class= \"mbuttonboxed minusbutton\" onclick='downvote("+info[0][x]['ID']+")'>-</button></div></div><input type=\"hidden\"/></li>";
                         }
-                    $("#test23").append(str);
+                        else{
+                            if(info[0][x]['validate']==1 ) {
+                                bestreply += "<li><div class=\"questioncontainer\" id=\"helpful\">";
+                                bestreply += "<div class=\"questioninfocontainer\"><div class=\"userboxed\" >" + info[0][x]['username'] +"<img src = '../Img/checked.png' style='width:20px;height:20px;'> " +"</div><div class=\"descboxed\">" + info[0][x]['description_reply'] + "</div></div><div class=\"buttoncontainer\" >";
+                                bestreply += "<div class=\"displayupvote\"> " + info[0][x]['total_positive'] + " </div><button class=\"pbuttonboxed plusbutton\" onclick='upvote(" + info[0][x]['ID'] + ")'>+</button><button class= \"mbuttonboxed minusbutton\" onclick='downvote(" + info[0][x]['ID'] + ")'>-</button></div></div><input type=\"hidden\"/></li>";
+                            }}
+                            
+                        }
+                        else{                       
+                            reply += "<li>";
+                            if(info[0][x]['validate']==0 ){
+                                reply += "<div class=\"questioncontainer\" id=\"unhelpful\">";
+                            }
+                            else{
+                                reply += "<div class=\"questioncontainer\" id=\"helpful\">";
+                            }
+                          
+                            if(info[1]==true){
+                                reply += "<div class=\"questioninfocontainer\"><div class=\"userboxed\" >"+ info[0][x]['username'] +"<button class = \"checked\" onclick='checked("+info[0][x]['ID']+")'> Choose as best reply </button> "+"</div><div class=\"descboxed\">"+ info[0][x]['description_reply'] +"</div></div><div class=\"buttoncontainer\" >";
+                                reply += "<button class= \"pbuttonboxed plusbutton\" onclick='approve("+info[0][x]['ID']+")'>Approved</button><button class= \"mbuttonboxed minusbutton\" onclick='decline("+info[0][x]['ID']+")'>Decline</button>";
+                            }
+                            else{
+                                reply += "<div class=\"questioninfocontainer\"><div class=\"userboxed\" >"+ info[0][x]['username'] +"</div><div class=\"descboxed\">"+ info[0][x]['description_reply'] +"</div></div><div class=\"buttoncontainer\" >";
+                            }
+                            reply += "<div class=\"displayupvote\"> "+info[0][x]['total_positive'] +" </div><button class=\"pbuttonboxed plusbutton\" onclick='upvote("+info[0][x]['ID']+")'>+</button><button class= \"mbuttonboxed minusbutton\" onclick='downvote("+info[0][x]['ID']+")'>-</button></div></div><input type=\"hidden\"/></li>";
+                        }
+                    }
+                    $('#replies').prepend(bestreply);
+                    $("#replies").append(reply);
 
                 });
             }
 
 
         });
+
+        function checked(id){
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("POST", "../controller/checked.php", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send("value="+id);
+            window.location.href="question.php"; 
+
+        }
 
         function approve(id){
             var xhttp = new XMLHttpRequest();
@@ -317,7 +358,7 @@
 
         </div></div>
     <div class="replybox">
-        <ul id="test23">
+        <ul id="replies">
 
 
 
