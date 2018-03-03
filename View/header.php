@@ -4,6 +4,18 @@
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="../Jqwidgets/jqwidgets/styles/jqx.base.css" type="text/css" />
+<script type="text/javascript" src="../Jqwidgets/scripts/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxcore.js"></script>
+<script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxpasswordinput.js"></script>
+<script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxgrid.js"></script>
+    <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxgrid.selection.js"></script>
+    <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxdatatable.js"></script>
     <style>
 
         .headerpageright{
@@ -113,11 +125,6 @@
             cursor: pointer;
         }
 
-
-        .animatelogincss {
-            -webkit-animation: animatezoom 0.6s;
-            animation: animatezoom 0.6s
-        }
         .modalheader {
             display: none;
             position: fixed;
@@ -153,6 +160,8 @@
 
     <script>
         $(document).ready(function(){
+
+         $("#register_password").jqxPasswordInput({ placeHolder: "Enter a Password", height: 25, width: 200});
             $.post('../Controller/OAuth.php',
                 function(data){
                     var valueinfo =JSON.parse(data);
@@ -272,7 +281,6 @@
         </li>
         <div id="register_modal" class="modallogincss">
 
-            <form class="modal-contentlogincss animatelogincss" >
 
                 <div class="containerlogincss">
                     <h4 id="didnotEnterAllRegisterinfo" style="color: red;" hidden>Enter information in all field</h4>
@@ -280,7 +288,8 @@
                     <input id="register_username" class="inputlogincss" type="text" placeholder="Username">
 
                     <label class="titlelogin" ><b>Password</b></label>
-                    <input id="register_password" class="inputlogincss" type="password" placeholder="Password">
+                   
+ <input id="register_password" class="inputlogincss" type="password"> 
                     <label class="titlelogin" ><b>Confirm Password</b></label>
                     <input id="register_password_verify" class="inputlogincss" type="password" placeholder="Confirm Password">
                     <label class="titlelogin" ><b>Email</b></label>

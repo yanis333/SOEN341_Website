@@ -14,7 +14,7 @@ if ($_SESSION['username']!=null) {
     $date = (string)date('H:i:s d-m-Y');
 
     $db->query("INSERT INTO questionlog (title,description,date,user) VALUES('" . $questiontitle . "','" . $description . "','" . $date . "','".$_SESSION['username']."')");
-
+    $db->query("UPDATE total_questions SET total = (SELECT COUNT(*)from questionlog)");
     $db->close();
     $valuearr[0]=true;
 }

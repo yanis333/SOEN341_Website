@@ -5,10 +5,8 @@
     <meta charset="UTF-8">
     <title>Search Page</title>
     <style>
-        body {
-            background-color:pink;
+        #container{
             text-align: center;
-
             color:#fffccc;}
 
         #Title:hover {
@@ -87,14 +85,16 @@
 
 <body>
 
-
+<div id="container">
 
 <nav>
     <img src="../Img/LogoOMQ.png" alt="Logo" height="80px" width="80px"/>
-    <b>Enter Search term: </br>
+    <div>
+    <b>Enter Search term:
         <input id="search_box" type="text" search_box="question"><br>
         <br>
         <button id="search_button" value= "search">search</button>
+    </div>
     </b>
 
 
@@ -102,6 +102,7 @@
         <ul id="myTable321">
 
         </ul>
+    </div>
     </div>
 </body>
 
