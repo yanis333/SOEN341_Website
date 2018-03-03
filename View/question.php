@@ -22,6 +22,11 @@
         }
         .button:hover{background-color:#ff0000}
 
+                #Title:hover {
+            color: blue;
+            cursor: pointer;
+        }
+
         .username{
             float:right;
             margin-top:3%;
@@ -190,6 +195,22 @@
 
         $(document).ready(function(){
             inforeply();
+                        $.post("../Controller/relatedQuestion.php", function(data){
+                            $("#relatedQuestion").empty();
+                var dataArray = JSON.parse(data);
+                var str="";
+                if(dataArray[0]==null){
+                    alert("no question with that tag found");
+                }
+                else{
+                    for(var i=0; i<dataArray.length;i++){
+                        str += "<li><label id = \"Title\"onclick=\"saveIdHoster("+dataArray[i]["ID"]+")\">"+dataArray[i]['title']+"</label></li>";
+                    }
+                    $("#relatedQuestion").append(str);
+                
+            }
+        });
+
 
 
             $("#addreply").click(function(){
@@ -204,6 +225,7 @@
                             alert("To reply you need to be connected");}
                     });
             });
+
 
             function inforeply() {
                 $.post("../Controller/TitleInfo.php",
@@ -267,9 +289,20 @@
 
                 });
             }
+});
 
 
-        });
+                                function saveIdHoster(idQuestion){
+            var xhttp = new XMLHttpRequest();
+
+            xhttp.open("POST", "../controller/ChoosenQuestion.php", true);
+
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send("value="+idQuestion);
+            window.location.href="question.php";
+
+        }
+
 
         function checked(id, idquestion){
             var xhttp = new XMLHttpRequest();
@@ -311,7 +344,8 @@
 
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xhttp.send("value="+id);
-            window.location.href="question.php";            }
+            window.location.href="question.php";            
+        }
 
     </script>
     <?php include('header.php'); ?>
@@ -367,7 +401,12 @@
 
     </div>
 
-    <div class ="recommendbox"> <p> ZONE FOR SPRINT 3</p></div>
+    <div class ="recommendbox"> 
+<ul id="relatedQuestion">
+
+</ul>
+
+    </div>
 </div>
 </body>
 </html>

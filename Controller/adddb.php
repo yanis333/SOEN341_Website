@@ -10,11 +10,16 @@ if(isset($_SESSION['username']))
 if ($_SESSION['username']!=null) {
     $questiontitle = $_POST['questiontitledb'];
     $description = $_POST['descriptiondb'];
-    date_default_timezone_set('America/Montreal');
+    $tags = $_POST['tagsdb'];
+
+    date_default_timezone_set('America/Montreal'); 
     $date = (string)date('H:i:s d-m-Y');
 
-    $db->query("INSERT INTO questionlog (title,description,date,user) VALUES('" . $questiontitle . "','" . $description . "','" . $date . "','".$_SESSION['username']."')");
+
+    
     $db->query("UPDATE total_questions SET total = (SELECT COUNT(*)from questionlog)");
+    $db->query("INSERT INTO questionlog (title,description,date,user, tags) VALUES('" . $questiontitle . "','" . $description . "','" . $date . "','".$_SESSION['username']."','". strtolower($tags) ."')");
+
     $db->close();
     $valuearr[0]=true;
 }
