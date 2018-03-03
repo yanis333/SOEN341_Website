@@ -104,7 +104,8 @@
                     $.post('../Controller/adddb.php',
                         {
                             questiontitledb : $("#questiontitle").val(),
-                            descriptiondb : $("#description").val()
+                            descriptiondb : $("#description").val(),
+                            tagsdb : $("#tags").val()
                         },
 
                         function(data){
