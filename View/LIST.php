@@ -9,8 +9,7 @@
             background-color:pink;
             text-align: center;
 
-            color:#fffccc;}
-
+        }
         #Title:hover {
             color: blue;
             cursor: pointer;
@@ -37,7 +36,53 @@
             margin-top: 2%;
             color: black;
         }
+        li{
+            color:black;
+        }
+        #tags_table{
+            list-style-type:none;
+            columns:2;
+        }
 
+
+        .modal-advanced {
+            position: absolute; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 100px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+
+        }
+
+
+        /* Modal Content */
+        .modal-content-advanced {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        /* The Close Button */
+        .close-advanced {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close-advanced:hover,
+        .close-advanced:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
 
     </style>
 
@@ -48,16 +93,19 @@
             $('#search_button').click(function(){
                 $("#myTable321").empty();
 
-
+         
                 var str="";
                 $.post('../Controller/list_backend.php',{search:$('#search_box').val()},
+ 
                     function(data){
-                        var info = JSON.parse(data);
+
+                    // ------------------------------------------------------------
+
+                       var info = JSON.parse(data);
                         if(info[0]==null)
                             alert("Sorry, there are no results for your search. Try using keywords!");
                         else {
                             for (var i = 0; i<info.length; i++){
-
 
                                 str+="<li style ='margin-top:"+(3*(i+1))+"%; margin-bottom: 3%; list-style: none ;'><div class='box12'><label class='bla'>Search Results: </label><label id=\"Title\"onclick=\"saveIdHoster("+info[i]["ID"]+")\"</label>"+info[i]["title"]+"<label class='bla2'></label><label class=\"date\"> Date: "+ info[i]["date"]+"</label><br> </div></li><br>";
 
@@ -66,10 +114,68 @@
 
 
                         }
+                    // ------------------------------------------------------------
 
-                    });
+                });
 
             });
+
+
+            $('#advanced_button').click(function(){
+
+                checkbox();
+                $('#questions').hide();
+                $("#advancedModal").show();
+            });
+
+            $('#canceladvanced').click(function(){
+                $("#advancedModal").hide();
+            });
+
+            
+            $('#advancedsearchbutton').click(function(){
+                $('#questions').show();
+         
+                var val = [];
+                $(':checkbox:checked').each(function(i){
+                    val[i] = $(this).val();
+                });
+
+
+                $("#advancedModal").hide();
+
+                var str="";
+                $.post('../Controller/searchCheckbox.php', { checkboxValues : JSON.stringify(val)},
+                    function(data){
+                        var dataarray = JSON.parse(data);
+
+                       
+                        var source =
+                            {
+                                localdata: dataarray,
+                                datatype: "array"
+                            };
+
+                            var dataAdapter = new $.jqx.dataAdapter(source);
+
+
+                        $("#questions").jqxDataTable(
+                            {
+                                altRows: true,
+                                pageable: true,
+                                sortable: true,
+                                source: dataAdapter,
+                             
+                            columns: [{ text: 'title', datafield: 'title', width: 250},{ text: 'user', datafield: 'user', width: 100 },{text: 'date', datafield: 'date', width: 250, align:'right',cellsalign:'right'},{text: 'Replies', datafield: 'number_replies', width:100 , align:'right',cellsalign:'right'}]
+                        });
+
+                        dataAdapter.dataBind();
+    $("#questions").jqxDataTable("updateBoundData");
+
+                    });
+            });
+
+
         });
         function saveIdHoster(idQuestion){
             var xhttp = new XMLHttpRequest();
@@ -81,8 +187,30 @@
             window.location.href="question.php";
 
         }
+
+        // function used to retrieve all the tags in the database and put them as checkbox for a more advanced search
+        function checkbox(){
+            $.post("../Controller/tagsdb.php",
+                function(data){
+                    var tags = JSON.parse(data);
+                    if(tags[0]==null){
+                        alert("no tags");
+                    }
+                    else{
+                        $('#tags_table').empty();
+                        for(var i = 0; i<tags.length;i++){
+                            var str = "<li><input type='checkbox' value ='"+tags[i]+"'><label>"+tags[i]+"</label> </li><br>";
+                            $('#tags_table').append(str);
+                        }
+                    }
+
+                })
+        }
+
     </script>
     <?php include('header.php'); ?>
+
+
 </head>
 
 <body>
@@ -94,14 +222,32 @@
     <b>Enter Search term: </br>
         <input id="search_box" type="text" search_box="question"><br>
         <br>
-        <button id="search_button" value= "search">search</button>
+        <button id="search_button" value= "search">Search</button>
+        <button id="advanced_button" value= "advanced">Advanced</button>
     </b>
+
+
 
 
     <div style="margin-top: 2%;">
         <ul id="myTable321">
 
         </ul>
+    </div>
+    <div id="questions"></div>
+
+    <!-- popup thing-->
+    <div id="advancedModal" class="modal-advanced" hidden>
+
+        <!-- Modal content -->
+        <div style="background-color: white; padding: 20px;margin-left: 20%;margin-right: 20%">
+            <h2> Current tags in the database </h2>
+                <ul id="tags_table"></ul>
+                <button id="canceladvanced"> Cancel </button>
+                <button id="advancedsearchbutton">Search</button>
+
+        </div>
+
     </div>
 </body>
 
