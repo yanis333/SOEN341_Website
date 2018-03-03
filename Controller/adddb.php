@@ -15,10 +15,8 @@ if ($_SESSION['username']!=null) {
     date_default_timezone_set('America/Montreal'); 
     $date = (string)date('H:i:s d-m-Y');
 
-
-    
-    $db->query("UPDATE total_questions SET total = (SELECT COUNT(*)from questionlog)");
     $db->query("INSERT INTO questionlog (title,description,date,user, tags) VALUES('" . $questiontitle . "','" . $description . "','" . $date . "','".$_SESSION['username']."','". strtolower($tags) ."')");
+
 
     $db->close();
     $valuearr[0]=true;
