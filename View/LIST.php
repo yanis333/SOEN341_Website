@@ -5,11 +5,14 @@
     <meta charset="UTF-8">
     <title>Search Page</title>
     <style>
-        body {
-            background-color:pink;
+        #container{
             text-align: center;
 
+            color:#fffccc;}
+
+
         }
+
         #Title:hover {
             color: blue;
             cursor: pointer;
@@ -215,15 +218,17 @@
 
 <body>
 
-
+<div id="container">
 
 <nav>
     <img src="../Img/LogoOMQ.png" alt="Logo" height="80px" width="80px"/>
-    <b>Enter Search term: </br>
+    <div>
+    <b>Enter Search term:
         <input id="search_box" type="text" search_box="question"><br>
         <br>
         <button id="search_button" value= "search">Search</button>
         <button id="advanced_button" value= "advanced">Advanced</button>
+
     </b>
 
 
@@ -234,6 +239,7 @@
 
         </ul>
     </div>
+
     <div id="questions"></div>
 
     <!-- popup thing-->
@@ -247,6 +253,7 @@
                 <button id="advancedsearchbutton">Search</button>
 
         </div>
+
 
     </div>
 </body>
