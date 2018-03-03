@@ -11,10 +11,12 @@ if ($_SESSION['username']!=null) {
     $questiontitle = $_POST['questiontitledb'];
     $description = $_POST['descriptiondb'];
     $tags = $_POST['tagsdb'];
-    date_default_timezone_set('America/Montreal');
+
+    date_default_timezone_set('America/Montreal'); 
     $date = (string)date('H:i:s d-m-Y');
 
-    $db->query("INSERT INTO questionlog (title,description,date,user, tags) VALUES('" . $questiontitle . "','" . $description . "','" . $date . "','".$_SESSION['username']."','". $tags ."')");
+    $db->query("INSERT INTO questionlog (title,description,date,user, tags) VALUES('" . $questiontitle . "','" . $description . "','" . $date . "','".$_SESSION['username']."','". strtolower($tags) ."')");
+
 
     $db->close();
     $valuearr[0]=true;
