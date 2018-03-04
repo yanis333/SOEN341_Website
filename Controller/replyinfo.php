@@ -10,10 +10,13 @@ $result = $db->query("Select * from replylist where IDQuestion ='".$_SESSION['id
 while($row = $result->fetch_assoc()){
     $arraytlist[] = $row;
 }
-
+$result = $db->query("Select user from questionlog where ID ='".$_SESSION['idquestion']."'");
+$userId = $row = $result->fetch_assoc();
 $arrainfo[0]=$arraytlist;
 $arrainfo[1]= false;
-if($_SESSION["usernamequestion"] == $_SESSION['username'])
-$arrainfo[1]= true;
-echo json_encode($arrainfo);
+if($userId['user'] == $_SESSION['username'])
+    $arrainfo[1]= true;
 $db->close();
+echo json_encode($arrainfo);
+
+

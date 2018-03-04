@@ -18,6 +18,13 @@
     <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxdatatable.js"></script>
 	<script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxvalidator.js"></script>
     <style>
+        #loginform{
+            z-index: 9999;
+        }
+
+        #register_modal{
+            z-index: 9999;
+        }
 		#loginomq{
 			margin-left:125px;
 			font-size: 30px;

@@ -4,7 +4,7 @@ session_start();
 $db = new DB();
 
 
-$result= $db->query("select * from questionlog where ID ='6'"); // query to find the tag
+$result= $db->query("select * from questionlog where ID ='".$_SESSION['idquestion']."'"); // query to find the tag
 $tags = $result->fetch_assoc(); // give the row with the right tag $tags['tags']
 $searchedTags = explode(" ", $tags['tags']);
 $result3= $db->query("select * from questionlog"); // gives you everything in the db

@@ -240,8 +240,8 @@
 
                     });
                 $.post("../controller/replyinfo.php", function (data) {
-
                     var info = JSON.parse(data);
+
                     reply = "";
                     bestreply="";
                     for (var x = info[0].length-1; x >= 0; x--) {
