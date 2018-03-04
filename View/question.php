@@ -200,7 +200,7 @@
                 var dataArray = JSON.parse(data);
                 var str="";
                 if(dataArray[0]==null){
-                    alert("no question with that tag found");
+                   
                 }
                 else{
                     for(var i=0; i<dataArray.length;i++){
