@@ -102,22 +102,31 @@
  
                     function(data){
 
-                    // ------------------------------------------------------------
 
-                       var info = JSON.parse(data);
-                        if(info[0]==null)
-                            alert("Sorry, there are no results for your search. Try using keywords!");
-                        else {
-                            for (var i = 0; i<info.length; i++){
+                        var dataarray = JSON.parse(data);
+                        alert(dataarray);
+                        var source =
+                          {
+                              localdata: dataarray,
+                              datatype: "array"
+                          };
 
-                                str+="<li style ='margin-top:"+(3*(i+1))+"%; margin-bottom: 3%; list-style: none ;'><div class='box12'><label class='bla'>Search Results: </label><label id=\"Title\"onclick=\"saveIdHoster("+info[i]["ID"]+")\"</label>"+info[i]["title"]+"<label class='bla2'></label><label class=\"date\"> Date: "+ info[i]["date"]+"</label><br> </div></li><br>";
-
-                            }
-                            $("#myTable321").append(str);
+                          var dataAdapter = new $.jqx.dataAdapter(source);
 
 
-                        }
-                    // ------------------------------------------------------------
+                        $("#questions").jqxDataTable(
+                          {
+                              altRows: true,
+                              pageable: true,
+                              sortable: true,
+                              source: dataAdapter,
+                         
+                          columns: [{ text: 'title', datafield: 'title', width: 250},{ text: 'user', datafield: 'user', width: 100 },{text: 'date', datafield: 'date', width: 250, align:'right',cellsalign:'right'},{text: 'Replies', datafield: 'number_replies', width:100 , align:'right',cellsalign:'right'}]
+                        });
+
+                        dataAdapter.dataBind();
+                        $("#questions").jqxDataTable("updateBoundData");
+
 
                 });
 
