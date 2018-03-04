@@ -102,7 +102,6 @@
  
                     function(data){
 
-                    // ------------------------------------------------------------
 
                         var dataarray = JSON.parse(data);
                         alert(dataarray);
@@ -128,7 +127,6 @@
                         dataAdapter.dataBind();
                         $("#questions").jqxDataTable("updateBoundData");
 
-                    // ------------------------------------------------------------
 
                 });
 
