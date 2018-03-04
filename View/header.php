@@ -16,8 +16,107 @@
     <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxgrid.js"></script>
     <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxgrid.selection.js"></script>
     <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxdatatable.js"></script>
+	<script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxvalidator.js"></script>
     <style>
+		#loginomq{
+			margin-left:125px;
+			font-size: 30px;
+			font-family: Verdana;
+		}
+		
+		#registeromq{
+			margin-left:115px;
+			font-size: 30px;
+			font-family: Verdana;
+		}
 
+		#forgotpass{
+			margin-left: 22px;
+		}
+		
+		#logindiv{
+				margin-left: 20px;
+		}
+		
+		#cancelbtnlogin{
+			margin-top: 0px;
+			margin-left:320px;
+		    background-color: Transparent;
+			background-repeat:no-repeat;
+			border: none;
+			cursor:pointer;
+			overflow: hidden;
+			outline:none;
+		}
+		
+		#cancelbtnRegister
+		{
+			margin-top: 0px;
+			margin-left:320px;
+		    background-color: Transparent;
+			background-repeat:no-repeat;
+			border: none;
+			cursor:pointer;
+			overflow: hidden;
+			outline:none;
+		}
+
+		#didnotEnterAllLogininfo{
+			font-size: 13px;
+			margin-left: 90px;
+			margin-top: 10px;
+		}
+		
+		#didnotEnterAllRegisterinfo{
+			font-size: 13px;
+			margin-left: 105px;
+			margin-top: 10px;
+		}
+	
+	
+		.registertextboxes{
+			margin-left: 20px;
+		}
+		
+		#logincss{
+			margin-left: 150px !important;
+			outline: none !important;
+		    border-radius: 20px !important;
+			padding: 10px !important;
+			border: 2px solid #999 !important;
+			width: 350px ;
+			height: 310px;
+		}
+		
+		#registerform
+		{
+			margin-left: 150px !important;
+			outline: none !important;
+		    border-radius: 20px !important;
+			padding: 10px !important;
+			border: 2px solid #999 !important;
+			width: 350px ;
+			height: 390px;
+
+		}
+		
+		#loginbtnfromtheform{
+			outline: none;
+			margin-left: 0px;
+			border-radius: 20px ;
+			 width: 300px;
+			 height: 40px;
+		}
+		
+		#Registerbtnfromtheform{
+			outline: none;
+			margin-left: 20px;
+			border-radius: 20px ;
+			 width: 300px;
+			 height: 40px;
+		}
+	
+	
         .headerpageright{
             display:flex;
 
@@ -33,13 +132,13 @@
             float: left;
         }
 
-        .inputlogincss {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            box-sizing: border-box;
+        .inputlogincss{
+			outline: none !important;
+		    border-radius: 20px !important;
+			padding: 10px !important;
+			border: 2px solid #999 !important;
+			width: 274px ;
+            margin: 8px 0 !important;
         }
         .elementLiA {
             display: block;
@@ -83,7 +182,9 @@
 
 
         .containerlogincss {
-            padding: 16px;
+ 
+			height: 300px;
+			width: 300px;
         }
 
 
@@ -160,8 +261,13 @@
 
     <script>
         $(document).ready(function(){
-
-         $("#register_password").jqxPasswordInput({ placeHolder: "Enter a Password", height: 25, width: 200});
+			$('#registerform').jqxValidator({ rules: [
+                { input: '#register_username', message: 'Minimum 5 characters', action: 'keyup', rule: 'minLength=5' },
+                { input: '#register_email', message: 'Invalid e-mail!', action: 'keyup', rule: 'email'}], theme: 'summer'
+			});
+			$("#passwordlogin").jqxPasswordInput({ placeHolder: "Enter a Password", height: 40, width: 300});
+			$("#register_password").jqxPasswordInput({ placeHolder: "Enter a Password", height: 40, width: 300});
+			$("#register_password_verify").jqxPasswordInput({ placeHolder: "Enter a Password", height: 40, width: 300});
             $.post('../Controller/OAuth.php',
                 function(data){
                     var valueinfo =JSON.parse(data);
@@ -281,47 +387,41 @@
         </li>
         <div id="register_modal" class="modallogincss">
 
-
+				<form id="registerform" class="modal-contentlogincss animatelogincss" >
                 <div class="containerlogincss">
-                    <h4 id="didnotEnterAllRegisterinfo" style="color: red;" hidden>Enter information in all field</h4>
-                    <label class="titlelogin" ><b>Username</b></label>
+					<button id="cancelbtnRegister" class="cancelbtnlogincss">X</button>
+					<label id="registeromq">Register</label>
+                    <h4 id="didnotEnterAllRegisterinfo" style="color: red;" hidden>Please fill in required fields</h4>
+				 <div class="registertextboxes">
                     <input id="register_username" class="inputlogincss" type="text" placeholder="Username">
-
-                    <label class="titlelogin" ><b>Password</b></label>
-                   
- <input id="register_password" class="inputlogincss" type="password"> 
-                    <label class="titlelogin" ><b>Confirm Password</b></label>
+					<input id="register_password" class="inputlogincss" type="password"> 
                     <input id="register_password_verify" class="inputlogincss" type="password" placeholder="Confirm Password">
-                    <label class="titlelogin" ><b>Email</b></label>
-                    <input id="register_email" class="inputlogincss" type="password" placeholder="Email">
-
+                    <input id="register_email" class="inputlogincss" type="text" placeholder="Email">
+				 </div>
+					
                     <button id="Registerbtnfromtheform" class="buttonlogincss">Register</button>
                 </div>
 
-                <div class="containerlogincss" style="background-color:#f1f1f1">
-                    <button id="cancelbtnRegister" class="cancelbtnlogincss">Cancel</button>
-                </div>
+
+
+
             </form>
         </div>
         <div id="loginform" class="modallogincss">
 
-            <form class="modal-contentlogincss animatelogincss" >
-
-                <div class="containerlogincss">
-                    <h4 id="didnotEnterAllLogininfo" style="color: red;" hidden>Enter information in all field</h4>
-                    <label class="titlelogin" ><b>Username</b></label>
-                    <input id="usernamelogin" class="inputlogincss" type="text" placeholder="Enter Username"  >
-
-                    <label class="titlelogin" ><b>Password</b></label>
-                    <input id="passwordlogin" class="inputlogincss" type="password" placeholder="Enter Password"  >
-
-                    <button id="loginbtnfromtheform" class="buttonlogincss">Login</button>
+            <form  id="logincss" class="modal-contentlogincss animatelogincss" >
+			                     <button id="cancelbtnlogin" class="cancelbtnlogincss">X</button>
+								 					<label id="loginomq">Login</label>
+                <div >
+					<h4 id="didnotEnterAllLogininfo" style="color: red;" hidden>Enter information in all field</h4>
+					<div id="logindiv">
+					<input id="usernamelogin" class="inputlogincss" type="text" placeholder="Username"  >
+                    <input id="passwordlogin" class="inputlogincss" type="password" placeholder="Password"  >
+					<button id="loginbtnfromtheform" class="buttonlogincss">Login</button>
+					</div>
                 </div>
+					<span id="forgotpass">Forgot <a href="#">password?</a></span>
 
-                <div class="containerlogincss" style="background-color:#f1f1f1">
-                    <button id="cancelbtnlogin" class="cancelbtnlogincss">Cancel</button>
-                    <span >Forgot <a href="#">password?</a></span>
-                </div>
             </form>
         </div>
         <li  class="rightFloat" id="Mainusernamelistlogout" hidden>
