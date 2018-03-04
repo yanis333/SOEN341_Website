@@ -96,6 +96,14 @@
             $('#search_button').click(function(){
                 $("#myTable321").empty();
 
+                $("#questions").on('rowClick',function(event){
+                    $.post('../Controller/idquestionmainpage.php',{value:event.args.row.ID},
+                        function(){
+                            window.location.href="question.php";
+
+                        });
+                });
+
          
                 var str="";
                 $.post('../Controller/list_backend.php',{search:$('#search_box').val()},
@@ -104,7 +112,7 @@
 
 
                         var dataarray = JSON.parse(data);
-                        alert(dataarray);
+
                         var source =
                           {
                               localdata: dataarray,
@@ -121,7 +129,7 @@
                               sortable: true,
                               source: dataAdapter,
                          
-                          columns: [{ text: 'title', datafield: 'title', width: 250},{ text: 'user', datafield: 'user', width: 100 },{text: 'date', datafield: 'date', width: 250, align:'right',cellsalign:'right'},{text: 'Replies', datafield: 'number_replies', width:100 , align:'right',cellsalign:'right'}]
+                          columns: [ {text:'id',datafield:'ID',width:100},{ text: 'title', datafield: 'title', width: 250},{ text: 'user', datafield: 'user', width: 100 },{text: 'date', datafield: 'date', width: 250, align:'right',cellsalign:'right'},{text: 'Replies', datafield: 'number_replies', width:100 , align:'right',cellsalign:'right'}]
                         });
 
                         dataAdapter.dataBind();
@@ -178,7 +186,7 @@
                                 sortable: true,
                                 source: dataAdapter,
                              
-                            columns: [{ text: 'title', datafield: 'title', width: 250},{ text: 'user', datafield: 'user', width: 100 },{text: 'date', datafield: 'date', width: 250, align:'right',cellsalign:'right'},{text: 'Replies', datafield: 'number_replies', width:100 , align:'right',cellsalign:'right'}]
+                            columns: [ {text:'id',datafield:'ID',width:100},{ text: 'title', datafield: 'title', width: 250},{ text: 'user', datafield: 'user', width: 100 },{text: 'date', datafield: 'date', width: 250, align:'right',cellsalign:'right'},{text: 'Replies', datafield: 'number_replies', width:100 , align:'right',cellsalign:'right'}]
                         });
 
                         dataAdapter.dataBind();

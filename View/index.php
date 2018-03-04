@@ -64,7 +64,7 @@
         });
 
         $("#questions").on('rowClick',function(event){
-        $.post('../Controller/idquestionmainpage.php',{value:event.args.row.uid},
+        $.post('../Controller/idquestionmainpage.php',{value:event.args.row.ID},
                     function(data){
                         window.location.href="question.php";
 
@@ -86,7 +86,12 @@
                         sortable: true,
                         source:source,
                      
-                    columns: [{ text: 'title', datafield: 'title', width: 250},{ text: 'user', datafield: 'user', width: 100 },{text: 'date', datafield: 'date', width: 250, align:'right',cellsalign:'right'},{text: 'Replies', datafield: 'number_replies', width:100 , align:'right',cellsalign:'right'}]
+                    columns: [
+                        {text:'id',datafield:'ID',width:100},
+                        { text: 'title', datafield: 'title', width: 250},
+                        { text: 'user', datafield: 'user', width: 100 }
+                        ,{text: 'date', datafield: 'date', width: 250, align:'right',cellsalign:'right'}
+                        ,{text: 'Replies', datafield: 'number_replies', width:100 , align:'right',cellsalign:'right'}]
                 });
             });
     });
