@@ -17,6 +17,8 @@
     <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxgrid.selection.js"></script>
     <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxdatatable.js"></script>
 	<script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxvalidator.js"></script>
+    <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxchart.core.js"></script>
+    <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxdraw.js"></script>
     <style>
         #loginform{
             z-index: 9999;
