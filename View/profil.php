@@ -29,6 +29,7 @@
 <button id="graphinfo">Statistique</button>
 <button id="passwordchange">Password</button>
 </div>
+
 <div id="graph" >
     <div id='chartContainer' class="chart"></div>
     <div style="margin-left:10%">
@@ -39,6 +40,7 @@
     </div>
 </div>
 <div id="password" hidden >
+
     <div class="align">
     <h2>Enter new password</h2>
         <input id="newpassword"/>
@@ -66,6 +68,7 @@
             $("#graph").hide();
             $("#password").show();
         });
+
 
         $.post("../Controller/profilGraph.php"
             ,
@@ -122,10 +125,13 @@
 
 
 
+
         // prepare jqxChart settings
         var settings = {
             title:"",
+
             title:sampleData[12],
+
             description:"",
             padding: { left: 5, top: 5, right: 5, bottom: 5 },
             titlePadding: { left: 90, top: 0, right: 0, bottom: 10 },
@@ -145,6 +151,7 @@
                         valueAxis:
                             {
                                 minValue: 0,
+
                                 maxValue: 10,
                                 unitInterval: 1,
                                 description: 'Time in minutes'
@@ -152,6 +159,7 @@
                         series: [
                             { dataField: 'month', displayText: '#Question'},
                             { dataField: 'reply', displayText: '#Reply'}
+
                         ]
                     }
                 ]
@@ -159,7 +167,9 @@
 
         // select the chartContainer DIV element and render the chart.
         $('#chartContainer').jqxChart(settings);
+
             });
+
     });
 </script>
 

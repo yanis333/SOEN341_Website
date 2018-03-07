@@ -2,13 +2,12 @@
 <html>
 <head>
 
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="../Jqwidgets/jqwidgets/styles/jqx.base.css" type="text/css" />
-<script type="text/javascript" src="../Jqwidgets/scripts/jquery-1.11.1.min.js"></script>
-<script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxcore.js"></script>
-<script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxpasswordinput.js"></script>
-<script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../Jqwidgets/scripts/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxpasswordinput.js"></script>
+    <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxdata.js"></script>
     <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxbuttons.js"></script>
     <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxscrollbar.js"></script>
@@ -20,6 +19,13 @@
     <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxchart.core.js"></script>
     <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxdraw.js"></script>
     <style>
+
+    body{
+            background: url("../Img/orange2.png")  no-repeat;
+
+           background-attachment: fixed;
+        }
+
         #loginform{
             z-index: 9999;
         }
@@ -44,7 +50,7 @@
 		}
 		
 		#logindiv{
-				margin-left: 20px;
+			margin-left: 20px;
 		}
 		
 		#cancelbtnlogin{
@@ -95,6 +101,8 @@
 			border: 2px solid #999 !important;
 			width: 350px ;
 			height: 310px;
+
+
 		}
 		
 		#registerform
@@ -107,6 +115,8 @@
 			width: 350px ;
 			height: 390px;
 
+            /* background:rgba(205,92,92,1); */
+
 		}
 		
 		#loginbtnfromtheform{
@@ -115,6 +125,7 @@
 			border-radius: 20px ;
 			 width: 300px;
 			 height: 40px;
+
 		}
 		
 		#Registerbtnfromtheform{
@@ -128,12 +139,12 @@
 	
         .headerpageright{
             display:flex;
-
+		
         }
 
 
         body{
-            background-color:pink;
+            background-color: #FFC2B4;
         }
 
 
@@ -149,19 +160,33 @@
 			width: 274px ;
             margin: 8px 0 !important;
         }
+
         .elementLiA {
             display: block;
             color: white;
             text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-            margin-right:5px;
+             text-decoration: none;
+            
+          
+            padding:10px ;
+            margin: 12px;
+
+             font-family:Trebuchet MS;
+            font-size:15px;
+            opacity: 1;
+
+        }
+        .elementLiA:hover:not(.active) {
+            color:#FBA895;
+            opacity: 1;
+            transition-duration: 0.2s;
         }
 
-        .elementLiA:hover:not(.active) {
+       /* .elementLiA:hover:not(.active) {
             background-color: #111;
             height:100%;
         }
+        */
 
 
         .buttonlogincss {
@@ -259,16 +284,73 @@
         }
 
         .mainheader {
-
             list-style-type: none;
-            margin: 0;
+         margin: 0;
             padding: 0;
-            background-color:#7f345a;
+            
+            background-color:#7B200D;
             width:100%;
+
+            position: fixed;
+            left: 0;
+            top: 0;
+            opacity: 0.7;
+
+
         }
+
+        #myBtnlogin, #register_btn{
+
+            background-color:transparent;
+            -moz-border-radius:28px;
+            -webkit-border-radius:28px;
+            border-radius:28px;
+            border:1px solid white;
+            display:inline-block;
+            cursor:pointer;
+            color:#ffffff;
+            font-family:Trebuchet MS;
+            font-size:15px;
+    
+
+            padding:7px 20px;
+            margin-right: 10px;
+            text-decoration:none;
+        }
+        
+        #myBtnlogin:hover, #register_btn:hover, .homeicon:hover {
+            background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #d6500d), color-stop(1, #fcb851));
+                background:-moz-linear-gradient(top, #d6500d 5%, #fcb851 100%);
+                background:-webkit-linear-gradient(top, #d6500d 5%, #fcb851 100%);
+                background:-o-linear-gradient(top, #d6500d 5%, #fcb851 100%);
+                background:-ms-linear-gradient(top, #d6500d 5%, #fcb851 100%);
+                background:linear-gradient(to bottom, #d6500d 5%, #fcb851 100%);
+                filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#d6500d', endColorstr='#fcb851',GradientType=0);
+                background-color:#d6500d;
+}
+        #myBtnlogin:active, #register_btn:active{
+            position:relative;
+    top:1px;
+}
+
+.homeicon{
+    cursor: pointer; 
+    float: left; 
+    padding-left: 18px; 
+    padding-top: 15px; 
+    padding-right: 18px;
+    padding-bottom: 17px;
+    transition-duration: 0.2s;
+
+}
+
+
+
     </style>
 
     <script>
+
+
         $(document).ready(function(){
 			$('#registerform').jqxValidator({ rules: [
                 { input: '#register_username', message: 'Minimum 5 characters', action: 'keyup', rule: 'minLength=5' },
@@ -381,18 +463,18 @@
 </head>
 <body>
 
-<nav id="header" class="headerpageright">
+<nav id="header" class="headerpageright" style="margin-bottom: 70px;">
 
-    <ul class="mainheader">
-        <li > <img src="../Img/Logo-OMQ.png" style="cursor: pointer; float: left;" onclick="window.location.href='index.php'" alt="Logo" height="40px" width="40px"/></li>
+    <ul class="mainheader" id="mainheaderheader">
+        <li > <img src="../Img/home2.png" class="homeicon" onclick="window.location.href='index.php'" alt="Logo" height="30px" width="30px"/></li>
 
-        <li class="onglet"><a class="elementLiA" href="add.php">Add a question</a></li>
+        <li class="onglet"><a class="elementLiA" href="add.php">Ask a question</a></li>
         <li class="onglet"><a class="elementLiA" href="LIST.php">Search a question</a></li>
         <li hidden><a class="elementLiA" href="#">Profile</a></li>
         <li  class="rightFloat">
             <a class="elementLiA" href="#" id="register_btn"> Register</a></li>
         <li id="loginsection" class="rightFloat">
-            <a class="elementLiA" href="#" id="myBtnlogin">Login</a>
+            <a class="elementLiA buttonLogin" href="#" id="myBtnlogin">Login</a>
         </li>
         <div id="register_modal" class="modallogincss">
 
@@ -439,6 +521,7 @@
             <a class="elementLiA" href="#" id="Mainusername" > username</a></li>
         <ul>
 </nav>
+<div class= "body1"></div>
 
 </body>
 

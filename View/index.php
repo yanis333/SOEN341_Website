@@ -45,6 +45,53 @@
             justify-content:space-between;
         }
 
+        .intro {
+           width: 100%;
+           height: 240px;
+           position: absolute;
+           left: 0;
+            z-index: -1;
+            background-color: orange;
+           opacity: 0.7;
+
+        }
+        .introh1{
+            padding: 20px;
+            margin-left: 20px;
+            font-family: Trebuchet MS;
+            color:white;
+        }
+
+        .currentquestions {
+          
+            color: white;
+            text-decoration: underline;
+            padding-top: 40%;
+            padding-bottom: 10px;
+            font-family: Trebuchet MS;
+
+
+        }
+
+        #numberQuestions{
+            color:white;
+                height:50px;
+            font-family: Trebuchet MS;
+            padding-top: 280%;
+
+        }
+        .bottomplaceholder{
+            width: 100%;
+            left: 0;
+            position: absolute;
+            background-color: black;
+            margin-top: 80%;
+            height: 100px;
+             font-family: Trebuchet MS;
+             color: white;
+             opacity: 0.7;
+            }
+
 
     </style>
 
@@ -112,15 +159,23 @@
 
         <div>
             <div id="gridTitle">
-                <div>
-        <h1> Current Trending Questions </h1>  
-</div><div> <h2 id="numberQuestions"></h2></div>
-</div>
+                <div class="intro">
+                    <h3 class="introh1"> <em>OMQ (?)</em> is a question and answer site
+                    <br> for members of <em>(website topic)</em> . 
+                    <p> Join them; it only takes a minute: </h3>
+                </div> 
+
+                <div class="currentquestions">
+                    <h1 class="currentquestionsh1"> Current Trending Questions </h1>  
+                </div>
+        <div> <h2 id="numberQuestions"></h2></div>
+        </div>
         <div id="add" onclick="window.location.href='add.php'"><button >Add a question</button></div><br>
 
         </div>
         <div id= "questions" >
         </div>
+        <div class="bottomplaceholder"> For scrolling </div>
     </div>
 </div>
 
