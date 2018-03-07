@@ -18,6 +18,7 @@ final class LoginTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
 
         Email::fromString('invalid');
+        
     }
 
     public function testCanBeUsedAsString()
