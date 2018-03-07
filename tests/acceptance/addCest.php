@@ -14,7 +14,7 @@ class addCest
     // tests
     public function tryToTest(AcceptanceTester $I)
     {
-        $I->amOnPage('/add.php');
+        $I->amOnPage('http://localhost/soen341_website/view//add.php');
         $I->see('Title');
         $I->see('klklklkl');
         $I->see('Description');
