@@ -4,6 +4,7 @@
     <title></title>
     <style type="text/css">
 
+/* 
         header
         {
             padding: 1em;
@@ -11,6 +12,24 @@
             background-color: #e82e2e;
             clear: left;
             text-align: center;
+        }
+        */
+
+/* -------------*/
+
+/* -------------*/
+body{
+     background-image: url("../Img/itachi1.jpg");
+}
+        .questionform{
+            margin:13%;
+            background-color: orange;
+            padding: 10px;
+            width: 720px;
+            max-width: 720px;
+            font-family: Trebuchet MS;
+            text-shadow: 3px 1px 14px rgba(147, 147, 140, 1);
+            border-radius: 10px;
         }
 
         #submit
@@ -45,6 +64,37 @@
             height: 200px;
             width: 670px;
         }
+
+
+.submitbtn {
+    -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+    -webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+    box-shadow:inset 0px 1px 0px 0px #ffffff;
+    background-color:#7b1f0d;
+    -moz-border-radius:11px;
+    -webkit-border-radius:11px;
+    border-radius:9px;
+    border:1px solid #d9a9d9;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Trebuchet MS;
+    font-size:12px;
+    padding:8px 15px;
+    text-decoration:none;
+    opacity: 0.7;
+    margin-left: 78%;
+}
+.submitbtn:hover {
+    background-color:#7b1f0d;
+    opacity: 1;
+    transition-duration: 0.1s;
+}
+
+.submitbtn:active {
+    position:relative;
+    top:1px;
+}
 
 
 
@@ -131,28 +181,33 @@
 </head>
 <body bgcolor="#ffeaea">
 <?php include('header.php'); ?>
+
+<!-- -->
+
+<!-- -->
+
 <form id="askquestion">
 
-    <div>
+    <div class="questionform">
         <h2 hidden id="check0"><br/>Successful</h2>
         <br /><h id="titlelabel">Title</h>
         <h hidden id="check1"><br />Title is missing.</h>
-        <br/ ><input type="text"  id="questiontitle" placeholder="What's your question?" /><br />
+        <br/ ><input type="text"  id="questiontitle" style="border-radius: 10px;" placeholder="What's your question?" /><br />
 
 
         <br /><h id="descriptionlabel">Description</h>
         <h hidden id="check2"><br />Description is missing.</h>
         <h hidden id="check4"><br />Maximum amount of characters exceeded.</h>
         <div id="descriptiondiv" class="container">
-            <textarea id="description"></textarea>
+            <textarea style="border-radius: 10px;" id="description"; placeholder="Describe your question in more detail."></textarea>
         </div>
 
 
         <br /><h id="tagslabel">Tags</h>
         <h hidden id="check3"><br />Please enter at least one tag.</h>
-        <br /><input type="text" id="tags" placeholder="at least two tags such as (php java c), max 5 tags" /><br />
+        <br /><input type="text" id="tags" style="border-radius: 10px;" placeholder="Enter at least two tags separated by a space, max 5 tags (e.g. php java c)" /><br />
 
-        <br /><button id="submit"> Post your question </button><br /><br />
+        <br /><button class="submitbtn" style=""> Post your question </button><br /><br />
 
     </div>
 </form>
