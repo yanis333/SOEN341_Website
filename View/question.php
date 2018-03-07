@@ -184,7 +184,34 @@
         .checked{
             font-size:10px;
         }
+	.replybtn {
+	 float: center;
+  width: 20%;
+  padding: 10px;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none; /* Prevent double borders */
+  cursor: pointer;
+  border-radius:28px;
+  
+}
+.replybtn:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #476e9e), color-stop(1, #7892c2));
+	background:-moz-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+	background:-webkit-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+	background:-o-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+	background:-ms-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+	background:linear-gradient(to bottom, #476e9e 5%, #7892c2 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#476e9e', endColorstr='#7892c2',GradientType=0);
+	background-color:#476e9e;
+}
+.replybtn:active {
+	position:relative;
+	top:1px;
 
+}
 
     </style>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -363,7 +390,7 @@
             <label id="descinfoTitle" class="description">Description:</label>
             <label id="descinfoTitleinput"></label>
             <div class="container" style="text-align: center">
-                <button type="button" class="btn btn-info btn-lg " data-toggle="modal" data-target="#myModal">reply</button>
+                <button type="button" class="replybtn" data-toggle="modal" data-target="#myModal">reply</button>
 
             </div>
 
