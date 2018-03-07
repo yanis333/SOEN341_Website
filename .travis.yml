@@ -20,7 +20,8 @@ before_script:
 
 
 # execute any number of scripts before the test run, custom env's are available as variables
-before_script:        # Install Codeception.
+before_script:    
+    # Install Codeception.
     # Doing this last gives the webdriver and server time to start up.
     - composer install --prefer-source
   
