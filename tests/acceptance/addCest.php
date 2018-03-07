@@ -16,7 +16,6 @@ class addCest
     {
         $I->amOnPage('http://localhost/soen341_website/view//add.php');
         $I->see('Title');
-        $I->see('klklklkl');
         $I->see('Description');
         $I->see('Tags');
         $I->click('Post your question');

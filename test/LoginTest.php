@@ -1,7 +1,9 @@
 <?php
 use PHPUnit\Framework\TestCase;
 require 'Email.php';
-final class EmailTest extends TestCase
+require 'User.php';
+require 'Password.php';
+final class LoginTest extends TestCase
 {
     public function testCanBeCreatedFromValidEmailAddress()
     {
@@ -25,4 +27,23 @@ final class EmailTest extends TestCase
             Email::fromString('user@example.com')
         );
     }
+
+    public function testCanBeCreatedFromValidUser()
+    {
+        $this->assertInstanceOf(
+            User::class,
+            User::fromString('user')
+        );
+    }
+
+    public function testCanBeCreatedFromValidPassword()
+    {
+        $this->assertInstanceOf(
+            Password::class,
+            Password::fromString('password')
+        );
+    }
+
+
+
 }
