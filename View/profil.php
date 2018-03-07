@@ -29,10 +29,18 @@
 <button id="graphinfo">Statistique</button>
 <button id="passwordchange">Password</button>
 </div>
-<div id="graph">
+
+<div id="graph" >
     <div id='chartContainer' class="chart"></div>
+    <div style="margin-left:10%">
+    <h2>Question asked</h2>
+    <div id="questions" class="align"></div>
+    <h2>Question Replied</h2>
+    <div id="reply" class="align"></div>
+    </div>
 </div>
-<div id="password" >
+<div id="password" hidden >
+
     <div class="align">
     <h2>Enter new password</h2>
         <input id="newpassword"/>
@@ -60,37 +68,70 @@
             $("#graph").hide();
             $("#password").show();
         });
-/*
-        $.post("../Controller/profilGraph.php",{
-                desc: $("#inputReplyInfo").val()
-            },
-            function(data){
-                var valueIfCanReply = JSON.parse(data);
-                if(valueIfCanReply[0]){
-                    window.location.href="question.php";}
-                else{
-                    alert("To reply you need to be connected");}
-            });*/
 
-        // prepare chart data
-        var  sampleData = [
-            { Day:'Sept', Keith:30, Erica:15, George: 25},
-            { Day:'Oct', Keith:25, Erica:25, George: 30},
-            { Day:'Nov', Keith:30, Erica:20, George: 25},
-            { Day:'Dec', Keith:35, Erica:25, George: 45},
-            { Day:'Jan', Keith:20, Erica:20, George: 25},
-            { Day:'Feb', Keith:30, Erica:20, George: 30},
-            { Day:'Mar', Keith:60, Erica:45, George: 90},
-            { Day:'Avr', Keith:60, Erica:45, George: 90},
-            { Day:'May', Keith:60, Erica:45, George: 90},
-            { Day:'Jun', Keith:60, Erica:45, George: 90},
-            { Day:'Jul', Keith:60, Erica:45, George: 90},
-            { Day:'Aug', Keith:60, Erica:45, George: 90},
-        ];
+
+        $.post("../Controller/profilGraph.php"
+            ,
+            function(data){
+            var info = JSON.parse(data);
+
+                var source =
+                    {
+                        localdata: info[0],
+                        datatype: "array"
+                    };
+
+                var dataAdapter = new $.jqx.dataAdapter(source);
+
+
+                $("#questions").jqxDataTable(
+                    {
+
+                        altRows: true,
+                        pageable: true,
+                        sortable: true,
+                        source: dataAdapter,
+
+                        columns: [ {text:'id',datafield:'ID',width:100,align:'center'},{ text: 'title', datafield: 'title', width: 250,align:'center'},{ text: 'user', datafield: 'user', width: 100,align:'center' },{text: 'date', datafield: 'date', width: 250,align:'center'},{text: 'Replies', datafield: 'number_replies', width:100 ,align:'center'}]
+                    });
+                dataAdapter.dataBind();
+                $("#questions").jqxDataTable("updateBoundData");
+
+                var source =
+                    {
+
+                        localdata: info[1],
+                        datatype: "array"
+                    };
+
+                var dataAdapter = new $.jqx.dataAdapter(source);
+
+
+                $("#reply").jqxDataTable(
+                    {
+                        altRows: true,
+                        pageable: true,
+                        sortable: true,
+                        source: dataAdapter,
+
+                        columns: [ {text:'id',datafield:'ID',width:100,align:'center'},{ text: 'title', datafield: 'title', width: 250,align:'center'},{ text: 'user', datafield: 'user', width: 100,align:'center' },{text: 'date', datafield: 'date', width: 250,align:'center'},{text: 'Replies', datafield: 'number_replies', width:100 ,align:'center'}]
+                    });
+                dataAdapter.dataBind();
+                $("#reply").jqxDataTable("updateBoundData");
+            });
+        $.post("../Controller/profilGraphinfo.php",
+            function(data){
+            var sampleData = JSON.parse(data);
+
+
+
 
         // prepare jqxChart settings
         var settings = {
             title:"",
+
+            title:sampleData[12],
+
             description:"",
             padding: { left: 5, top: 5, right: 5, bottom: 5 },
             titlePadding: { left: 90, top: 0, right: 0, bottom: 10 },
@@ -110,13 +151,15 @@
                         valueAxis:
                             {
                                 minValue: 0,
-                                maxValue: 100,
-                                unitInterval: 10,
+
+                                maxValue: 10,
+                                unitInterval: 1,
                                 description: 'Time in minutes'
                             },
                         series: [
-                            { dataField: 'Keith', displayText: '#Question'},
-                            { dataField: 'Erica', displayText: '#Reply'}
+                            { dataField: 'month', displayText: '#Question'},
+                            { dataField: 'reply', displayText: '#Reply'}
+
                         ]
                     }
                 ]
@@ -124,6 +167,9 @@
 
         // select the chartContainer DIV element and render the chart.
         $('#chartContainer').jqxChart(settings);
+
+            });
+
     });
 </script>
 
