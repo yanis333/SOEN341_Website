@@ -518,7 +518,7 @@
         <li  class="rightFloat" id="Mainusernamelistlogout" hidden>
             <a class="elementLiA" href="#" id="Logout" > Logout</a></li>
         <li  class="rightFloat" id="Mainusernamelist" hidden>
-            <a class="elementLiA" href="#" id="Mainusername" > username</a></li>
+            <a class="elementLiA" href="profil.php" id="Mainusername" > username</a></li>
         <ul>
 </nav>
 <div class= "body1"></div>
