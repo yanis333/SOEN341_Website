@@ -16,14 +16,12 @@ php:
   # aliased to a recent hhvm version
   - hhvm
 
-# optionally specify a list of environments, for example to test different RDBMS
-env:
-  - DB=mysql
-
 before_script:
   - composer self-update
   - composer install --no-interaction
   - cp .env.travis .env
+  - Install Codeception
+  - compose install --prefer-source
 
 
 # execute any number of scripts before the test run, custom env's are available as variables
@@ -31,5 +29,5 @@ before_script:
   
 # omitting "script:" will default to phpunit
 # use the $DB env variable to determine the phpunit.xml to use
-script: php ./vendor/bin/phpunit --bootstrap vendor/autoload.php test/EmailTest
+script: vendor/bin/codecept run --steps
 
