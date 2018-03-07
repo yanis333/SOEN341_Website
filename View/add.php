@@ -37,6 +37,7 @@
             height: 20px;
             margin-left: 20px;
             width: 670px;
+			
         }
 
         #description
@@ -44,6 +45,7 @@
             margin-left: 20px;
             height: 200px;
             width: 670px;
+			
         }
 
 
@@ -51,6 +53,11 @@
         #questiontitle:focus { border: 2px solid red; }
         #description:focus { border: 2px solid red; }
         #tags:focus { border: 2px solid red; }
+		
+			
+
+
+		
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 

@@ -2,6 +2,7 @@
 <html>
 
 <head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta charset="UTF-8">
     <title>Search Page</title>
     <style>
@@ -87,6 +88,85 @@
             cursor: pointer;
         }
 
+		
+		
+		
+		* {
+  box-sizing: border-box;
+}
+
+/* Style the search field */
+.searchbtn input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+  border-top-left-radius: 28px;
+    border-bottom-left-radius: 28px;
+}
+
+/* Style the submit button */
+.searchbtn button {
+  float: left;
+  width: 10%;
+  padding: 10px;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+ 
+  cursor: pointer;
+
+    border-top-right-radius: 28px;
+    border-bottom-right-radius: 28px;
+}
+
+.searchbtn button:hover {
+  background: #0b7dda;
+}
+
+/* Clear floats */
+.searchbtn::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+	
+	
+	
+
+.advanced_button {
+	 float: center;
+  width: 20%;
+  padding: 10px;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none; /* Prevent double borders */
+  cursor: pointer;
+  border-radius:28px;
+  
+}
+.advanced_button:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #476e9e), color-stop(1, #7892c2));
+	background:-moz-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+	background:-webkit-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+	background:-o-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+	background:-ms-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+	background:linear-gradient(to bottom, #476e9e 5%, #7892c2 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#476e9e', endColorstr='#7892c2',GradientType=0);
+	background-color:#476e9e;
+}
+.advanced_button:active {
+	position:relative;
+	top:1px;
+
+}
+
+        
     </style>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -237,14 +317,18 @@
 
 <div id="container">
 
-<nav>
+<nav style="margin: 90px; position: relative;">	
     <img src="../Img/LogoOMQ.png" alt="Logo" height="80px" width="80px"/>
     <div>
     <b>Enter Search term:
-        <input id="search_box" type="text" search_box="question"><br>
+	<!- taken from https://www.w3schools.com/howto/howto_css_search_button.asp-> 
+	<div class="searchbtn" >
+  <input placeholder="Search.." name="search" id="search_box" type="text" search_box="question">
+  <button id="search_button" value= "search"><i class="fa fa-search"></i></button>
+</div>
+	
         <br>
-        <button id="search_button" value= "search">Search</button>
-        <button id="advanced_button" value= "advanced">Advanced</button>
+        <button id="advanced_button" class="advanced_button" value= "advanced">Advanced</button>
 
     </b>
 
