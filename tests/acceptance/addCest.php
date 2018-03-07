@@ -16,6 +16,7 @@ class addCest
     {
         $I->amOnPage('/add.php');
         $I->see('Title');
+        $I->see('klklklkl');
         $I->see('Description');
         $I->see('Tags');
         $I->click('Post your question');
