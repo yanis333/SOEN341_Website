@@ -7,6 +7,9 @@
 actor: AcceptanceTester
 modules:
     enabled:
-        - PhpBrowser:
-            url: http://localhost/soen341_website/view/
-        - \Helper\Acceptance
+        -WebDriver:
+            url:'http:localhost/soen341_website/view/'
+            browser: phantomjs
+        # - PhpBrowser:
+        #     url: http://localhost/soen341_website/view/
+        # - \Helper\Acceptance
