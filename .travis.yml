@@ -29,9 +29,10 @@ before_script:
   
 # omitting "script:" will default to phpunit
 # use the $DB env variable to determine the phpunit.xml to use
-script: - php ./vendor/bin/codecept run
-        - php ./vendor/bin/phpunit --bootstrap vendor/autoload.php test/LoginTest
-        - php ./vendor/bin/phpunit --bootstrap vendor/autoload.php test/QuestionTest
+script: 
+  - php ./vendor/bin/codecept run
+  - php ./vendor/bin/phpunit --bootstrap vendor/autoload.php test/LoginTest
+  - php ./vendor/bin/phpunit --bootstrap vendor/autoload.php test/QuestionTest
 
         
 
