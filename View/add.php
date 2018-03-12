@@ -18,9 +18,7 @@
 /* -------------*/
 
 /* -------------*/
-body{
-     background-image: url("../Img/itachi1.jpg");
-}
+
         .questionform{
             margin:13%;
             background-color: orange;
@@ -115,13 +113,11 @@ body{
         $(document).ready(function() {
 
 
-            var questiontitle = $("#questiontitle").val();
-            var description = $("#description").val();
-            var tags = $("#tags").val();
             var timer;
 
 
             $("#submit").click(function(e){
+
 
 
                 clearTimeout(timer);
@@ -158,6 +154,7 @@ body{
                     $("#check3").hide();
                 }
                 if(!($("#tags").val()=="")&& !($("#description").val()=="")&&!($("#questiontitle").val()=="")){
+
                     $.post('../Controller/adddb.php',
                         {
                             questiontitledb : $("#questiontitle").val(),
@@ -166,6 +163,7 @@ body{
                         },
 
                         function(data){
+
                             var item = JSON.parse(data);
                             if(item[0]){
                                 alert("Question added Successfully");
@@ -214,7 +212,7 @@ body{
         <h hidden id="check3"><br />Please enter at least one tag.</h>
         <br /><input type="text" id="tags" style="border-radius: 10px;" placeholder="Enter at least two tags separated by a space, max 5 tags (e.g. php java c)" /><br />
 
-        <br /><button class="submitbtn" style=""> Post your question </button><br /><br />
+        <br /><button id="submit" class="submitbtn" style=""> Post your question </button><br /><br />
 
     </div>
 </form>
