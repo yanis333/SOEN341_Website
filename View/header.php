@@ -27,11 +27,11 @@
         }
 
         #loginform{
-            z-index: 9999;
+            z-index: 1;
         }
 
         #register_modal{
-            z-index: 9999;
+            z-index: 1;
         }
 		#loginomq{
 			margin-left:125px;
@@ -92,6 +92,14 @@
 		.registertextboxes{
 			margin-left: 20px;
 		}
+    .downarrow {
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        display: inline-block;
+        padding: 3px;
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+    }
 		
 		#logincss{
 			margin-left: 150px !important;
@@ -104,6 +112,17 @@
 
 
 		}
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
 		
 		#registerform
 		{
@@ -295,7 +314,7 @@
             left: 0;
             top: 0;
             opacity: 0.7;
-
+            Z-index: 1;;
 
         }
 
@@ -363,7 +382,7 @@
                 function(data){
                     var valueinfo =JSON.parse(data);
                     if(valueinfo[0]){
-                        $('#Mainusername').html("Welcome " + valueinfo[1]);
+                        $('#Mainusername').html("Welcome " + valueinfo[1]+"   <i class=\"downarrow\"></i>");
                         $("#myBtnlogin").hide();
                         $("#register_btn").hide();
                         $("#Mainusernamelist").show();
@@ -518,7 +537,14 @@
         <li  class="rightFloat" id="Mainusernamelistlogout" hidden>
             <a class="elementLiA" href="#" id="Logout" > Logout</a></li>
         <li  class="rightFloat" id="Mainusernamelist" hidden>
-            <a class="elementLiA" href="profil.php" id="Mainusername" > username</a></li>
+            <div class="dropdown-content">
+                <a href="#">Link 1</a>
+                <a href="#">Link 2</a>
+                <a href="#">Link 3</a>
+            </div>
+
+            <a class="elementLiA " href="profil.php" id="Mainusername" > username </a>
+            </li>
         <ul>
 </nav>
 <div class= "body1"></div>

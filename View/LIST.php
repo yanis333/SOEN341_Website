@@ -14,32 +14,6 @@
 
         }
 
-        #Title:hover {
-            color: blue;
-            cursor: pointer;
-        }
-
-        .date{
-            color: black;
-        }
-
-        .box12{
-            position: fixed;
-            border: transparent;
-            width: 70%;
-            padding: 1%;
-            color:black;
-        }
-
-        .bla{
-            margin-left: 30%
-        }
-
-        .bla2{
-            margin-left:25%;
-            margin-top: 2%;
-            color: black;
-        }
         li{
             color:black;
         }
@@ -63,33 +37,6 @@
 
         }
 
-
-        /* Modal Content */
-        .modal-content-advanced {
-            background-color: #fefefe;
-            margin: auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-        }
-
-        /* The Close Button */
-        .close-advanced {
-            color: #aaaaaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-
-        .close-advanced:hover,
-        .close-advanced:focus {
-            color: #000;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-		
-		
 		
 		* {
   box-sizing: border-box;
@@ -138,7 +85,6 @@
 	
 
 .advanced_button {
-	 float: center;
   width: 20%;
   padding: 10px;
   background: #2196F3;
@@ -235,7 +181,7 @@
             
             $('#advancedsearchbutton').click(function(){
                 $('#questions').show();
-         
+
                 var val = [];
                 $(':checkbox:checked').each(function(i){
                     val[i] = $(this).val();
@@ -317,9 +263,6 @@
 
 <div id="container">
 
-<nav style="margin: 90px; position: relative;">	
-    <img src="../Img/LogoOMQ.png" alt="Logo" height="80px" width="80px"/>
-    <div>
     <b>Enter Search term:
 	<!-- taken from https://www.w3schools.com/howto/howto_css_search_button.asp --> 
 	<div class="searchbtn" >
@@ -331,6 +274,7 @@
         <button id="advanced_button" class="advanced_button" value= "advanced">Advanced</button>
 
     </b>
+</div>
 
 
 
