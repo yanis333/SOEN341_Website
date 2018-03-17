@@ -50,6 +50,8 @@
 </div>
 
 <script type="text/javascript">
+
+
     $(document).ready(function () {
         $("#confirmenewpassword").click(function(){
 
@@ -60,6 +62,14 @@
         }); });
 
 
+         $.post("../Controller/achievement.php"
+            ,
+            function(data){
+                //var info = JSON.parse(data);
+        });
+
+
+        
         $("#graphinfo").click(function(){
             $("#graph").show();
             $("#password").hide();
@@ -174,5 +184,6 @@
 </script>
 
 </body>
+
 
 </html>
