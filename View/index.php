@@ -4,7 +4,7 @@
     <title>Main Page</title>
 
     <link rel="stylesheet" type="text/css" href="login.css">
-    <link rel="stylesheet" href="../Jqwidjets/jqwidgets/styles/jqx.base.css" type="text/css" >
+    <link rel="stylesheet" href="../Jqwidgets/jqwidgets/styles/jqx.base.css" type="text/css" >
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxdata.js"></script>

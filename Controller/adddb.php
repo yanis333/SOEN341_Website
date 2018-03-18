@@ -26,27 +26,27 @@ if ($_SESSION['username']!=null) {
     /* concat achievements in DB user achievement */
     /* UPDATE user SET achievements = "" */
 	    if($result['number_questions']==1){
-	    	$db->query("UPDATE user SET achievements = concat(achievements, '!Beginning of a journey') where username = '".$_SESSION['username']."'");
+	    	$db->query("UPDATE user SET achievements = concat(achievements, '!Beginning of a journey, Your first question') where username = '".$_SESSION['username']."'");
 	    }
 
 	    if($result['number_questions']==5){
-	    	$db->query("UPDATE user SET achievements = concat(achievements, '!Down the rabbit hole') where username = '".$_SESSION['username']."'");
+	    	$db->query("UPDATE user SET achievements = concat(achievements, '!Down the rabbit hole, 5 questions') where username = '".$_SESSION['username']."'");
 	    }
 
 	    if($result['number_questions']==10){
-	    	$db->query("UPDATE user SET achievements = concat(achievements, '!Curiosity killed the cat') where username = '".$_SESSION['username']."'");
+	    	$db->query("UPDATE user SET achievements = concat(achievements, '!Curiosity killed the cat, Another 10') where username = '".$_SESSION['username']."'");
 	    }
 
 	    if($result['number_questions']==25){
-	    	$db->query("UPDATE user SET achievements = concat(achievements, '!Still not enough') where username = '".$_SESSION['username']."'");
+	    	$db->query("UPDATE user SET achievements = concat(achievements, '!Still not enough, 25 questions') where username = '".$_SESSION['username']."'");
 	    }
 
 	    if($result['number_questions']==50){
-	    	$db->query("UPDATE user SET achievements = concat(achievements, '!Gotta ask them all') where username = '".$_SESSION['username']."'");	
+	    	$db->query("UPDATE user SET achievements = concat(achievements, '!Gotta ask them all, 50 questions') where username = '".$_SESSION['username']."'");	
 	    }
 
 	    if($result['number_questions']==100){
-	    	$db->query("UPDATE user SET achievements = concat(achievements, '!Database breaker') where username = '".$_SESSION['username']."'");	
+	    	$db->query("UPDATE user SET achievements = concat(achievements, '!Database breaker, 100 questions') where username = '".$_SESSION['username']."'");	
 	    }
 	}
 
