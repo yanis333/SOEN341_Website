@@ -8,7 +8,7 @@
 	$username = $_POST['username'];
 	$password = $_POST['password'];
 	$email = $_POST['email'];
-	
+	$reply_tag_count = json_encode (json_decode ("{}"));
 	$result = $db->query("SELECT username,email FROM user WHERE username='".$username."' OR email='".$email."'");
 	$row = $result->fetch_assoc();
 	$arrvalue=array();
@@ -17,10 +17,7 @@
 
 	}
 	else{
-	$reply_tag_count = json_encode(array());
-	 $reply_tag_count = json_decode($reply_tag_count);
-	 $reply_tag_count['php']=0;
-	 $reply_tag_count = json_encode($reply_tag_count);
+
 	$sql = "INSERT INTO user (username, password, email,reply_tag_count,number_questions,achievements) VALUES ('$username', '$password','$email','$reply_tag_count',0,'')";
 
 	$db->query($sql);

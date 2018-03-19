@@ -17,9 +17,16 @@
         li{
             color:black;
         }
+        
         #tags_table{
             list-style-type:none;
-            columns:2;
+            font-family: trebuchet MS;
+            font-size: large;
+            padding-right: 0px;    
+            columns:3;
+            margin-right: 10px;
+    padding: 5px;
+    margin-left: 20px;
         }
 
 
@@ -36,7 +43,42 @@
             background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 
         }
-
+        .advanced_buttons{
+            kground:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #424242), color-stop(1, #242424));
+    background:-moz-linear-gradient(top, #424242 5%, #242424 100%);
+    background:-webkit-linear-gradient(top, #424242 5%, #242424 100%);
+    background:-o-linear-gradient(top, #424242 5%, #242424 100%);
+    background:-ms-linear-gradient(top, #424242 5%, #242424 100%);
+    background:linear-gradient(to bottom, #424242 5%, #242424 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#424242', endColorstr='#242424',GradientType=0);
+    background-color:#424242;
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border-radius:8px;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Trebuchet MS;
+    font-size:13px;
+    padding:9px 25px;
+    text-decoration:none;
+    margin-left:25px;
+    opacity: 0.9;
+}
+.advanced_buttons:hover {
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #242424), color-stop(1, #424242));
+    background:-moz-linear-gradient(top, #242424 5%, #424242 100%);
+    background:-webkit-linear-gradient(top, #242424 5%, #424242 100%);
+    background:-o-linear-gradient(top, #242424 5%, #424242 100%);
+    background:-ms-linear-gradient(top, #242424 5%, #424242 100%);
+    background:linear-gradient(to bottom, #242424 5%, #424242 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#242424', endColorstr='#424242',GradientType=0);
+    background-color:#242424;
+}
+.advanced_buttons:active {
+    position:relative;
+    top:1px;
+}
 		
 		* {
   box-sizing: border-box;
@@ -85,31 +127,46 @@
 	
 
 .advanced_button {
-  width: 20%;
-  padding: 10px;
-  background: #2196F3;
-  color: white;
-  font-size: 17px;
-  border: 1px solid grey;
-  border-left: none; /* Prevent double borders */
-  cursor: pointer;
-  border-radius:28px;
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #424242), color-stop(1, #242424));
+    background:-moz-linear-gradient(top, #424242 5%, #242424 100%);
+    background:-webkit-linear-gradient(top, #424242 5%, #242424 100%);
+    background:-o-linear-gradient(top, #424242 5%, #242424 100%);
+    background:-ms-linear-gradient(top, #424242 5%, #242424 100%);
+    background:linear-gradient(to bottom, #424242 5%, #242424 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#424242', endColorstr='#242424',GradientType=0);
+    background-color:#424242;
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border-radius:8px;
+
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Trebuchet MS;
+    font-size:30px;
+    padding:20px 20px;
+    text-decoration:none;
+    margin-left:25px;
+    opacity: 0.9;
   
 }
 .advanced_button:hover {
-	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #476e9e), color-stop(1, #7892c2));
-	background:-moz-linear-gradient(top, #476e9e 5%, #7892c2 100%);
-	background:-webkit-linear-gradient(top, #476e9e 5%, #7892c2 100%);
-	background:-o-linear-gradient(top, #476e9e 5%, #7892c2 100%);
-	background:-ms-linear-gradient(top, #476e9e 5%, #7892c2 100%);
-	background:linear-gradient(to bottom, #476e9e 5%, #7892c2 100%);
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#476e9e', endColorstr='#7892c2',GradientType=0);
-	background-color:#476e9e;
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #242424), color-stop(1, #424242));
+    background:-moz-linear-gradient(top, #242424 5%, #424242 100%);
+    background:-webkit-linear-gradient(top, #242424 5%, #424242 100%);
+    background:-o-linear-gradient(top, #242424 5%, #424242 100%);
+    background:-ms-linear-gradient(top, #242424 5%, #424242 100%);
+    background:linear-gradient(to bottom, #242424 5%, #424242 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#242424', endColorstr='#424242',GradientType=0);
+    background-color:#242424;
+}
+.advanced_buttons:active {
+    position:relative;
+    top:1px;
 }
 .advanced_button:active {
 	position:relative;
 	top:1px;
-
 }
 
         
@@ -291,11 +348,11 @@
     <div id="advancedModal" class="modal-advanced" hidden>
 
         <!-- Modal content -->
-        <div style="background-color: white; padding: 20px;margin-left: 20%;margin-right: 20%">
+        <div style="background-color: #3D3C3B; color: white; border-radius: 25px; font-family:trebuchet MS; padding: 20px;margin-left: 20%;margin-right: 20%">
             <h2> Current tags in the database </h2>
                 <ul id="tags_table"></ul>
-                <button id="canceladvanced"> Cancel </button>
-                <button id="advancedsearchbutton">Search</button>
+                <button id="canceladvanced" class="advanced_buttons" > Cancel </button>
+                <button id="advancedsearchbutton" class="advanced_buttons" >Search</button>
 
         </div>
 
