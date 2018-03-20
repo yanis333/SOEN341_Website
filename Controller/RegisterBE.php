@@ -8,6 +8,9 @@
 	$username = $_POST['username'];
 	$password = $_POST['password'];
 	$email = $_POST['email'];
+
+	$reply_tag_count = json_encode (json_decode ("{}"));
+
 	$img=$_POST['img'];
 	$valueImg=array();
 
@@ -45,6 +48,7 @@
 
 	}
 	else{
+
 
   $valuearrImg = json_encode($valueImg);
 	$reply_tag_count = json_encode(array());
