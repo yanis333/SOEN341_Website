@@ -21,14 +21,15 @@
     <style>
 
     body{
-            background: url("../Img/orange2.png")  no-repeat;
+        background: no-repeat fixed;
+        background-size: 100%;
 
-           background-attachment: fixed;
         }
 
         #loginform{
             z-index: 1;
         }
+
 
         #register_modal{
             z-index: 1;
@@ -81,7 +82,7 @@
 			margin-left: 90px;
 			margin-top: 10px;
 		}
-		
+
 		#didnotEnterAllRegisterinfo{
 			font-size: 13px;
 			margin-left: 105px;
@@ -235,7 +236,7 @@
 
 
         .containerlogincss {
- 
+
 			height: 300px;
 			width: 300px;
         }
@@ -371,6 +372,8 @@
 
 
         $(document).ready(function(){
+
+
 			$('#registerform').jqxValidator({ rules: [
                 { input: '#register_username', message: 'Minimum 5 characters', action: 'keyup', rule: 'minLength=5' },
                 { input: '#register_email', message: 'Invalid e-mail!', action: 'keyup', rule: 'email'}], theme: 'summer'
@@ -388,9 +391,45 @@
                         $("#Mainusernamelist").show();
                         $("#Mainusernamelistlogout").show();
                         $("#loginform").hide();
+                        switch(valueinfo[2]){
+                            case 0:
+                                $('#bodypart').css('backgroundImage', 'url(../Img/orange2.png)');
+                                break;
+                            case 1:
+                                switch(valueinfo[3]){
+                                    case 0: $('#bodypart').css('backgroundImage', 'url(../Img/onepiece0.jpg)'); break;
+                                    case 1: $('#bodypart').css('backgroundImage', 'url(../Img/onepiece1.jpg)'); break;
+                                    case 2: $('#bodypart').css('backgroundImage', 'url(../Img/onepiece2.jpg)'); break;
+                                }
+
+                                break;
+                            case 2:
+                                switch(valueinfo[3]){
+                                    case 0: $('#bodypart').css('backgroundImage', 'url(../Img/uchiha0.jpg)'); break;
+                                    case 1: $('#bodypart').css('backgroundImage', 'url(../Img/uchiha1.jpg)'); break;
+                                    case 2: $('#bodypart').css('backgroundImage', 'url(../Img/uchiha2.jpg)'); break;
+                                }
+                                break;
+                            case 3:
+                                switch(valueinfo[3]){
+                                    case 0: $('#bodypart').css('backgroundImage', 'url(../Img/db0.jpg)'); break;
+                                    case 1: $('#bodypart').css('backgroundImage', 'url(../Img/db1.jpg)'); break;
+                                    case 2: $('#bodypart').css('backgroundImage', 'url(../Img/db2.jpg)'); break;
+                                }
+                                break;
+                            case 4:
+                                switch(valueinfo[3]){
+                                    case 0: $('#bodypart').css('backgroundImage', 'url(../Img/bleach0.jpg)'); break;
+                                    case 1: $('#bodypart').css('backgroundImage', 'url(../Img/bleach1.jpg)'); break;
+                                    case 2: $('#bodypart').css('backgroundImage', 'url(../Img/bleach2.jpg)'); break;
+                                }
+                                break;
+                        }
 
 
                     }
+                    else{
+                    $('#bodypart').css('backgroundImage', 'url(../Img/orange2.png)');}
                 });
             $('#myBtnlogin').click(function () {
                 $("#loginform").show();
@@ -401,10 +440,7 @@
 
             });
             $('#register_btn').click(function () {
-                $("#register_modal").hide();
-                $("#register_modal").show();
-                $("#didnotEnterAllRegisterinfo").hide();
-                $("#loginform").hide();
+                window.location.href="Register.php";
 
 
             });
@@ -440,11 +476,46 @@
                                 $("#Mainusernamelist").show();
                                 $("#Mainusernamelistlogout").show();
                                 $("#loginform").hide();
+                                switch(valueinfo[2]){
+                                    case 0:
+                                        $('#bodypart').css('backgroundImage', 'url(../Img/orange2.png)');
+                                        break;
+                                    case 1:
+                                        switch(valueinfo[3]){
+                                            case 0: $('#bodypart').css('backgroundImage', 'url(../Img/onepiece0.jpg)'); break;
+                                            case 1: $('#bodypart').css('backgroundImage', 'url(../Img/onepiece1.jpg)'); break;
+                                            case 2: $('#bodypart').css('backgroundImage', 'url(../Img/onepiece2.jpg)'); break;
+                                        }
+
+                                        break;
+                                    case 2:
+                                        switch(valueinfo[3]){
+                                            case 0: $('#bodypart').css('backgroundImage', 'url(../Img/uchiha0.jpg)'); break;
+                                            case 1: $('#bodypart').css('backgroundImage', 'url(../Img/uchiha1.jpg)'); break;
+                                            case 2: $('#bodypart').css('backgroundImage', 'url(../Img/uchiha2.jpg)'); break;
+                                        }
+                                        break;
+                                    case 3:
+                                        switch(valueinfo[3]){
+                                            case 0: $('#bodypart').css('backgroundImage', 'url(../Img/db0.jpg)'); break;
+                                            case 1: $('#bodypart').css('backgroundImage', 'url(../Img/db1.jpg)'); break;
+                                            case 2: $('#bodypart').css('backgroundImage', 'url(../Img/db2.jpg)'); break;
+                                        }
+                                        break;
+                                    case 4:
+                                        switch(valueinfo[3]){
+                                            case 0: $('#bodypart').css('backgroundImage', 'url(../Img/bleach0.jpg)'); break;
+                                            case 1: $('#bodypart').css('backgroundImage', 'url(../Img/bleach1.jpg)'); break;
+                                            case 2: $('#bodypart').css('backgroundImage', 'url(../Img/bleach2.jpg)'); break;
+                                        }
+                                        break;
+                                }
 
 
                             }
                             else{
                                 alert("Username/Password error");
+                                $('#bodypart').css('backgroundImage', 'url(../Img/orange2.png)');
                             }
                         });
                 }else{
@@ -480,7 +551,7 @@
         });
     </script>
 </head>
-<body>
+<body id="bodypart">
 
 <nav id="header" class="headerpageright" style="margin-bottom: 70px;">
 
@@ -504,11 +575,11 @@
                     <h4 id="didnotEnterAllRegisterinfo" style="color: red;" hidden>Please fill in required fields</h4>
 				 <div class="registertextboxes">
                     <input id="register_username" class="inputlogincss" type="text" placeholder="Username">
-					<input id="register_password" class="inputlogincss" type="password"> 
+					<input id="register_password" class="inputlogincss" type="password">
                     <input id="register_password_verify" class="inputlogincss" type="password" placeholder="Confirm Password">
                     <input id="register_email" class="inputlogincss" type="text" placeholder="Email">
 				 </div>
-					
+
                     <button id="Registerbtnfromtheform" class="buttonlogincss">Register</button>
                 </div>
 
