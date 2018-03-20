@@ -15,6 +15,44 @@
     $arr[0] = true;
     $_SESSION['username'] = $row['username'];
 
+        $checkwhichimg =json_decode($row["clan"]);
+        switch($checkwhichimg[0]){
+
+            case "1":
+                $arr[2] =1;
+                switch($checkwhichimg[1]){
+                    case "0": $arr[3] =0; break;
+                    case "1": $arr[3] =1; break;
+                    case "2": $arr[3] =2; break;
+                }
+                break;
+            case "2":
+                $arr[2] =2;
+                switch($checkwhichimg[1]){
+                    case "0": $arr[3] =0; break;
+                    case "1": $arr[3] =1; break;
+                    case "2": $arr[3] =2; break;
+                }
+                break;
+            case "3":
+                $arr[2] =3;
+                switch($checkwhichimg[1]){
+                    case "0": $arr[3] =0; break;
+                    case "1": $arr[3] =1; break;
+                    case "2": $arr[3] =2; break;
+                }
+                break;
+            case "4":
+                $arr[2] =4;
+                switch($checkwhichimg[1]){
+                    case "0": $arr[3] =0; break;
+                    case "1": $arr[3] =1; break;
+                    case "2": $arr[3] =2; break;
+                }
+                break;
+
+        }
+
 
     }
     else{
