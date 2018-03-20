@@ -5,6 +5,7 @@
 
     <link rel="stylesheet" type="text/css" href="login.css">
     <link rel="stylesheet" href="../Jqwidgets/jqwidgets/styles/jqx.base.css" type="text/css" >
+     <link rel="stylesheet" href="../Jqwidgets/jqwidgets/styles/custom.css" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxdata.js"></script>
@@ -51,7 +52,7 @@
            position: absolute;
            left: 0;
             z-index: -1;
-            background-color: orange;
+            background-color: #E2DDDC;
            opacity: 0.7;
 
         }
@@ -59,7 +60,7 @@
             padding: 20px;
             margin-left: 20px;
             font-family: Trebuchet MS;
-            color:white;
+            color:black;
         }
 
         .currentquestions {
@@ -91,6 +92,47 @@
              color: white;
              opacity: 0.7;
             }
+
+
+        .addbtn1 {
+            background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #787878), color-stop(1, #474747));
+            background:-moz-linear-gradient(top, #787878 5%, #474747 100%);
+            background:-webkit-linear-gradient(top, #787878 5%, #474747 100%);
+            background:-o-linear-gradient(top, #787878 5%, #474747 100%);
+            background:-ms-linear-gradient(top, #787878 5%, #474747 100%);
+            background:linear-gradient(to bottom, #787878 5%, #474747 100%);
+            filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#787878', endColorstr='#474747',GradientType=0);
+            background-color:#787878;
+            -moz-border-radius:8px;
+            -webkit-border-radius:8px;
+            border-radius:8px;
+            border:1px solid white; 
+            display:inline-block;
+            cursor:pointer;
+            color:#ffffff;
+            font-family:Trebuchet MS;
+            font-size:13px;
+            padding:7px 22px;
+            text-decoration:none;
+            text-shadow:0px 1px 6px #000000;
+            opacity: 0.9;
+
+             margin-bottom:7px; 
+        }
+        .addbtn1:hover {
+            background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #242424), color-stop(1, #424242));
+            background:-moz-linear-gradient(top, #242424 5%, #424242 100%);
+            background:-webkit-linear-gradient(top, #242424 5%, #424242 100%);
+            background:-o-linear-gradient(top, #242424 5%, #424242 100%);
+            background:-ms-linear-gradient(top, #242424 5%, #424242 100%);
+            background:linear-gradient(to bottom, #242424 5%, #424242 100%);
+            filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#242424', endColorstr='#424242',GradientType=0);
+            background-color:#242424;
+        }
+        .addbtn1:active {
+            position:relative;
+            top:1px;
+        }
 
 
     </style>
@@ -132,9 +174,10 @@
                         pageable: true,
                         sortable: true,
                         source:source,
+                        theme: 'custom',
                      
                     columns: [
-                        {text:'id',datafield:'ID',width:100},
+                       // {text:'id',datafield:'ID',width:100},
                         { text: 'title', datafield: 'title', width: 250},
                         { text: 'user', datafield: 'user', width: 100 }
                         ,{text: 'date', datafield: 'date', width: 250, align:'right',cellsalign:'right'}
@@ -160,9 +203,9 @@
         <div>
             <div id="gridTitle">
                 <div class="intro">
-                    <h3 class="introh1"> <em>OMQ (?)</em> is a question and answer site
-                    <br> for members of <em>(website topic)</em> . 
-                    <p> Join them; it only takes a minute: </h3>
+                    <h3 class="introh1"> This is a question and answer site
+                    <br> for enthuastic anime lovers ! 
+                    <p> Join us; it only takes a minute: </h3>
                 </div> 
 
                 <div class="currentquestions">
@@ -170,13 +213,20 @@
                 </div>
         <div> <h2 id="numberQuestions"></h2></div>
         </div>
-        <div id="add" onclick="window.location.href='add.php'"><button >Add a question</button></div><br>
+
+<!--        
+        <div id="add" class="addbtn1" onclick="window.location.href='add.php'"><button >Add a question</button></div><br>
+        </div>
+-->
+               <div id="add" class="addbtn1"><a href='add.php' style="text-decoration: none; color: white;">Add a question</a></div><br>
 
         </div>
-        <div id= "questions" >
+
+        <div id= "questions" style="margin-bottom: 80px;">
         </div>
-        <div class="bottomplaceholder"> For scrolling </div>
+      <!--   <div class="bottomplaceholder"> For scrolling </div>
     </div>
+    -->
 </div>
 
 </body>

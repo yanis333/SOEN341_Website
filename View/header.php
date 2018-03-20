@@ -21,8 +21,8 @@
     <style>
 
     body{
-            background: url("../Img/orange2.png")  no-repeat;
-
+            background: url("../Img/blue2.jpg")  no-repeat;
+            background-size: cover;
            background-attachment: fixed;
         }
 
@@ -307,7 +307,7 @@
          margin: 0;
             padding: 0;
             
-            background-color:#7B200D;
+            background-color:#3D3C3B;
             width:100%;
 
             position: fixed;
