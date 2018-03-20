@@ -223,19 +223,34 @@
         $(document).ready(function(){
             inforeply();
                         $.post("../Controller/relatedQuestion.php", function(data){
-                            $("#relatedQuestion").empty();
-                var dataArray = JSON.parse(data);
-                var str="";
-                if(dataArray[0]==null){
-                   
-                }
-                else{
-                    for(var i=0; i<dataArray.length;i++){
-                        str += "<li><label id = \"Title\"onclick=\"saveIdHoster("+dataArray[i]["ID"]+")\">"+dataArray[i]['title']+"</label></li>";
-                    }
-                    $("#relatedQuestion").append(str);
-                
-            }
+                            var dataarray = JSON.parse(data);
+
+            var source =
+            {
+             localdata: dataarray,
+             datatype: "array"
+            };
+
+         var dataAdapter = new $.jqx.dataAdapter(source);
+            if(dataarray.length>0){
+        $("#relatedQuestion").jqxDataTable(
+         {
+             altRows: true,
+             pageable: true,
+            sortable: true,
+             source: dataAdapter,
+ 
+        columns: [{ text: 'title', datafield: 'title', width: 50},{text: 'date', datafield: 'date', width: 100, align:'right',cellsalign:'right'},
+            {text: 'Replies', datafield: 'number_replies', width:70 , align:'right',cellsalign:'right'}]
+        });
+
+dataAdapter.dataBind();
+$("#relatedQuestion").jqxDataTable("updateBoundData");
+        }
+        else{
+            $("#relatedQuestion").text("No related questions");
+        }
+        
         });
 
 
@@ -429,9 +444,10 @@
     </div>
 
     <div class ="recommendbox"> 
-<ul id="relatedQuestion">
+    <h2> Related Questions </h2>
+<div id="relatedQuestion">
 
-</ul>
+</div>
 
     </div>
 </div>

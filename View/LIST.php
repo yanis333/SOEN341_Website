@@ -264,7 +264,7 @@
 <div id="container">
 
     <b>Enter Search term:
-	<!- taken from https://www.w3schools.com/howto/howto_css_search_button.asp-> 
+	<!-- taken from https://www.w3schools.com/howto/howto_css_search_button.asp --> 
 	<div class="searchbtn" >
   <input placeholder="Search.." name="search" id="search_box" type="text" search_box="question">
   <button id="search_button" value= "search"><i class="fa fa-search"></i></button>

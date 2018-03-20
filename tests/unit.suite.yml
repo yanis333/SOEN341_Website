@@ -1,0 +1,18 @@
+# Codeception Test Suite Configuration
+#
+# Suite for unit or integration tests.
+
+actor: UnitTester
+modules:
+    enabled:
+        - Asserts
+        - Db:
+            dsn: 'mysql:host=localhost;dbname=soen_341'
+            user: 'root'
+            password: ''
+            populate: true
+            cleanup: true
+            reconnect: true
+
+
+        - \Helper\Unit

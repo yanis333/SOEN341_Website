@@ -26,6 +26,45 @@
             cursor: pointer;
         }
     </style>
+    <style>
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+</style>
 </head>
 
 
@@ -38,7 +77,11 @@
 <div class="align">
 <button id="graphinfo">Statistique</button>
 <button id="passwordchange">Password</button>
+
 <button id="backgroundimgchange">Change Background</button>
+
+<button id="achievements">Achievements</button>
+
 </div>
 
 <div id="graph" >
@@ -69,7 +112,17 @@
     <button id="saveimg">Save Image</button>
 </div>
 
+<div id ="achievementsTab" hidden>
+<h2 id = "totalAchievements">
+</h2>
+    <ul id = "achievementsTable" style="list-style: none;">
+
+    </ul>
+</div>
+
 <script type="text/javascript">
+
+
     $(document).ready(function () {
         var Pathimg1;
         var Pathimg2;
@@ -127,13 +180,77 @@
         }); });
 
 
+         $.post("../Controller/upvotesAchievement.php"
+            ,
+            function(data){
+        });
+
+        
+
+
+        $("#achievements").click(function(){
+
+            $("#achievementsTab").show();
+            $("#password").hide();
+            $("#graph").hide();
+            $("#achievementsTable").empty();
+            var str ="";
+            $.post("../Controller/achievements.php", function(data){
+                var info = JSON.parse(data);
+                $('#totalAchievements').text(info.length-1 + " Achievements");
+                for(var i = 1; i<info.length;i++){
+                
+                if(info[i].includes("naruto")){
+                    str+="<div class='tooltip'><li><img height='100' width='100' src = '../Img/icons/"+info[i]+".png'><li><span class='tooltiptext'>"+info[i]+"</span></div>";
+                }
+               else if(info[i].includes("onepiece")){
+                str+="<div class='tooltip'><li><img height='100' width='100' src = '../Img/icons/"+info[i]+".png'><li><span class='tooltiptext'>"+info[i]+"</span></div>";
+
+                }
+
+               else if(info[i].includes("bleach")){
+                str+="<div class='tooltip'><li><img height='100' width='100' src = '../Img/icons/"+info[i]+".png'><li><span class='tooltiptext'>"+info[i]+"</span></div>";
+
+                }
+                else if(info[i].includes("dragonball")){
+                    str+="<div class='tooltip'><li><img height='100' width='100' src = '../Img/icons/"+info[i]+".png'><li><span class='tooltiptext'>"+info[i]+"</span></div>";
+
+                }
+                else if(info[i].includes("Connaisseur")){
+                    str+="<div class='tooltip'><li><img height='100' width='100' src = '../Img/icons/connaisseur.png'><li><span class='tooltiptext'>"+info[i]+"</span></div>";
+
+                }
+                else if(info[i].includes("Master")){
+                    str+="<div class='tooltip'><li><img height='100' width='100' src = '../Img/icons/master.png'><li><span class='tooltiptext'>"+info[i]+"</span></div>";
+
+                }
+                else if(info[i].includes("GrandMaster")){
+                    str+="<div class='tooltip'><li><img height='100' width='100' src = '../Img/icons/grandmaster.png'><li><span class='tooltiptext'>"+info[i]+"</span></div>";
+
+                }
+                else if(info[i].includes("God")){
+                    str+="<div class='tooltip'><li><img height='100' width='100' src = '../Img/icons/god.png'><li><span class='tooltiptext'>"+info[i]+"</span></div>";
+
+                }
+                else{
+                str+="<div class='tooltip'><li><img height='100' width='100' src = '../Img/icons/"+info[i]+".png'><li><span class='tooltiptext'>"+info[i]+"</span></div>";
+                }
+                }
+                 $("#achievementsTable").append(str);
+        });
+        });
+
+
+        
         $("#graphinfo").click(function(){
             $("#graph").show();
+            $("#achievementsTab").hide();
             $("#password").hide();
             $("#backgroundimg").hide();
         });
         $("#passwordchange").click(function(){
             $("#graph").hide();
+            $("#achievementsTab").hide();
             $("#password").show();
             $("#backgroundimg").hide();
         });
@@ -248,5 +365,6 @@
 </script>
 
 </body>
+
 
 </html>
