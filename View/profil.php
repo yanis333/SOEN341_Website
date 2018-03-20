@@ -16,6 +16,16 @@
 
     .chart{width:1000px; margin-left: 10%; height: 500px;}
     .align{text-align: center;}
+
+    #firstImg{
+            cursor: pointer;
+        }
+    #secondImg{
+            cursor: pointer;
+        }
+    #thirdImg{
+            cursor: pointer;
+        }
     </style>
     <style>
 
@@ -141,9 +151,16 @@
 <br>
 <br>
 <div class="align">
+
 <button id="graphinfo">User Statistics</button>
 <button id="passwordchange">Change Password</button>
+
+
+<button id="backgroundimgchange">Change Background</button>
+
+
 <button id="achievements">Achievements</button>
+
 </div>
 
 <div id="graph" >
@@ -164,6 +181,15 @@
     </div>
 
 </div>
+<div id="backgroundimg" style="text-align: center" hidden>
+    <h3>Choose a Background image</h3>
+    <img id="firstImg" src="../Img/one-pieceR.png" alt="image1" width="300" height="300" style="margin-right: 3%">
+    <img id="secondImg" alt="image2" src="../Img/one-pieceR.png" width="300" height="300" style="margin-right: 3%">
+    <img id="thirdImg" alt="image3" src="../Img/one-pieceR.png" width="300" height="300">
+    <br>
+    <input id="ImgChoose" type="text" placeholder="Choose a background" disabled>
+    <button id="saveimg">Save Image</button>
+</div>
 
 <div id ="achievementsTab" hidden>
 <h2 id = "totalAchievements">
@@ -177,6 +203,53 @@
 
 
     $(document).ready(function () {
+        var Pathimg1;
+        var Pathimg2;
+        var Pathimg3;
+        $.post("../Controller/loadImg.php",
+            function(data){
+            var imageBack = JSON.parse(data);
+                Pathimg1 = imageBack[3];
+                Pathimg2 = imageBack[4];
+                Pathimg3 = imageBack[5];
+                $("#firstImg").attr("src",imageBack[2]);
+                $("#secondImg").attr("src",imageBack[2]);
+                $("#thirdImg").attr("src",imageBack[2]);
+
+
+            });
+
+        $("#saveimg").click(function(){
+            if(confirm("Do you really want the "+$("#ImgChoose").val())){
+                $.post("../Controller/changeImg.php",{data:$("#ImgChoose").val()},
+                    function(data){
+                        window.location.href="index.php";
+
+
+                    });
+            }
+        });
+        $("#firstImg").mouseover(function(){
+            var urlimg = "url("+Pathimg1+")";
+            $('#bodypart').css('backgroundImage', urlimg);
+        });
+        $("#secondImg").mouseover(function(){
+            var urlimg = "url("+Pathimg2+")";
+            $('#bodypart').css('backgroundImage', urlimg);
+        });
+        $("#thirdImg").mouseover(function(){
+            var urlimg = "url("+Pathimg3+")";
+            $('#bodypart').css('backgroundImage', urlimg);
+        });
+        $("#firstImg").click(function(){
+            $("#ImgChoose").val("Left Image");
+        });
+        $("#secondImg").click(function(){
+            $("#ImgChoose").val("Middle Image");
+        });
+        $("#thirdImg").click(function(){
+            $("#ImgChoose").val("Right Image");
+        });
         $("#confirmenewpassword").click(function(){
 
             $.post("../Controller/newpass.php",{password:$("#newpassword").val()},
@@ -252,11 +325,18 @@
             $("#graph").show();
             $("#achievementsTab").hide();
             $("#password").hide();
+            $("#backgroundimg").hide();
         });
         $("#passwordchange").click(function(){
             $("#graph").hide();
             $("#achievementsTab").hide();
             $("#password").show();
+            $("#backgroundimg").hide();
+        });
+        $("#backgroundimgchange").click(function(){
+            $("#graph").hide();
+            $("#password").hide();
+            $("#backgroundimg").show();
         });
 
 
