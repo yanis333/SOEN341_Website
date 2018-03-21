@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Main Page</title>
+
+    <link rel="stylesheet" type="text/css" href="login.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="../Jqwidgets/jqwidgets/styles/jqx.base.css" type="text/css" />
+     <link rel="stylesheet" href="../Jqwidgets/jqwidgets/styles/custom.css" type="text/css">
+    <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxchart.core.js"></script>
+    <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxdata.js"></script>
+
+    <style>
+
+    .chart{width:1000px; margin-left: 10%; height: 500px;}
+    .align{text-align: center;}
+
+    #firstImg{
+            cursor: pointer;
+        }
+    #secondImg{
+            cursor: pointer;
+        }
+    #thirdImg{
+            cursor: pointer;
+        }
+    </style>
+    <style>
+
+    #graphinfo, #passwordchange, #achievements {
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #787878), color-stop(1, #474747));
+    background:-moz-linear-gradient(top, #787878 5%, #474747 100%);
+    background:-webkit-linear-gradient(top, #787878 5%, #474747 100%);
+    background:-o-linear-gradient(top, #787878 5%, #474747 100%);
+    background:-ms-linear-gradient(top, #787878 5%, #474747 100%);
+    background:linear-gradient(to bottom, #787878 5%, #474747 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#787878', endColorstr='#474747',GradientType=0);
+    background-color:#787878;
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+  border:1px solid white; 
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Trebuchet MS;
+    font-size:13px;
+    padding:7px 22px;
+    text-decoration:none;
+    text-shadow:0px 1px 6px #000000;
+    opacity: 0.9;
+     margin-bottom:7px; 
+}
+#graphinfo:hover, #passwordchange:hover, #achievements:hover {
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #242424), color-stop(1, #424242));
+    background:-moz-linear-gradient(top, #242424 5%, #424242 100%);
+    background:-webkit-linear-gradient(top, #242424 5%, #424242 100%);
+    background:-o-linear-gradient(top, #242424 5%, #424242 100%);
+    background:-ms-linear-gradient(top, #242424 5%, #424242 100%);
+    background:linear-gradient(to bottom, #242424 5%, #424242 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#242424', endColorstr='#424242',GradientType=0);
+    background-color:#242424;
+}
+#graphinfo:active, #passwordchange:active, #achievements:active {
+    position:relative;
+    top:1px;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+#title1, #title2{
+     font-family: Trebuchet MS;
+     color: white;
+     font-size: 20px;
+     padding-top: 20px;
+}
+#achievementsTable{
+    list-style: none;
+
+}
+#totalAchievements{
+    margin: 20px;
+    padding-top: 20px;
+    font-size: 30px;
+    text-align: center;
+    color: white;
+    font-family: Chalkduster, Trebuchet MS;
+}
+
+#achievementsTab{
+    background-color: #707070;
+    opacity: 0.9;
+    border-left: 8px solid white;
+    border-right: 8px solid white;
+    /*#F83F0E;*/
+
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 50px;
+    margin: 90px;
+    border-radius: 8px;
+
+}
+
+</style>
+</head>
+
+
+
+<body>
+<!DOCTYPE html>
+<html>
+<head>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="../Jqwidgets/jqwidgets/styles/jqx.base.css" type="text/css" />
+    <script type="text/javascript" src="../Jqwidgets/scripts/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxpasswordinput.js"></script>
+    <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxgrid.js"></script>
+    <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxgrid.selection.js"></script>
+    <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxdatatable.js"></script>
+	<script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxvalidator.js"></script>
+    <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxchart.core.js"></script>
+    <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxdraw.js"></script>
+    <style>
+
+    body{
+
+            background: url("../Img/blue2.jpg")  no-repeat;
+            background-size: cover;
+           background-attachment: fixed;
+
+        background:  url("../Img/blue2.jpg") no-repeat fixed;
+        background-size: 100%;
+
+
+        }
+
+        #loginform{
+            z-index: 1;
+        }
+
+
+        #register_modal{
+            z-index: 1;
+        }
+		#loginomq{
+			margin-left:125px;
+			font-size: 30px;
+			font-family: Verdana;
+		}
+		
+		#registeromq{
+			margin-left:115px;
+			font-size: 30px;
+			font-family: Verdana;
+		}
+
+		#forgotpass{
+			margin-left: 22px;
+		}
+		
+		#logindiv{
+			margin-left: 20px;
+		}
+		
+		#cancelbtnlogin{
+			margin-top: 0px;
+			margin-left:320px;
+		    background-color: Transparent;
+			background-repeat:no-repeat;
+			border: none;
+			cursor:pointer;
+			overflow: hidden;
+			outline:none;
+		}
+		
+		#cancelbtnRegister
+		{
+			margin-top: 0px;
+			margin-left:320px;
+		    background-color: Transparent;
+			background-repeat:no-repeat;
+			border: none;
+			cursor:pointer;
+			overflow: hidden;
+			outline:none;
+		}
+
+		#didnotEnterAllLogininfo{
+			font-size: 13px;
+			margin-left: 90px;
+			margin-top: 10px;
+		}
+
+		#didnotEnterAllRegisterinfo{
+			font-size: 13px;
+			margin-left: 105px;
+			margin-top: 10px;
+		}
+	
+	
+		.registertextboxes{
+			margin-left: 20px;
+		}
+    .downarrow {
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        display: inline-block;
+        padding: 3px;
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+    }
+		
+		#logincss{
+			margin-left: 150px !important;
+			outline: none !important;
+		    border-radius: 20px !important;
+			padding: 10px !important;
+			border: 2px solid #999 !important;
+			width: 350px ;
+			height: 310px;
+
+
+		}
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+		
+		#registerform
+		{
+			margin-left: 150px !important;
+			outline: none !important;
+		    border-radius: 20px !important;
+			padding: 10px !important;
+			border: 2px solid #999 !important;
+			width: 350px ;
+			height: 390px;
+
+            /* background:rgba(205,92,92,1); */
+
+		}
+		
+		#loginbtnfromtheform{
+			outline: none;
+			margin-left: 0px;
+			border-radius: 20px ;
+			 width: 300px;
+			 height: 40px;
+
+		}
+		
+		#Registerbtnfromtheform{
+			outline: none;
+			margin-left: 20px;
+			border-radius: 20px ;
+			 width: 300px;
+			 height: 40px;
+		}
+	
+	
+        .headerpageright{
+            display:flex;
+		
+        }
+
+
+        body{
+            background-color: #FFC2B4;
+        }
+
+
+        .onglet{
+            float: left;
+        }
+
+        .inputlogincss{
+			outline: none !important;
+		    border-radius: 20px !important;
+			padding: 10px !important;
+			border: 2px solid #999 !important;
+			width: 274px ;
+            margin: 8px 0 !important;
+        }
+
+        .elementLiA {
+            display: block;
+            color: white;
+            text-align: center;
+             text-decoration: none;
+            
+          
+            padding:10px ;
+            margin: 12px;
+
+             font-family:Trebuchet MS;
+            font-size:15px;
+            opacity: 1;
+
+        }
+        .elementLiA:hover:not(.active) {
+            color:#FBA895;
+            opacity: 1;
+            transition-duration: 0.2s;
+        }
+
+       /* .elementLiA:hover:not(.active) {
+            background-color: #111;
+            height:100%;
+        }
+        */
+
+
+        .buttonlogincss {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .buttonlogincss:hover {
+            opacity: 0.8;
+        }
+        .rightFloat{
+            float:right;
+
+        }
+
+
+        .cancelbtnlogincss {
+            width: auto;
+            padding: 10px 18px;
+            background-color: #f44336;
+        }
+
+
+        .containerlogincss {
+
+			height: 300px;
+			width: 300px;
+        }
+
+
+
+        .modallogincss {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            margin-left: 25%;
+            width: 50%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            padding-top: 60px;
+        }
+
+        .titlelogin{
+            color: black;
+            float: left;
+        }
+
+
+
+        .modal-contentlogincss {
+            background-color: #fefefe;
+            margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+        }
+        .animatelogincss {
+            -webkit-animation: animatezoom 0.6s;
+            animation: animatezoom 0.6s
+        }
+
+        .closelogincss:hover,
+        .closelogincss:focus {
+            color: red;
+            cursor: pointer;
+        }
+
+        .modalheader {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+
+
+
+        .modal-contentheader {
+            background-color: #fefefe;
+            margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+        }
+
+        .mainheader {
+            list-style-type: none;
+         margin: 0;
+            padding: 0;
+            
+            background-color:#3D3C3B;
+            width:100%;
+
+            position: fixed;
+            left: 0;
+            top: 0;
+            opacity: 0.7;
+            Z-index: 1;;
+
+        }
+
+        #myBtnlogin, #register_btn{
+
+            background-color:transparent;
+            -moz-border-radius:28px;
+            -webkit-border-radius:28px;
+            border-radius:28px;
+            border:1px solid white;
+            display:inline-block;
+            cursor:pointer;
+            color:#ffffff;
+            font-family:Trebuchet MS;
+            font-size:15px;
+    
+
+            padding:7px 20px;
+            margin-right: 10px;
+            text-decoration:none;
+        }
+        
+        #myBtnlogin:hover, #register_btn:hover, .homeicon:hover {
+            background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #d6500d), color-stop(1, #fcb851));
+                background:-moz-linear-gradient(top, #d6500d 5%, #fcb851 100%);
+                background:-webkit-linear-gradient(top, #d6500d 5%, #fcb851 100%);
+                background:-o-linear-gradient(top, #d6500d 5%, #fcb851 100%);
+                background:-ms-linear-gradient(top, #d6500d 5%, #fcb851 100%);
+                background:linear-gradient(to bottom, #d6500d 5%, #fcb851 100%);
+                filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#d6500d', endColorstr='#fcb851',GradientType=0);
+                background-color:#d6500d;
+}
+        #myBtnlogin:active, #register_btn:active{
+            position:relative;
+    top:1px;
+}
+
+.homeicon{
+    cursor: pointer; 
+    float: left; 
+    padding-left: 18px; 
+    padding-top: 15px; 
+    padding-right: 18px;
+    padding-bottom: 17px;
+    transition-duration: 0.2s;
+
+}
+
+
+
+    </style>
+
+    <script>
+
+
+        $(document).ready(function(){
+
+
+			$('#registerform').jqxValidator({ rules: [
+                { input: '#register_username', message: 'Minimum 5 characters', action: 'keyup', rule: 'minLength=5' },
+                { input: '#register_email', message: 'Invalid e-mail!', action: 'keyup', rule: 'email'}], theme: 'summer'
+			});
+			$("#passwordlogin").jqxPasswordInput({ placeHolder: "Enter a Password", height: 40, width: 300});
+			$("#register_password").jqxPasswordInput({ placeHolder: "Enter a Password", height: 40, width: 300});
+			$("#register_password_verify").jqxPasswordInput({ placeHolder: "Enter a Password", height: 40, width: 300});
+            $.post('../Controller/OAuth.php',
+                function(data){
+                    var valueinfo =JSON.parse(data);
+                    if(valueinfo[0]){
+                        $('#Mainusername').html("Welcome " + valueinfo[1]+"   <i class=\"downarrow\"></i>");
+                        $("#myBtnlogin").hide();
+                        $("#register_btn").hide();
+                        $("#Mainusernamelist").show();
+                        $("#Mainusernamelistlogout").show();
+                        $("#loginform").hide();
+                        switch(valueinfo[2]){
+                            case 0:
+                                $('#bodypart').css('backgroundImage', 'url(../Img/orange2.png)');
+                                break;
+                            case 1:
+                                switch(valueinfo[3]){
+                                    case 0: $('#bodypart').css('backgroundImage', 'url(../Img/onepiece0.jpg)'); break;
+                                    case 1: $('#bodypart').css('backgroundImage', 'url(../Img/onepiece1.jpg)'); break;
+                                    case 2: $('#bodypart').css('backgroundImage', 'url(../Img/onepiece2.jpg)'); break;
+                                }
+
+                                break;
+                            case 2:
+                                switch(valueinfo[3]){
+                                    case 0: $('#bodypart').css('backgroundImage', 'url(../Img/uchiha0.jpg)'); break;
+                                    case 1: $('#bodypart').css('backgroundImage', 'url(../Img/uchiha1.jpg)'); break;
+                                    case 2: $('#bodypart').css('backgroundImage', 'url(../Img/uchiha2.jpg)'); break;
+                                }
+                                break;
+                            case 3:
+                                switch(valueinfo[3]){
+                                    case 0: $('#bodypart').css('backgroundImage', 'url(../Img/db0.jpg)'); break;
+                                    case 1: $('#bodypart').css('backgroundImage', 'url(../Img/db1.jpg)'); break;
+                                    case 2: $('#bodypart').css('backgroundImage', 'url(../Img/db2.jpg)'); break;
+                                }
+                                break;
+                            case 4:
+                                switch(valueinfo[3]){
+                                    case 0: $('#bodypart').css('backgroundImage', 'url(../Img/bleach0.jpg)'); break;
+                                    case 1: $('#bodypart').css('backgroundImage', 'url(../Img/bleach1.jpg)'); break;
+                                    case 2: $('#bodypart').css('backgroundImage', 'url(../Img/bleach2.jpg)'); break;
+                                }
+                                break;
+                        }
+
+
+                    }
+                    else{
+                    $('#bodypart').css('backgroundImage', 'url(../Img/orange2.png)');}
+                });
+            $('#myBtnlogin').click(function () {
+                $("#loginform").show();
+                $("#register_modal").hide();
+                $("#didnotEnterAllLogininfo").hide();
+                $("#register_modal").hide();
+
+
+            });
+            $('#register_btn').click(function () {
+                window.location.href="Register.php";
+
+
+            });
+            $('#cancelbtnlogin').click(function () {
+                $("#loginform").hide();
+            });
+            $('#cancelbtnRegister').click(function () {
+                $("#register_modal").hide();
+            });
+            $('#Logout').click(function () {
+                $.post('../Controller/OAuthLogout.php',
+                    function(data){
+                        $("#myBtnlogin").show();
+                        $("#register_btn").show();
+                        $("#Mainusernamelist").hide();
+                        $("#Mainusernamelistlogout").hide();
+                        $("#loginform").hide();
+                        window.location.href="index.php";
+
+
+
+                    });
+            });
+            $("#loginbtnfromtheform").click(function () {
+                if($("#usernamelogin").val() !="" && $("#passwordlogin").val()!=""){
+                    $.post('../Controller/logindb.php',{username:$("#usernamelogin").val(), password:$("#passwordlogin").val()},
+                        function(data){
+                            var valueinfo =JSON.parse(data);
+                            if(valueinfo[0]){
+                                $('#Mainusername').html("Welcome " + valueinfo[1]);
+                                $("#myBtnlogin").hide();
+                                $("#register_btn").hide();
+                                $("#Mainusernamelist").show();
+                                $("#Mainusernamelistlogout").show();
+                                $("#loginform").hide();
+                                switch(valueinfo[2]){
+                                    case 0:
+                                        $('#bodypart').css('backgroundImage', 'url(../Img/orange2.png)');
+                                        break;
+                                    case 1:
+                                        switch(valueinfo[3]){
+                                            case 0: $('#bodypart').css('backgroundImage', 'url(../Img/onepiece0.jpg)'); break;
+                                            case 1: $('#bodypart').css('backgroundImage', 'url(../Img/onepiece1.jpg)'); break;
+                                            case 2: $('#bodypart').css('backgroundImage', 'url(../Img/onepiece2.jpg)'); break;
+                                        }
+
+                                        break;
+                                    case 2:
+                                        switch(valueinfo[3]){
+                                            case 0: $('#bodypart').css('backgroundImage', 'url(../Img/uchiha0.jpg)'); break;
+                                            case 1: $('#bodypart').css('backgroundImage', 'url(../Img/uchiha1.jpg)'); break;
+                                            case 2: $('#bodypart').css('backgroundImage', 'url(../Img/uchiha2.jpg)'); break;
+                                        }
+                                        break;
+                                    case 3:
+                                        switch(valueinfo[3]){
+                                            case 0: $('#bodypart').css('backgroundImage', 'url(../Img/db0.jpg)'); break;
+                                            case 1: $('#bodypart').css('backgroundImage', 'url(../Img/db1.jpg)'); break;
+                                            case 2: $('#bodypart').css('backgroundImage', 'url(../Img/db2.jpg)'); break;
+                                        }
+                                        break;
+                                    case 4:
+                                        switch(valueinfo[3]){
+                                            case 0: $('#bodypart').css('backgroundImage', 'url(../Img/bleach0.jpg)'); break;
+                                            case 1: $('#bodypart').css('backgroundImage', 'url(../Img/bleach1.jpg)'); break;
+                                            case 2: $('#bodypart').css('backgroundImage', 'url(../Img/bleach2.jpg)'); break;
+                                        }
+                                        break;
+                                }
+
+
+                            }
+                            else{
+                                alert("Username/Password error");
+                                $('#bodypart').css('backgroundImage', 'url(../Img/orange2.png)');
+                            }
+                        });
+                }else{
+                    $("#didnotEnterAllLogininfo").show();
+                }
+
+
+            });
+
+            $("#Registerbtnfromtheform").click(function () {
+                if($("#register_username").val() != "" && $("#register_password").val() != "" && $("#register_password_verify").val() != "" && $("#register_email").val() != "" && ($("#register_password").val() == $("#register_password_verify").val())){
+                    $.post('../Controller/RegisterBE.php',{ username:$("#register_username").val(), password:$("#register_password").val(), email:$("#register_email").val()},
+                        function(data){
+                            var valueinfo =JSON.parse(data);
+                            if(valueinfo[0]){
+                                $('#Mainusername').html("Welcome " + valueinfo[1]);
+                                $("#myBtnlogin").hide();
+                                $("#register_btn").hide();
+                                $("#Mainusernamelist").show();
+                                $("#Mainusernamelistlogout").show();
+                                $("#register_modal").hide();
+
+                            }
+                            else{
+                                alert("Username or email already exist");
+                            }
+                        });
+                }
+                else{
+                    $("#didnotEnterAllRegisterinfo").show();
+                }
+            });
+        });
+    </script>
+</head>
+<body id="bodypart">
+
+<nav id="header" class="headerpageright" style="margin-bottom: 70px;">
+
+    <ul class="mainheader" id="mainheaderheader">
+        <li > <img src="../Img/home2.png" class="homeicon" onclick="window.location.href='index.php'" alt="Logo" height="30px" width="30px"/></li>
+
+        <li class="onglet"><a class="elementLiA" href="add.php">Ask a question</a></li>
+        <li class="onglet"><a class="elementLiA" href="LIST.php">Search a question</a></li>
+        <li hidden><a class="elementLiA" href="#">Profile</a></li>
+        <li  class="rightFloat">
+            <a class="elementLiA" href="#" id="register_btn"> Register</a></li>
+        <li id="loginsection" class="rightFloat">
+            <a class="elementLiA buttonLogin" href="#" id="myBtnlogin">Login</a>
+        </li>
+        <div id="register_modal" class="modallogincss">
+
+				<form id="registerform" class="modal-contentlogincss animatelogincss" >
+                <div class="containerlogincss">
+					<button id="cancelbtnRegister" class="cancelbtnlogincss">X</button>
+					<label id="registeromq">Register</label>
+                    <h4 id="didnotEnterAllRegisterinfo" style="color: red;" hidden>Please fill in required fields</h4>
+				 <div class="registertextboxes">
+                    <input id="register_username" class="inputlogincss" type="text" placeholder="Username">
+					<input id="register_password" class="inputlogincss" type="password">
+                    <input id="register_password_verify" class="inputlogincss" type="password" placeholder="Confirm Password">
+                    <input id="register_email" class="inputlogincss" type="text" placeholder="Email">
+				 </div>
+
+                    <button id="Registerbtnfromtheform" class="buttonlogincss">Register</button>
+                </div>
+
+
+
+
+            </form>
+        </div>
+        <div id="loginform" class="modallogincss">
+
+            <form  id="logincss" class="modal-contentlogincss animatelogincss" >
+			                     <button id="cancelbtnlogin" class="cancelbtnlogincss">X</button>
+								 					<label id="loginomq">Login</label>
+                <div >
+					<h4 id="didnotEnterAllLogininfo" style="color: red;" hidden>Enter information in all field</h4>
+					<div id="logindiv">
+					<input id="usernamelogin" class="inputlogincss" type="text" placeholder="Username"  >
+                    <input id="passwordlogin" class="inputlogincss" type="password" placeholder="Password"  >
+					<button id="loginbtnfromtheform" class="buttonlogincss">Login</button>
+					</div>
+                </div>
+					<span id="forgotpass">Forgot <a href="#">password?</a></span>
+
+            </form>
+        </div>
+        <li  class="rightFloat" id="Mainusernamelistlogout" hidden>
+            <a class="elementLiA" href="#" id="Logout" > Logout</a></li>
+        <li  class="rightFloat" id="Mainusernamelist" hidden>
+            <div class="dropdown-content">
+                <a href="#">Link 1</a>
+                <a href="#">Link 2</a>
+                <a href="#">Link 3</a>
+            </div>
+
+            <a class="elementLiA " href="profil.php" id="Mainusername" > username </a>
+            </li>
+        <ul>
+</nav>
+<div class= "body1"></div>
+
+</body>
+
+</html><br>
+<br>
+<br>
+<div class="align">
+
+<button id="graphinfo">User Statistics</button>
+<button id="passwordchange">Change Password</button>
+
+
+<button id="backgroundimgchange">Change Background</button>
+
+
+<button id="achievements">Achievements</button>
+
+</div>
+
+<div id="graph" >
+    <div id='chartContainer' class="chart"></div>
+    <div style="margin-left:10%">
+    <h2 id="title1">Questions By Me <3</h2>
+    <div id="questions" class="align"></div>
+    <h2 id="title2">Replies By Me <3</h2>
+    <div id="reply" class="align"></div>
+    </div>
+</div>
+<div id="password" hidden >
+
+    <div class="align">
+    <h2>Enter new password</h2>
+        <input id="newpassword"/>
+        <button id="confirmenewpassword">ok</button>
+    </div>
+
+</div>
+<div id="backgroundimg" style="text-align: center" hidden>
+    <h3>Choose a Background image</h3>
+    <img id="firstImg" src="../Img/one-pieceR.png" alt="image1" width="300" height="300" style="margin-right: 3%">
+    <img id="secondImg" alt="image2" src="../Img/one-pieceR.png" width="300" height="300" style="margin-right: 3%">
+    <img id="thirdImg" alt="image3" src="../Img/one-pieceR.png" width="300" height="300">
+    <br>
+    <input id="ImgChoose" type="text" placeholder="Choose a background" disabled>
+    <button id="saveimg">Save Image</button>
+</div>
+
+<div id ="achievementsTab" hidden>
+<h2 id = "totalAchievements">
+</h2>
+    <ul id = "achievementsTable">
+
+    </ul>
+</div>
+
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+        var Pathimg1;
+        var Pathimg2;
+        var Pathimg3;
+        $.post("../Controller/loadImg.php",
+            function(data){
+            var imageBack = JSON.parse(data);
+                Pathimg1 = imageBack[3];
+                Pathimg2 = imageBack[4];
+                Pathimg3 = imageBack[5];
+                $("#firstImg").attr("src",imageBack[2]);
+                $("#secondImg").attr("src",imageBack[2]);
+                $("#thirdImg").attr("src",imageBack[2]);
+
+
+            });
+
+        $("#saveimg").click(function(){
+            if(confirm("Do you really want the "+$("#ImgChoose").val())){
+                $.post("../Controller/changeImg.php",{data:$("#ImgChoose").val()},
+                    function(data){
+                        window.location.href="index.php";
+
+
+                    });
+            }
+        });
+        $("#firstImg").mouseover(function(){
+            var urlimg = "url("+Pathimg1+")";
+            $('#bodypart').css('backgroundImage', urlimg);
+        });
+        $("#secondImg").mouseover(function(){
+            var urlimg = "url("+Pathimg2+")";
+            $('#bodypart').css('backgroundImage', urlimg);
+        });
+        $("#thirdImg").mouseover(function(){
+            var urlimg = "url("+Pathimg3+")";
+            $('#bodypart').css('backgroundImage', urlimg);
+        });
+        $("#firstImg").click(function(){
+            $("#ImgChoose").val("Left Image");
+        });
+        $("#secondImg").click(function(){
+            $("#ImgChoose").val("Middle Image");
+        });
+        $("#thirdImg").click(function(){
+            $("#ImgChoose").val("Right Image");
+        });
+        $("#confirmenewpassword").click(function(){
+
+            $.post("../Controller/newpass.php",{password:$("#newpassword").val()},
+                function(data){
+                alert("Sucessfully change password");
+
+        }); });
+
+
+         $.post("../Controller/upvotesAchievement.php"
+            ,
+            function(data){
+        });
+
+        
+
+
+        $("#achievements").click(function(){
+
+            $("#achievementsTab").show();
+            $("#password").hide();
+            $("#graph").hide();
+            $("#achievementsTable").empty();
+            var str ="";
+            $.post("../Controller/achievements.php", function(data){
+                var info = JSON.parse(data); 
+                $('#totalAchievements').text(info.length-1 + " Achievements in my Collection 🔥🔥🔥");
+                for(var i = 1; i<info.length;i++){
+                
+                if(info[i].includes("naruto")){
+                    str+="<div class='tooltip'><li><img height='100' width='100' src = '../Img/icons/"+info[i]+".png'><li><span class='tooltiptext'>"+info[i]+"</span></div>";
+                }
+               else if(info[i].includes("onepiece")){
+                str+="<div class='tooltip'><li><img height='100' width='100' src = '../Img/icons/"+info[i]+".png'><li><span class='tooltiptext'>"+info[i]+"</span></div>";
+
+                }
+
+               else if(info[i].includes("bleach")){
+                str+="<div class='tooltip'><li><img height='100' width='100' src = '../Img/icons/"+info[i]+".png'><li><span class='tooltiptext'>"+info[i]+"</span></div>";
+
+                }
+                else if(info[i].includes("dragonball")){
+                    str+="<div class='tooltip'><li><img height='100' width='100' src = '../Img/icons/"+info[i]+".png'><li><span class='tooltiptext'>"+info[i]+"</span></div>";
+
+                }
+                else if(info[i].includes("Connaisseur")){
+                    str+="<div class='tooltip'><li><img height='100' width='100' src = '../Img/icons/connaisseur.png'><li><span class='tooltiptext'>"+info[i]+"</span></div>";
+
+                }
+                else if(info[i].includes("Master")){
+                    str+="<div class='tooltip'><li><img height='100' width='100' src = '../Img/icons/master.png'><li><span class='tooltiptext'>"+info[i]+"</span></div>";
+
+                }
+                else if(info[i].includes("GrandMaster")){
+                    str+="<div class='tooltip'><li><img height='100' width='100' src = '../Img/icons/grandmaster.png'><li><span class='tooltiptext'>"+info[i]+"</span></div>";
+
+                }
+                else if(info[i].includes("God")){
+                    str+="<div class='tooltip'><li><img height='100' width='100' src = '../Img/icons/god.png'><li><span class='tooltiptext'>"+info[i]+"</span></div>";
+
+                }
+                else{
+                str+="<div class='tooltip'><li><img height='100' width='100' src = '../Img/icons/"+info[i]+".png'><li><span class='tooltiptext'>"+info[i]+"</span></div>";
+                }
+                }
+                 $("#achievementsTable").append(str);
+        });
+        });
+
+
+        
+        $("#graphinfo").click(function(){
+            $("#graph").show();
+            $("#achievementsTab").hide();
+            $("#password").hide();
+            $("#backgroundimg").hide();
+        });
+        $("#passwordchange").click(function(){
+            $("#graph").hide();
+            $("#achievementsTab").hide();
+            $("#password").show();
+            $("#backgroundimg").hide();
+        });
+        $("#backgroundimgchange").click(function(){
+            $("#graph").hide();
+            $("#password").hide();
+            $("#backgroundimg").show();
+        });
+
+
+        $.post("../Controller/profilGraph.php"
+            ,
+            function(data){
+            var info = JSON.parse(data);
+
+                var source =
+                    {
+                        localdata: info[0],
+                        datatype: "array"
+                    };
+
+                var dataAdapter = new $.jqx.dataAdapter(source);
+
+
+                $("#questions").jqxDataTable(
+                    {
+
+                        altRows: true,
+                        pageable: true,
+                        sortable: true,
+                        source: dataAdapter,
+                        theme: 'custom',
+
+                        columns: [ 
+                        //{text:'id',datafield:'ID',width:100,align:'center'},
+                        { text: 'title', datafield: 'title', width: 250,align:'center'},{ text: 'user', datafield: 'user', width: 100,align:'center' },{text: 'date', datafield: 'date', width: 250,align:'center'},{text: 'Replies', datafield: 'number_replies', width:100 ,align:'center'}]
+                    });
+                dataAdapter.dataBind();
+                $("#questions").jqxDataTable("updateBoundData");
+
+                var source =
+                    {
+
+                        localdata: info[1],
+                        datatype: "array"
+                    };
+
+                var dataAdapter = new $.jqx.dataAdapter(source);
+
+
+                $("#reply").jqxDataTable(
+                    {
+                        altRows: true,
+                        pageable: true,
+                        sortable: true,
+                        source: dataAdapter,
+                        theme: 'custom',
+
+                        columns: [ 
+                        //{text:'id',datafield:'ID',width:100,align:'center'},
+                        { text: 'title', datafield: 'title', width: 250,align:'center'},{ text: 'user', datafield: 'user', width: 100,align:'center' },{text: 'date', datafield: 'date', width: 250,align:'center'},{text: 'Replies', datafield: 'number_replies', width:100 ,align:'center'}]
+                    });
+                dataAdapter.dataBind();
+                $("#reply").jqxDataTable("updateBoundData");
+            });
+        $.post("../Controller/profilGraphinfo.php",
+            function(data){
+            var sampleData = JSON.parse(data);
+
+
+
+
+        // prepare jqxChart settings
+        var settings = {
+            title:"",
+
+            title:sampleData[12],
+
+            description:"",
+            padding: { left: 5, top: 5, right: 5, bottom: 5 },
+            titlePadding: { left: 90, top: 0, right: 0, bottom: 10 },
+            source: sampleData,
+            categoryAxis:
+                {
+                    dataField: 'Day',
+                    showGridLines: false
+                },
+            colorScheme: 'scheme01',
+            seriesGroups:
+                [
+                    {
+                        type: 'column',
+                        columnsGapPercent: 30,
+                        seriesGapPercent: 0,
+                        valueAxis:
+                            {
+                                minValue: 0,
+
+                                maxValue: 10,
+                                unitInterval: 1,
+                                description: 'Time in minutes'
+                            },
+                        series: [
+                            { dataField: 'month', displayText: '#Question'},
+                            { dataField: 'reply', displayText: '#Reply'}
+
+                        ]
+                    }
+                ]
+        };
+
+        // select the chartContainer DIV element and render the chart.
+        $('#chartContainer').jqxChart(settings);
+
+            });
+
+    });
+</script>
+
+</body>
+
+
+</html>
