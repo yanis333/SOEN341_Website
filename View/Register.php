@@ -31,6 +31,9 @@
             overflow: auto; /* Enable scroll if needed */
             padding-top: 65px;
         }
+        #mainSubject2{
+            cursor: pointer;
+        }
         #Registerbtnfromtheform{
             outline: none;
             margin-left: 20px;
@@ -164,6 +167,32 @@
 
     <script>
         $(document).ready(function(){
+            var lock=true;
+            $("#mainSubject2").click(function(){
+                window.location.href="index.php";
+            });
+            $.post('../Controller/gohomepage.php',
+                function(data){
+                    var valuearr = JSON.parse(data);
+                    if(valuearr[0]){
+
+                        $("#mainSubject").hide();
+                        $("#mainSubject2").show();
+
+                        setInterval(function(){
+
+                            if(lock){
+                                $("#mainSubject2").css("color", "green");
+                                lock=false;
+                            }
+                            else{
+                                $("#mainSubject2").css("color", "blue");
+                                lock=true;
+                            }
+                        },500);
+                    }
+
+                });
             $("#onpieceI").mouseover(function(){
                 $('#bodypart').css('backgroundImage', 'url(../Img/onepiece0.jpg)');
                 $("#test1").trigger('pause');
@@ -172,6 +201,7 @@
                 $("#test").trigger('play');
             });
             $("#onpieceI").mouseout(function(){
+                alert($("#test").currentTime);
                 $("#test").trigger('load');
             });
             $("#uchihaI").mouseover(function(){
@@ -240,15 +270,9 @@
         $("#Registerbtnfromtheform").click(function () {
                 if($("#register_username").val() != "" && $("#register_password").val() != "" && $("#register_password_verify").val() != "" && $("#register_email").val() != "" && ($("#register_password").val() == $("#register_password_verify").val())){
                     $.post('../Controller/RegisterBE.php',{ username:$("#register_username").val(), password:$("#register_password").val(), email:$("#register_email").val(),img:$("#register_img").val()},
-                        function(data){
-                            var valueinfo =JSON.parse(data);
-                            if(valueinfo[0]){
-                                 window.location.href="index.php";
+                        function(){
 
-                            }
-                            else{
-                                alert("Username or email already exist");
-                            }
+
                         });
                 }
                 else{
@@ -301,7 +325,8 @@
 </audio>
     <div id="animationpage">
 <div style="text-align: center">
-    <h1 style="color: white">Welcome to the Anime World! </h1>
+    <h1 style="color: white" id="mainSubject" >Welcome to the Anime World! </h1>
+    <h1 id="mainSubject2" hidden>Click here to start your adventure</h1>
     <h3 id="text1" style="color: white">Nani?</h3>
 </div>
 
