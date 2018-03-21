@@ -38,8 +38,8 @@
             width:100%;
             height: 20%;
             border: 1px solid black;
-            background: url("../Img/inkart.jpg") no-repeat;
-            background-size: cover;
+            background-color: lightgrey;
+            opacity: 0.8;
          
                     }
 
