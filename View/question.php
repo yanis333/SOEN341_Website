@@ -338,7 +338,7 @@ $("#relatedQuestion").jqxDataTable("updateBoundData");
                           
                             if(info[1]==true){
                                 reply += "<div class=\"questioninfocontainer\"><div class=\"userboxed\" >"+ info[0][x]['username'] +"<button class = \"checked\" onclick='checked("+info[0][x]['ID']+","+info[0][x]['IDQuestion']+")'> Choose as best reply </button> "+"</div><div class=\"descboxed\">"+ info[0][x]['description_reply'] +"</div></div><div class=\"buttoncontainer\" >";
-                                reply += "<button class= \"pbuttonboxed plusbutton\" onclick='approve("+info[0][x]['ID']+")'>Approved</button><button class= \"mbuttonboxed minusbutton\" onclick='decline("+info[0][x]['ID']+")'>Decline</button>";
+                                reply += "<button class= \"mbuttonboxed minusbutton\" onclick='decline("+info[0][x]['ID']+")'>Decline</button>";
                             }
                             else{
                                 reply += "<div class=\"questioninfocontainer\"><div class=\"userboxed\" >"+ info[0][x]['username'] +"</div><div class=\"descboxed\">"+ info[0][x]['description_reply'] +"</div></div><div class=\"buttoncontainer\" >";

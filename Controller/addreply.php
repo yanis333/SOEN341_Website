@@ -8,7 +8,7 @@ $return[0]=false;
 if(isset($_SESSION['username']))
     if($_SESSION["username"]!=null) {
         $desc = $_POST['desc'];
-        $db->query("insert into replylist (description_reply,total_positive,total_negative,IDQuestion,validate,username,date) values('" . $desc . "','0','0','" . $_SESSION['idquestion'] . "','0','" . $_SESSION['username'] . "','" . (string)date('H:i:s d-m-Y') . "') ");
+        $db->query("insert into replylist (description_reply,total_positive,total_negative,IDQuestion,validate,username,date) values('" . $desc . "','0','0','" . $_SESSION['idquestion'] . "','1','" . $_SESSION['username'] . "','" . (string)date('H:i:s d-m-Y') . "') ");
         $db->query("UPDATE questionlog SET number_replies  = (SELECT COUNT(*) from replylist WHERE IDQuestion =" .$_SESSION['idquestion']. ") WHERE ID =".$_SESSION['idquestion']);
         $return[0]=true;
     }

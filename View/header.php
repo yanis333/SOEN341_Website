@@ -70,6 +70,16 @@
 			overflow: hidden;
 			outline:none;
 		}
+		#cancelreport{
+			margin-top: 0px;
+			margin-left:320px;
+		    background-color: Transparent;
+			background-repeat:no-repeat;
+			border: none;
+			cursor:pointer;
+			overflow: hidden;
+			outline:none;
+		}
 		
 		#cancelbtnRegister
 		{
@@ -259,7 +269,21 @@
             width: 50%; /* Full width */
             height: 100%; /* Full height */
             overflow: auto; /* Enable scroll if needed */
-            padding-top: 60px;
+             padding-top: 5%;
+			 padding-left: 3%;
+        }
+		.modalreportcss {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            margin-left: 25%;
+            width: 50%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+             padding-top: 5%;
+			 padding-left: 3%;
         }
 
         .titlelogin{
@@ -274,6 +298,14 @@
             margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
             border: 1px solid #888;
             width: 80%; /* Could be more or less, depending on screen size */
+        }
+		.modal-contentreportcss {
+			font-family: Verdana;
+			text-align:center;
+            background-color: #fefefe;
+            margin: 5% auto 15% auto; /* 5% from the top, 5% from the bottom and centered */
+            border: 1px solid #888;
+            width: 40%; /* Could be more or less, depending on screen size */
         }
         .animatelogincss {
             -webkit-animation: animatezoom 0.6s;
@@ -396,7 +428,11 @@
                         $("#register_btn").hide();
                         $("#Mainusernamelist").show();
                         $("#Mainusernamelistlogout").show();
+						$("#reportfunction").show();
                         $("#loginform").hide();
+
+						$("#reportform").hide();
+
                         switch(valueinfo[2]){
                             case 0:
                                 $('#bodypart').css('backgroundImage', 'url(../Img/orange2.png)');
@@ -433,6 +469,7 @@
                         }
 
 
+
                     }
                     else{
                     $('#bodypart').css('backgroundImage', 'url(../Img/orange2.png)');}
@@ -446,13 +483,21 @@
 
             });
             $('#register_btn').click(function () {
+
                 window.location.href="Register.php";
+
 
 
             });
             $('#cancelbtnlogin').click(function () {
                 $("#loginform").hide();
+			
             });
+			 $('#cancelreport').click(function () {
+              $("#reportform").hide();
+			
+            });
+				
             $('#cancelbtnRegister').click(function () {
                 $("#register_modal").hide();
             });
@@ -463,12 +508,19 @@
                         $("#register_btn").show();
                         $("#Mainusernamelist").hide();
                         $("#Mainusernamelistlogout").hide();
+						$("#reportfunction").hide();
                         $("#loginform").hide();
+						$("#reportform").hide();
                         window.location.href="index.php";
 
 
 
                     });
+            });
+			$('#reportbtn').click(function () {
+				$("#reportform").show();
+				
+			
             });
             $("#loginbtnfromtheform").click(function () {
                 if($("#usernamelogin").val() !="" && $("#passwordlogin").val()!=""){
@@ -481,7 +533,11 @@
                                 $("#register_btn").hide();
                                 $("#Mainusernamelist").show();
                                 $("#Mainusernamelistlogout").show();
+								$("#reportfunction").show();
                                 $("#loginform").hide();
+
+								$("#reportform").hide();
+
                                 switch(valueinfo[2]){
                                     case 0:
                                         $('#bodypart').css('backgroundImage', 'url(../Img/orange2.png)');
@@ -518,6 +574,7 @@
                                 }
 
 
+
                             }
                             else{
                                 alert("Username/Password error");
@@ -542,6 +599,7 @@
                                 $("#register_btn").hide();
                                 $("#Mainusernamelist").show();
                                 $("#Mainusernamelistlogout").show();
+									$("#reportfunction").show();
                                 $("#register_modal").hide();
 
                             }
@@ -554,6 +612,24 @@
                     $("#didnotEnterAllRegisterinfo").show();
                 }
             });
+		
+			$("#reportbtnfromtheform").click(function () {
+                if($("#reportusername").val() != "" ){
+					$.post('../Controller/reportuser.php',{user:$("#reportusername").val() },
+                        function(data){
+                            var valueinfo =JSON.parse(data);
+                            if(valueinfo[0]){
+                                alert("User reported Succesfully");
+
+                            }
+                            else{
+                                alert("This user dosen't exist so we can't report it ,you know!");
+                            }
+                        });
+				
+				}
+            });
+		
         });
     </script>
 </head>
@@ -566,7 +642,7 @@
 
         <li class="onglet"><a class="elementLiA" href="add.php">Ask a question</a></li>
         <li class="onglet"><a class="elementLiA" href="LIST.php">Search a question</a></li>
-        <li hidden><a class="elementLiA" href="#">Profile</a></li>
+        <li hidden><a class="elementLiA" href="#">Profile</a></li>		
         <li  class="rightFloat">
             <a class="elementLiA" href="#" id="register_btn"> Register</a></li>
         <li id="loginsection" class="rightFloat">
@@ -611,8 +687,27 @@
 
             </form>
         </div>
+		<div id="reportform" class="modalreportcss">
+
+            <form  id="logincss" class="modal-contentreportcss animatelogincss" >
+			                     <button id="cancelreport" class="cancelbtnlogincss">X</button>
+								 					<h3 id="reportomq">Report User</h3>
+                <div >
+					<div id="reportdiv">
+					<input id="reportusername" class="inputlogincss" type="text" placeholder="Username"  >
+					<button id="reportbtnfromtheform" class="buttonlogincss">Report user</button>
+					</div>
+                </div>
+
+            </form>
+        </div>
+		
         <li  class="rightFloat" id="Mainusernamelistlogout" hidden>
             <a class="elementLiA" href="#" id="Logout" > Logout</a></li>
+			
+		<li  class="rightFloat" id="reportfunction" hidden>
+            <a class="elementLiA" href="#" id="reportbtn" > Report User</a></li>
+			
         <li  class="rightFloat" id="Mainusernamelist" hidden>
             <div class="dropdown-content">
                 <a href="#">Link 1</a>
