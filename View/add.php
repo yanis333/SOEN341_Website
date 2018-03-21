@@ -21,13 +21,15 @@
 
         .questionform{
             margin:13%;
-            background-color: orange;
+            background-color: #3D3C3B;
             padding: 10px;
             width: 720px;
             max-width: 720px;
             font-family: Trebuchet MS;
-            text-shadow: 3px 1px 14px rgba(147, 147, 140, 1);
+     /*       text-shadow: 3px 1px 14px rgba(147, 147, 140, 1); */
             border-radius: 10px;
+            color: white;
+            opacity: 0.9;
         }
 
         #submit
@@ -38,7 +40,7 @@
         #titlelabel, #descriptionlabel, #tagslabel
         {
             margin-left: 20px;
-            font-family: sans-serif;
+            font-family: Trebuchet MS;
             font-size: 20px;
             font-weight: 550;
         }
@@ -65,7 +67,7 @@
 			
         }
 
-
+/*
 .submitbtn {
     -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
     -webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
@@ -91,6 +93,47 @@
     transition-duration: 0.1s;
 }
 
+.submitbtn:active {
+    position:relative;
+    top:1px;
+}
+*/
+
+   .submitbtn {
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #787878), color-stop(1, #474747));
+    background:-moz-linear-gradient(top, #787878 5%, #474747 100%);
+    background:-webkit-linear-gradient(top, #787878 5%, #474747 100%);
+    background:-o-linear-gradient(top, #787878 5%, #474747 100%);
+    background:-ms-linear-gradient(top, #787878 5%, #474747 100%);
+    background:linear-gradient(to bottom, #787878 5%, #474747 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#787878', endColorstr='#474747',GradientType=0);
+    background-color:#787878;
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border-radius:8px;
+   border:1px solid white; 
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Trebuchet MS;
+
+    font-size:13px;
+    padding:7px 22px;
+    text-decoration:none;
+    text-shadow:0px 1px 6px #000000;
+    opacity: 0.9;
+     margin-bottom:7px; 
+}
+.submitbtn: hover {
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #242424), color-stop(1, #424242));
+    background:-moz-linear-gradient(top, #242424 5%, #424242 100%);
+    background:-webkit-linear-gradient(top, #242424 5%, #424242 100%);
+    background:-o-linear-gradient(top, #242424 5%, #424242 100%);
+    background:-ms-linear-gradient(top, #242424 5%, #424242 100%);
+    background:linear-gradient(to bottom, #242424 5%, #424242 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#242424', endColorstr='#424242',GradientType=0);
+    background-color:#242424;
+}
 .submitbtn:active {
     position:relative;
     top:1px;

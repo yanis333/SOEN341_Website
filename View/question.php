@@ -38,7 +38,10 @@
             width:100%;
             height: 20%;
             border: 1px solid black;
-        }
+            background: url("../Img/inkart.jpg") no-repeat;
+            background-size: cover;
+         
+                    }
 
         .replybox{
             width:52%;
@@ -185,16 +188,26 @@
             font-size:10px;
         }
 	.replybtn {
-	 float: center;
-  width: 20%;
-  padding: 10px;
-  background: #2196F3;
-  color: white;
-  font-size: 17px;
-  border: 1px solid grey;
-  border-left: none; /* Prevent double borders */
-  cursor: pointer;
-  border-radius:28px;
+        kground:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #424242), color-stop(1, #242424));
+    background:-moz-linear-gradient(top, #424242 5%, #242424 100%);
+    background:-webkit-linear-gradient(top, #424242 5%, #242424 100%);
+    background:-o-linear-gradient(top, #424242 5%, #242424 100%);
+    background:-ms-linear-gradient(top, #424242 5%, #242424 100%);
+    background:linear-gradient(to bottom, #424242 5%, #242424 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#424242', endColorstr='#242424',GradientType=0);
+    background-color:#424242;
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border-radius:8px;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Trebuchet MS;
+    font-size:large;
+    padding:9px 25px;
+    text-decoration:none;
+    margin-left:25px;
+    opacity: 0.9;
   
 }
 .replybtn:hover {
@@ -205,7 +218,14 @@
 	background:-ms-linear-gradient(top, #476e9e 5%, #7892c2 100%);
 	background:linear-gradient(to bottom, #476e9e 5%, #7892c2 100%);
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#476e9e', endColorstr='#7892c2',GradientType=0);
-	background-color:#476e9e;
+	background-color:#476e9e;   background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #242424), color-stop(1, #424242));
+    background:-moz-linear-gradient(top, #242424 5%, #424242 100%);
+    background:-webkit-linear-gradient(top, #242424 5%, #424242 100%);
+    background:-o-linear-gradient(top, #242424 5%, #424242 100%);
+    background:-ms-linear-gradient(top, #242424 5%, #424242 100%);
+    background:linear-gradient(to bottom, #242424 5%, #424242 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#242424', endColorstr='#424242',GradientType=0);
+    background-color:#242424;
 }
 .replybtn:active {
 	position:relative;
