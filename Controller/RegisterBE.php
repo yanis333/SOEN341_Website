@@ -48,14 +48,8 @@
 
 	}
 	else{
-
-
-  $valuearrImg = json_encode($valueImg);
-	$reply_tag_count = json_encode(array());
-	 $reply_tag_count = json_decode($reply_tag_count);
-	 $reply_tag_count['php']=0;
-	 $reply_tag_count = json_encode($reply_tag_count);
-	$sql = "INSERT INTO user (username, password, email,reply_tag_count,number_questions,achievements,clan) VALUES ('$username', '$password','$email','$reply_tag_count',0,'','$valuearrImg')";
+ 	 $valuearrImg = json_encode($valueImg);
+	$sql = "INSERT INTO user (username, password, email,reply_tag_count,number_questions,achievements,clan,report) VALUES ('$username', '$password','$email','$reply_tag_count',0,'','$valuearrImg',0)";
 
 
 	$db->query($sql);

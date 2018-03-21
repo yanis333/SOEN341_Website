@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> List</title>
+    <style>
+        body{
+            background-color: white;
+        }
+        .button {
+            background-color: #ff6666;
+            border:none;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            display: inline-block;
+            font-size: 10px;
+            margin-top: 5px;
+            margin-left: 50px;
+            cursor: pointer;
+            border-radius: 12px;
+
+        }
+        .button:hover{background-color:#ff0000}
+
+                #Title:hover {
+            color: blue;
+            cursor: pointer;
+        }
+
+        .username{
+            float:right;
+            margin-top:3%;
+            margin-right:4%;
+            margin-bottom: 1%;
+        }
+
+        .titlebox{
+            width:100%;
+            height: 20%;
+            border: 1px solid black;
+            background: url("../Img/inkart.jpg") no-repeat;
+            background-size: cover;
+         
+                    }
+
+        .replybox{
+            width:52%;
+            float:right;
+            border: 1px solid black;
+            display:flex;
+            flex-direction: column;
+
+        }
+
+        .recommendbox{
+            width: 44%;
+            float:left;
+            border: 1px solid black;
+        }
+
+
+
+        .questioncontainer{
+            display: flex;
+            flex-direction: column;
+            /*border: 3px solid gray; */
+            border-left: 6px solid green;
+            margin: 3%;
+            background-color: #f1f1f1;
+            border-radius: 10px;
+            font-family: Verdana;
+        }
+
+        #helpful{
+            border-left: 6px solid green;
+        }
+        #unhelpful{
+            border-left: 6px solid red;
+        }
+        .questioncontainer>div {
+            background-color: #f1f1f1;
+            /*margin: 3%;
+            padding:2%;	*/
+        }
+
+
+        .questioninfocontainer{
+            display:flex;
+            flex-direction: row;
+            justify-content: space-between;
+            /*border: 1px solid blue; */
+            /*margin: 4%; */
+            margin-right: 2%;
+            margin-top: 2%;
+            margin-left: 2%;
+        }
+        .userboxed{
+
+            flex:0 1 10%;
+            height: 10%;
+            font-size: 16px;
+            cursor: pointer;
+            padding-right: 5%;
+        }
+        .descboxed{
+            background-color: white;
+            overflow: auto;
+            /*margin: 5%; */
+
+            padding: 3%;
+            flex:0 1 80%;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+
+        .buttoncontainer{
+            display:flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            margin-right: 4%;
+            /*border: 1px solid red; */
+
+        }
+
+        .displayupvote{
+            background-color: white;
+            border: none;
+            color: black;
+            padding: 6px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 12px;
+            margin: 5px 10px;
+            border-radius: 7px;
+        }
+        .plusbutton{
+            background-color: forestgreen;
+            border: none;
+            color: white;
+            padding: 6px 30px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 12px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 7px;
+        }
+        .plusbutton:hover{background-color: darkgreen;}
+        .minusbutton{
+            background-color: red;
+            border: none;
+            color: white;
+            padding: 6px 30px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 12px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 7px;
+        }
+        .minusbutton:hover{
+            background-color: darkred;}
+        li{list-style-type: none;}
+        .titleinfo{
+            width: 100%;
+            height: 20%;
+            border: black 1px solid;
+        }
+        .title{
+            text-align:center;
+        }
+        .description{
+            margin-left: 20%;
+            word-wrap: break-word;
+        }
+        .usernamelabel{
+            margin-left: 20%;
+        }
+        .replydescription {
+            width: 100%;
+        }
+
+        .checked{
+            font-size:10px;
+        }
+	.replybtn {
+        kground:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #424242), color-stop(1, #242424));
+    background:-moz-linear-gradient(top, #424242 5%, #242424 100%);
+    background:-webkit-linear-gradient(top, #424242 5%, #242424 100%);
+    background:-o-linear-gradient(top, #424242 5%, #242424 100%);
+    background:-ms-linear-gradient(top, #424242 5%, #242424 100%);
+    background:linear-gradient(to bottom, #424242 5%, #242424 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#424242', endColorstr='#242424',GradientType=0);
+    background-color:#424242;
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border-radius:8px;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Trebuchet MS;
+    font-size:large;
+    padding:9px 25px;
+    text-decoration:none;
+    margin-left:25px;
+    opacity: 0.9;
+  
+}
+.replybtn:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #476e9e), color-stop(1, #7892c2));
+	background:-moz-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+	background:-webkit-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+	background:-o-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+	background:-ms-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+	background:linear-gradient(to bottom, #476e9e 5%, #7892c2 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#476e9e', endColorstr='#7892c2',GradientType=0);
+	background-color:#476e9e;   background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #242424), color-stop(1, #424242));
+    background:-moz-linear-gradient(top, #242424 5%, #424242 100%);
+    background:-webkit-linear-gradient(top, #242424 5%, #424242 100%);
+    background:-o-linear-gradient(top, #242424 5%, #424242 100%);
+    background:-ms-linear-gradient(top, #242424 5%, #424242 100%);
+    background:linear-gradient(to bottom, #242424 5%, #424242 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#242424', endColorstr='#424242',GradientType=0);
+    background-color:#242424;
+}
+.replybtn:active {
+	position:relative;
+	top:1px;
+
+}
+
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+
+
+        $(document).ready(function(){
+            inforeply();
+                        $.post("../Controller/relatedQuestion.php", function(data){
+                            var dataarray = JSON.parse(data);
+
+            var source =
+            {
+             localdata: dataarray,
+             datatype: "array"
+            };
+
+         var dataAdapter = new $.jqx.dataAdapter(source);
+            if(dataarray.length>0){
+        $("#relatedQuestion").jqxDataTable(
+         {
+             altRows: true,
+             pageable: true,
+            sortable: true,
+             source: dataAdapter,
+ 
+        columns: [{ text: 'title', datafield: 'title', width: 50},{text: 'date', datafield: 'date', width: 100, align:'right',cellsalign:'right'},
+            {text: 'Replies', datafield: 'number_replies', width:70 , align:'right',cellsalign:'right'}]
+        });
+
+dataAdapter.dataBind();
+$("#relatedQuestion").jqxDataTable("updateBoundData");
+        }
+        else{
+            $("#relatedQuestion").text("No related questions");
+        }
+        
+        });
+
+
+
+            $("#addreply").click(function(){
+                $.post("../Controller/addreply.php",{
+                        desc: $("#inputReplyInfo").val()
+                    },
+                    function(data){
+                    var valueIfCanReply = JSON.parse(data);
+                        if(valueIfCanReply[0]){
+                        window.location.href="question.php";}
+                        else{
+                            alert("To reply you need to be connected");}
+                    });
+            });
+
+
+            function inforeply() {
+                $.post("../Controller/TitleInfo.php",
+                    function(data){
+                        var info = JSON.parse(data);
+
+                        $("#titleinfoTitle").html(info['title']);
+                        $("#userinfotitle").html(info['user']);
+                        $("#dateinfotitle").html(info['date']);
+                        $("#idtitleinfo").html(info['ID']);
+                        $("#descinfoTitleinput").html(info['description']);
+
+                    });
+                $.post("../controller/replyinfo.php", function (data) {
+                    var info = JSON.parse(data);
+
+                    reply = "";
+                    bestreply="";
+                    for (var x = info[0].length-1; x >= 0; x--) {
+                        if(info[0][x]['best']== 1){
+                            if(info[1]){
+                                bestreply+= "<li>";
+                            if(info[0][x]['validate']==0 )
+                            bestreply += "<div class=\"questioncontainer\" id=\"unhelpful\">";
+                            else{
+                                bestreply += "<div class=\"questioncontainer\" id=\"helpful\">";
+                            }
+                            bestreply += "<div class=\"questioninfocontainer\"><div class=\"userboxed\" >"+ info[0][x]['username']+"<img src = '../Img/checked.png' style='width:20px;height:20px;'> " +"</div><div class=\"descboxed\">"+ info[0][x]['description_reply'] +"</div></div><div class=\"buttoncontainer\" >";
+                            bestreply += "<button class= \"pbuttonboxed plusbutton\" onclick='approve("+info[0][x]['ID']+")'>Approved</button><button class= \"mbuttonboxed minusbutton\" onclick='decline("+info[0][x]['ID']+")'>Decline</button>";
+                            bestreply += "<div class=\"displayupvote\"> "+info[0][x]['total_positive'] +" </div><button class=\"pbuttonboxed plusbutton\" onclick='upvote("+info[0][x]['ID']+")'>+</button><button class= \"mbuttonboxed minusbutton\" onclick='downvote("+info[0][x]['ID']+")'>-</button></div></div><input type=\"hidden\"/></li>";
+                        }
+                        else{
+                            if(info[0][x]['validate']==1 ) {
+                                bestreply += "<li><div class=\"questioncontainer\" id=\"helpful\">";
+                                bestreply += "<div class=\"questioninfocontainer\"><div class=\"userboxed\" >" + info[0][x]['username'] +"<img src = '../Img/checked.png' style='width:20px;height:20px;'> " +"</div><div class=\"descboxed\">" + info[0][x]['description_reply'] + "</div></div><div class=\"buttoncontainer\" >";
+                                bestreply += "<div class=\"displayupvote\"> " + info[0][x]['total_positive'] + " </div><button class=\"pbuttonboxed plusbutton\" onclick='upvote(" + info[0][x]['ID'] + ")'>+</button><button class= \"mbuttonboxed minusbutton\" onclick='downvote(" + info[0][x]['ID'] + ")'>-</button></div></div><input type=\"hidden\"/></li>";
+                            }}
+                            
+                        }
+                        else{                       
+                            reply += "<li>";
+                            if(info[0][x]['validate']==0 ){
+                                reply += "<div class=\"questioncontainer\" id=\"unhelpful\">";
+                            }
+                            else{
+                                reply += "<div class=\"questioncontainer\" id=\"helpful\">";
+                            }
+                          
+                            if(info[1]==true){
+                                reply += "<div class=\"questioninfocontainer\"><div class=\"userboxed\" >"+ info[0][x]['username'] +"<button class = \"checked\" onclick='checked("+info[0][x]['ID']+","+info[0][x]['IDQuestion']+")'> Choose as best reply </button> "+"</div><div class=\"descboxed\">"+ info[0][x]['description_reply'] +"</div></div><div class=\"buttoncontainer\" >";
+                                reply += "<button class= \"mbuttonboxed minusbutton\" onclick='decline("+info[0][x]['ID']+")'>Decline</button>";
+                            }
+                            else{
+                                reply += "<div class=\"questioninfocontainer\"><div class=\"userboxed\" >"+ info[0][x]['username'] +"</div><div class=\"descboxed\">"+ info[0][x]['description_reply'] +"</div></div><div class=\"buttoncontainer\" >";
+                            }
+                            reply += "<div class=\"displayupvote\"> "+info[0][x]['total_positive'] +" </div><button class=\"pbuttonboxed plusbutton\" onclick='upvote("+info[0][x]['ID']+")'>+</button><button class= \"mbuttonboxed minusbutton\" onclick='downvote("+info[0][x]['ID']+")'>-</button></div></div><input type=\"hidden\"/></li>";
+                        }
+                    }
+                    $('#replies').prepend(bestreply);
+                    $("#replies").append(reply);
+
+                });
+            }
+});
+
+
+                                function saveIdHoster(idQuestion){
+            var xhttp = new XMLHttpRequest();
+
+            xhttp.open("POST", "../controller/ChoosenQuestion.php", true);
+
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send("value="+idQuestion);
+            window.location.href="question.php";
+
+        }
+
+
+        function checked(id, idquestion){
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("POST", "../controller/checked.php", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send("value="+id+"&question="+idquestion);
+            window.location.href="question.php"; 
+
+        }
+
+        function approve(id){
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("POST", "../controller/approveReply.php", true);
+
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send("value="+id);
+            window.location.href="question.php";            }
+
+        function decline(id){
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("POST", "../controller/declineReply.php", true);
+
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send("value="+id);
+            window.location.href="question.php";
+        }
+
+        function upvote(id){
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("POST", "../controller/upvoteReply.php", true);
+
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send("value="+id);
+            window.location.href="question.php";            }
+
+        function downvote(id){
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("POST", "../controller/downvoteReply.php", true);
+
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send("value="+id);
+            window.location.href="question.php";            
+        }
+
+    </script>
+    <!DOCTYPE html>
+<html>
+<head>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="../Jqwidgets/jqwidgets/styles/jqx.base.css" type="text/css" />
+    <script type="text/javascript" src="../Jqwidgets/scripts/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxpasswordinput.js"></script>
+    <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxgrid.js"></script>
+    <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxgrid.selection.js"></script>
+    <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxdatatable.js"></script>
+	<script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxvalidator.js"></script>
+    <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxchart.core.js"></script>
+    <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxdraw.js"></script>
+    <style>
+
+    body{
+
+            background: url("../Img/blue2.jpg")  no-repeat;
+            background-size: cover;
+           background-attachment: fixed;
+
+        background:  url("../Img/blue2.jpg") no-repeat fixed;
+        background-size: 100%;
+
+
+        }
+
+        #loginform{
+            z-index: 1;
+        }
+
+
+        #register_modal{
+            z-index: 1;
+        }
+		#loginomq{
+			margin-left:125px;
+			font-size: 30px;
+			font-family: Verdana;
+		}
+		
+		#registeromq{
+			margin-left:115px;
+			font-size: 30px;
+			font-family: Verdana;
+		}
+
+		#forgotpass{
+			margin-left: 22px;
+		}
+		
+		#logindiv{
+			margin-left: 20px;
+		}
+		
+		#cancelbtnlogin{
+			margin-top: 0px;
+			margin-left:320px;
+		    background-color: Transparent;
+			background-repeat:no-repeat;
+			border: none;
+			cursor:pointer;
+			overflow: hidden;
+			outline:none;
+		}
+		#cancelreport{
+			margin-top: 0px;
+			margin-left:320px;
+		    background-color: Transparent;
+			background-repeat:no-repeat;
+			border: none;
+			cursor:pointer;
+			overflow: hidden;
+			outline:none;
+		}
+		
+		#cancelbtnRegister
+		{
+			margin-top: 0px;
+			margin-left:320px;
+		    background-color: Transparent;
+			background-repeat:no-repeat;
+			border: none;
+			cursor:pointer;
+			overflow: hidden;
+			outline:none;
+		}
+
+		#didnotEnterAllLogininfo{
+			font-size: 13px;
+			margin-left: 90px;
+			margin-top: 10px;
+		}
+
+		#didnotEnterAllRegisterinfo{
+			font-size: 13px;
+			margin-left: 105px;
+			margin-top: 10px;
+		}
+	
+	
+		.registertextboxes{
+			margin-left: 20px;
+		}
+    .downarrow {
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        display: inline-block;
+        padding: 3px;
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+    }
+		
+		#logincss{
+			margin-left: 150px !important;
+			outline: none !important;
+		    border-radius: 20px !important;
+			padding: 10px !important;
+			border: 2px solid #999 !important;
+			width: 350px ;
+			height: 310px;
+
+
+		}
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+		
+		#registerform
+		{
+			margin-left: 150px !important;
+			outline: none !important;
+		    border-radius: 20px !important;
+			padding: 10px !important;
+			border: 2px solid #999 !important;
+			width: 350px ;
+			height: 390px;
+
+            /* background:rgba(205,92,92,1); */
+
+		}
+		
+		#loginbtnfromtheform{
+			outline: none;
+			margin-left: 0px;
+			border-radius: 20px ;
+			 width: 300px;
+			 height: 40px;
+
+		}
+		
+		#Registerbtnfromtheform{
+			outline: none;
+			margin-left: 20px;
+			border-radius: 20px ;
+			 width: 300px;
+			 height: 40px;
+		}
+	
+	
+        .headerpageright{
+            display:flex;
+		
+        }
+
+
+        body{
+            background-color: #FFC2B4;
+        }
+
+
+        .onglet{
+            float: left;
+        }
+
+        .inputlogincss{
+			outline: none !important;
+		    border-radius: 20px !important;
+			padding: 10px !important;
+			border: 2px solid #999 !important;
+			width: 274px ;
+            margin: 8px 0 !important;
+        }
+
+        .elementLiA {
+            display: block;
+            color: white;
+            text-align: center;
+             text-decoration: none;
+            
+          
+            padding:10px ;
+            margin: 12px;
+
+             font-family:Trebuchet MS;
+            font-size:15px;
+            opacity: 1;
+
+        }
+        .elementLiA:hover:not(.active) {
+            color:#FBA895;
+            opacity: 1;
+            transition-duration: 0.2s;
+        }
+
+       /* .elementLiA:hover:not(.active) {
+            background-color: #111;
+            height:100%;
+        }
+        */
+
+
+        .buttonlogincss {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .buttonlogincss:hover {
+            opacity: 0.8;
+        }
+        .rightFloat{
+            float:right;
+
+        }
+
+
+        .cancelbtnlogincss {
+            width: auto;
+            padding: 10px 18px;
+            background-color: #f44336;
+        }
+
+
+        .containerlogincss {
+
+			height: 300px;
+			width: 300px;
+        }
+
+
+
+        .modallogincss {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            margin-left: 25%;
+            width: 50%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+             padding-top: 5%;
+			 padding-left: 3%;
+        }
+		.modalreportcss {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            margin-left: 25%;
+            width: 50%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+             padding-top: 5%;
+			 padding-left: 3%;
+        }
+
+        .titlelogin{
+            color: black;
+            float: left;
+        }
+
+
+
+        .modal-contentlogincss {
+            background-color: #fefefe;
+            margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+        }
+		.modal-contentreportcss {
+			font-family: Verdana;
+			text-align:center;
+            background-color: #fefefe;
+            margin: 5% auto 15% auto; /* 5% from the top, 5% from the bottom and centered */
+            border: 1px solid #888;
+            width: 40%; /* Could be more or less, depending on screen size */
+        }
+        .animatelogincss {
+            -webkit-animation: animatezoom 0.6s;
+            animation: animatezoom 0.6s
+        }
+
+        .closelogincss:hover,
+        .closelogincss:focus {
+            color: red;
+            cursor: pointer;
+        }
+
+        .modalheader {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+
+
+
+        .modal-contentheader {
+            background-color: #fefefe;
+            margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+        }
+
+        .mainheader {
+            list-style-type: none;
+         margin: 0;
+            padding: 0;
+            
+            background-color:#3D3C3B;
+            width:100%;
+
+            position: fixed;
+            left: 0;
+            top: 0;
+            opacity: 0.7;
+            Z-index: 1;;
+
+        }
+
+        #myBtnlogin, #register_btn{
+
+            background-color:transparent;
+            -moz-border-radius:28px;
+            -webkit-border-radius:28px;
+            border-radius:28px;
+            border:1px solid white;
+            display:inline-block;
+            cursor:pointer;
+            color:#ffffff;
+            font-family:Trebuchet MS;
+            font-size:15px;
+    
+
+            padding:7px 20px;
+            margin-right: 10px;
+            text-decoration:none;
+        }
+        
+        #myBtnlogin:hover, #register_btn:hover, .homeicon:hover {
+            background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #d6500d), color-stop(1, #fcb851));
+                background:-moz-linear-gradient(top, #d6500d 5%, #fcb851 100%);
+                background:-webkit-linear-gradient(top, #d6500d 5%, #fcb851 100%);
+                background:-o-linear-gradient(top, #d6500d 5%, #fcb851 100%);
+                background:-ms-linear-gradient(top, #d6500d 5%, #fcb851 100%);
+                background:linear-gradient(to bottom, #d6500d 5%, #fcb851 100%);
+                filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#d6500d', endColorstr='#fcb851',GradientType=0);
+                background-color:#d6500d;
+}
+        #myBtnlogin:active, #register_btn:active{
+            position:relative;
+    top:1px;
+}
+
+.homeicon{
+    cursor: pointer; 
+    float: left; 
+    padding-left: 18px; 
+    padding-top: 15px; 
+    padding-right: 18px;
+    padding-bottom: 17px;
+    transition-duration: 0.2s;
+
+}
+
+
+
+    </style>
+
+    <script>
+
+
+        $(document).ready(function(){
+
+
+			$('#registerform').jqxValidator({ rules: [
+                { input: '#register_username', message: 'Minimum 5 characters', action: 'keyup', rule: 'minLength=5' },
+                { input: '#register_email', message: 'Invalid e-mail!', action: 'keyup', rule: 'email'}], theme: 'summer'
+			});
+			$("#passwordlogin").jqxPasswordInput({ placeHolder: "Enter a Password", height: 40, width: 300});
+			$("#register_password").jqxPasswordInput({ placeHolder: "Enter a Password", height: 40, width: 300});
+			$("#register_password_verify").jqxPasswordInput({ placeHolder: "Enter a Password", height: 40, width: 300});
+            $.post('../Controller/OAuth.php',
+                function(data){
+                    var valueinfo =JSON.parse(data);
+                    if(valueinfo[0]){
+                        $('#Mainusername').html("Welcome " + valueinfo[1]+"   <i class=\"downarrow\"></i>");
+                        $("#myBtnlogin").hide();
+                        $("#register_btn").hide();
+                        $("#Mainusernamelist").show();
+                        $("#Mainusernamelistlogout").show();
+						$("#reportfunction").show();
+                        $("#loginform").hide();
+
+						$("#reportform").hide();
+
+                        switch(valueinfo[2]){
+                            case 0:
+                                $('#bodypart').css('backgroundImage', 'url(../Img/orange2.png)');
+                                break;
+                            case 1:
+                                switch(valueinfo[3]){
+                                    case 0: $('#bodypart').css('backgroundImage', 'url(../Img/onepiece0.jpg)'); break;
+                                    case 1: $('#bodypart').css('backgroundImage', 'url(../Img/onepiece1.jpg)'); break;
+                                    case 2: $('#bodypart').css('backgroundImage', 'url(../Img/onepiece2.jpg)'); break;
+                                }
+
+                                break;
+                            case 2:
+                                switch(valueinfo[3]){
+                                    case 0: $('#bodypart').css('backgroundImage', 'url(../Img/uchiha0.jpg)'); break;
+                                    case 1: $('#bodypart').css('backgroundImage', 'url(../Img/uchiha1.jpg)'); break;
+                                    case 2: $('#bodypart').css('backgroundImage', 'url(../Img/uchiha2.jpg)'); break;
+                                }
+                                break;
+                            case 3:
+                                switch(valueinfo[3]){
+                                    case 0: $('#bodypart').css('backgroundImage', 'url(../Img/db0.jpg)'); break;
+                                    case 1: $('#bodypart').css('backgroundImage', 'url(../Img/db1.jpg)'); break;
+                                    case 2: $('#bodypart').css('backgroundImage', 'url(../Img/db2.jpg)'); break;
+                                }
+                                break;
+                            case 4:
+                                switch(valueinfo[3]){
+                                    case 0: $('#bodypart').css('backgroundImage', 'url(../Img/bleach0.jpg)'); break;
+                                    case 1: $('#bodypart').css('backgroundImage', 'url(../Img/bleach1.jpg)'); break;
+                                    case 2: $('#bodypart').css('backgroundImage', 'url(../Img/bleach2.jpg)'); break;
+                                }
+                                break;
+                        }
+
+
+
+                    }
+                    else{
+                    $('#bodypart').css('backgroundImage', 'url(../Img/orange2.png)');}
+                });
+            $('#myBtnlogin').click(function () {
+                $("#loginform").show();
+                $("#register_modal").hide();
+                $("#didnotEnterAllLogininfo").hide();
+                $("#register_modal").hide();
+
+
+            });
+            $('#register_btn').click(function () {
+
+                window.location.href="Register.php";
+
+
+
+            });
+            $('#cancelbtnlogin').click(function () {
+                $("#loginform").hide();
+			
+            });
+			 $('#cancelreport').click(function () {
+              $("#reportform").hide();
+			
+            });
+				
+            $('#cancelbtnRegister').click(function () {
+                $("#register_modal").hide();
+            });
+            $('#Logout').click(function () {
+                $.post('../Controller/OAuthLogout.php',
+                    function(data){
+                        $("#myBtnlogin").show();
+                        $("#register_btn").show();
+                        $("#Mainusernamelist").hide();
+                        $("#Mainusernamelistlogout").hide();
+						$("#reportfunction").hide();
+                        $("#loginform").hide();
+						$("#reportform").hide();
+                        window.location.href="index.php";
+
+
+
+                    });
+            });
+			$('#reportbtn').click(function () {
+				$("#reportform").show();
+				
+			
+            });
+            $("#loginbtnfromtheform").click(function () {
+                if($("#usernamelogin").val() !="" && $("#passwordlogin").val()!=""){
+                    $.post('../Controller/logindb.php',{username:$("#usernamelogin").val(), password:$("#passwordlogin").val()},
+                        function(data){
+                            var valueinfo =JSON.parse(data);
+                            if(valueinfo[0]){
+                                $('#Mainusername').html("Welcome " + valueinfo[1]);
+                                $("#myBtnlogin").hide();
+                                $("#register_btn").hide();
+                                $("#Mainusernamelist").show();
+                                $("#Mainusernamelistlogout").show();
+								$("#reportfunction").show();
+                                $("#loginform").hide();
+
+								$("#reportform").hide();
+
+                                switch(valueinfo[2]){
+                                    case 0:
+                                        $('#bodypart').css('backgroundImage', 'url(../Img/orange2.png)');
+                                        break;
+                                    case 1:
+                                        switch(valueinfo[3]){
+                                            case 0: $('#bodypart').css('backgroundImage', 'url(../Img/onepiece0.jpg)'); break;
+                                            case 1: $('#bodypart').css('backgroundImage', 'url(../Img/onepiece1.jpg)'); break;
+                                            case 2: $('#bodypart').css('backgroundImage', 'url(../Img/onepiece2.jpg)'); break;
+                                        }
+
+                                        break;
+                                    case 2:
+                                        switch(valueinfo[3]){
+                                            case 0: $('#bodypart').css('backgroundImage', 'url(../Img/uchiha0.jpg)'); break;
+                                            case 1: $('#bodypart').css('backgroundImage', 'url(../Img/uchiha1.jpg)'); break;
+                                            case 2: $('#bodypart').css('backgroundImage', 'url(../Img/uchiha2.jpg)'); break;
+                                        }
+                                        break;
+                                    case 3:
+                                        switch(valueinfo[3]){
+                                            case 0: $('#bodypart').css('backgroundImage', 'url(../Img/db0.jpg)'); break;
+                                            case 1: $('#bodypart').css('backgroundImage', 'url(../Img/db1.jpg)'); break;
+                                            case 2: $('#bodypart').css('backgroundImage', 'url(../Img/db2.jpg)'); break;
+                                        }
+                                        break;
+                                    case 4:
+                                        switch(valueinfo[3]){
+                                            case 0: $('#bodypart').css('backgroundImage', 'url(../Img/bleach0.jpg)'); break;
+                                            case 1: $('#bodypart').css('backgroundImage', 'url(../Img/bleach1.jpg)'); break;
+                                            case 2: $('#bodypart').css('backgroundImage', 'url(../Img/bleach2.jpg)'); break;
+                                        }
+                                        break;
+                                }
+
+
+
+                            }
+                            else{
+                                alert("Username/Password error");
+                                $('#bodypart').css('backgroundImage', 'url(../Img/orange2.png)');
+                            }
+                        });
+                }else{
+                    $("#didnotEnterAllLogininfo").show();
+                }
+
+
+            });
+
+            $("#Registerbtnfromtheform").click(function () {
+                if($("#register_username").val() != "" && $("#register_password").val() != "" && $("#register_password_verify").val() != "" && $("#register_email").val() != "" && ($("#register_password").val() == $("#register_password_verify").val())){
+                    $.post('../Controller/RegisterBE.php',{ username:$("#register_username").val(), password:$("#register_password").val(), email:$("#register_email").val()},
+                        function(data){
+                            var valueinfo =JSON.parse(data);
+                            if(valueinfo[0]){
+                                $('#Mainusername').html("Welcome " + valueinfo[1]);
+                                $("#myBtnlogin").hide();
+                                $("#register_btn").hide();
+                                $("#Mainusernamelist").show();
+                                $("#Mainusernamelistlogout").show();
+									$("#reportfunction").show();
+                                $("#register_modal").hide();
+
+                            }
+                            else{
+                                alert("Username or email already exist");
+                            }
+                        });
+                }
+                else{
+                    $("#didnotEnterAllRegisterinfo").show();
+                }
+            });
+		
+			$("#reportbtnfromtheform").click(function () {
+                if($("#reportusername").val() != "" ){
+					$.post('../Controller/reportuser.php',{user:$("#reportusername").val() },
+                        function(data){
+                            var valueinfo =JSON.parse(data);
+                            if(valueinfo[0]){
+                                alert("User reported Succesfully");
+
+                            }
+                            else{
+                                alert("This user dosen't exist so we can't report it ,you know!");
+                            }
+                        });
+				
+				}
+            });
+		
+        });
+    </script>
+</head>
+<body id="bodypart">
+
+<nav id="header" class="headerpageright" style="margin-bottom: 70px;">
+
+    <ul class="mainheader" id="mainheaderheader">
+        <li > <img src="../Img/home2.png" class="homeicon" onclick="window.location.href='index.php'" alt="Logo" height="30px" width="30px"/></li>
+
+        <li class="onglet"><a class="elementLiA" href="add.php">Ask a question</a></li>
+        <li class="onglet"><a class="elementLiA" href="LIST.php">Search a question</a></li>
+        <li hidden><a class="elementLiA" href="#">Profile</a></li>		
+        <li  class="rightFloat">
+            <a class="elementLiA" href="#" id="register_btn"> Register</a></li>
+        <li id="loginsection" class="rightFloat">
+            <a class="elementLiA buttonLogin" href="#" id="myBtnlogin">Login</a>
+        </li>
+        <div id="register_modal" class="modallogincss">
+
+				<form id="registerform" class="modal-contentlogincss animatelogincss" >
+                <div class="containerlogincss">
+					<button id="cancelbtnRegister" class="cancelbtnlogincss">X</button>
+					<label id="registeromq">Register</label>
+                    <h4 id="didnotEnterAllRegisterinfo" style="color: red;" hidden>Please fill in required fields</h4>
+				 <div class="registertextboxes">
+                    <input id="register_username" class="inputlogincss" type="text" placeholder="Username">
+					<input id="register_password" class="inputlogincss" type="password">
+                    <input id="register_password_verify" class="inputlogincss" type="password" placeholder="Confirm Password">
+                    <input id="register_email" class="inputlogincss" type="text" placeholder="Email">
+				 </div>
+
+                    <button id="Registerbtnfromtheform" class="buttonlogincss">Register</button>
+                </div>
+
+
+
+
+            </form>
+        </div>
+        <div id="loginform" class="modallogincss">
+
+            <form  id="logincss" class="modal-contentlogincss animatelogincss" >
+			                     <button id="cancelbtnlogin" class="cancelbtnlogincss">X</button>
+								 					<label id="loginomq">Login</label>
+                <div >
+					<h4 id="didnotEnterAllLogininfo" style="color: red;" hidden>Enter information in all field</h4>
+					<div id="logindiv">
+					<input id="usernamelogin" class="inputlogincss" type="text" placeholder="Username"  >
+                    <input id="passwordlogin" class="inputlogincss" type="password" placeholder="Password"  >
+					<button id="loginbtnfromtheform" class="buttonlogincss">Login</button>
+					</div>
+                </div>
+					<span id="forgotpass">Forgot <a href="#">password?</a></span>
+
+            </form>
+        </div>
+		<div id="reportform" class="modalreportcss">
+
+            <form  id="logincss" class="modal-contentreportcss animatelogincss" >
+			                     <button id="cancelreport" class="cancelbtnlogincss">X</button>
+								 					<h3 id="reportomq">Report User</h3>
+                <div >
+					<div id="reportdiv">
+					<input id="reportusername" class="inputlogincss" type="text" placeholder="Username"  >
+					<button id="reportbtnfromtheform" class="buttonlogincss">Report user</button>
+					</div>
+                </div>
+
+            </form>
+        </div>
+		
+        <li  class="rightFloat" id="Mainusernamelistlogout" hidden>
+            <a class="elementLiA" href="#" id="Logout" > Logout</a></li>
+			
+		<li  class="rightFloat" id="reportfunction" hidden>
+            <a class="elementLiA" href="#" id="reportbtn" > Report User</a></li>
+			
+        <li  class="rightFloat" id="Mainusernamelist" hidden>
+            <div class="dropdown-content">
+                <a href="#">Link 1</a>
+                <a href="#">Link 2</a>
+                <a href="#">Link 3</a>
+            </div>
+
+            <a class="elementLiA " href="profil.php" id="Mainusername" > username </a>
+            </li>
+        <ul>
+</nav>
+<div class= "body1"></div>
+
+</body>
+
+</html></head>
+<body>
+<div>
+    <div class="titlebox">     <div class="titleinfo">
+
+
+            <h1 class="title" id="titleinfoTitle" >Title</h1>
+            <br>
+            <label class="usernamelabel">By: </label><label id="userinfotitle"></label><label class="usernamelabel">Date: </label><label id="dateinfotitle"></label><label id="idtitleinfo"></label>
+            <br>
+            <br>
+            <label id="descinfoTitle" class="description">Description:</label>
+            <label id="descinfoTitleinput"></label>
+            <div class="container" style="text-align: center">
+                <button type="button" class="replybtn" data-toggle="modal" data-target="#myModal">reply</button>
+
+            </div>
+
+        </div>
+        <div class="container">
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Reply</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Enter your reply:</p>
+                            <textarea id="inputReplyInfo" class="replydescription"></textarea>
+                        </div>
+                        <div class="modal-footer">
+
+                            <button type="button" id="addreply" class="btn btn-default" data-dismiss="modal">Add</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div></div>
+    <div class="replybox">
+        <ul id="replies">
+
+
+
+
+        </ul>
+
+    </div>
+
+    <div class ="recommendbox"> 
+    <h2> Related Questions </h2>
+<div id="relatedQuestion">
+
+</div>
+
+    </div>
+</div>
+</body>
+</html>

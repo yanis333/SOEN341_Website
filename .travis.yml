@@ -20,7 +20,6 @@ before_script:
 # execute any number of scripts before the test run, custom env's are available as variables
 before_script:    
     - php -S 127.0.0.1:8888 -t /path/to/web/root >/dev/null 2>&1 &
-    - phantomjs --webdriver=4444 >/dev/null 2>&1 &
     # Install Codeception.
     # Doing this last gives the webdriver and server time to start up.
     - composer install --prefer-source
@@ -29,8 +28,8 @@ before_script:
 # use the $DB env variable to determine the phpunit.xml to use
 script: 
   - php ./vendor/bin/codecept run
-  - php ./vendor/bin/phpunit --bootstrap vendor/autoload.php test/LoginTest
-  - php ./vendor/bin/phpunit --bootstrap vendor/autoload.php test/QuestionTest
+  - php ./vendor/bin/phpunit --bootstrap vendor/autoload.php UnitTest/LoginTest
+  - php ./vendor/bin/phpunit --bootstrap vendor/autoload.php UnitTest/QuestionTest
 
         
 
