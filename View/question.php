@@ -241,6 +241,29 @@
 
 
         $(document).ready(function(){
+            $("#savenewreply").click(function(){
+                if($("#newreply").val()=="")
+                    alert("You did nnot leave your reply blank");
+                else{
+                    $.post("../Controller/editnewreply.php",{
+                            id: $("#newidreply").val(),
+                            desc: $("#newreply").val()
+                        },
+                        function(){
+                        window.location.href="question.php";
+                        });
+                }
+
+            })
+            $("#button").click(function () {
+                $("#jqxwindow").jqxWindow('open');
+            });
+            $("#jqxwindow").jqxWindow({
+                height: 100,
+                width: 270,
+                theme: 'energyblue',
+                autoOpen: false
+            });
             inforeply();
                         $.post("../Controller/relatedQuestion.php", function(data){
                             var dataarray = JSON.parse(data);
@@ -317,13 +340,20 @@ $("#relatedQuestion").jqxDataTable("updateBoundData");
                             }
                             bestreply += "<div class=\"questioninfocontainer\"><div class=\"userboxed\" >"+ info[0][x]['username']+"<img src = '../Img/checked.png' style='width:20px;height:20px;'> " +"</div><div class=\"descboxed\">"+ info[0][x]['description_reply'] +"</div></div><div class=\"buttoncontainer\" >";
                             bestreply += "<button class= \"pbuttonboxed plusbutton\" onclick='approve("+info[0][x]['ID']+")'>Approved</button><button class= \"mbuttonboxed minusbutton\" onclick='decline("+info[0][x]['ID']+")'>Decline</button>";
-                            bestreply += "<div class=\"displayupvote\"> "+info[0][x]['total_positive'] +" </div><button class=\"pbuttonboxed plusbutton\" onclick='upvote("+info[0][x]['ID']+")'>+</button><button class= \"mbuttonboxed minusbutton\" onclick='downvote("+info[0][x]['ID']+")'>-</button></div></div><input type=\"hidden\"/></li>";
+                            bestreply += "<div class=\"displayupvote\"> "+info[0][x]['total_positive'] +" </div><button class=\"pbuttonboxed plusbutton\" onclick='upvote("+info[0][x]['ID']+")'>+</button><button class= \"mbuttonboxed minusbutton\" onclick='downvote("+info[0][x]['ID']+")'>-</button>";
+                            if(info[0][x]['own'])
+                                bestreply+="<button class=\"pbuttonboxed plusbutton\" onclick='editreply("+info[0][x]['ID']+")'>edit</button>";
+                            bestreply+="</div></div><input type=\"hidden\"/>";
+
                         }
                         else{
                             if(info[0][x]['validate']==1 ) {
                                 bestreply += "<li><div class=\"questioncontainer\" id=\"helpful\">";
                                 bestreply += "<div class=\"questioninfocontainer\"><div class=\"userboxed\" >" + info[0][x]['username'] +"<img src = '../Img/checked.png' style='width:20px;height:20px;'> " +"</div><div class=\"descboxed\">" + info[0][x]['description_reply'] + "</div></div><div class=\"buttoncontainer\" >";
-                                bestreply += "<div class=\"displayupvote\"> " + info[0][x]['total_positive'] + " </div><button class=\"pbuttonboxed plusbutton\" onclick='upvote(" + info[0][x]['ID'] + ")'>+</button><button class= \"mbuttonboxed minusbutton\" onclick='downvote(" + info[0][x]['ID'] + ")'>-</button></div></div><input type=\"hidden\"/></li>";
+                                bestreply += "<div class=\"displayupvote\"> " + info[0][x]['total_positive'] + " </div><button class=\"pbuttonboxed plusbutton\" onclick='upvote(" + info[0][x]['ID'] + ")'>+</button><button class= \"mbuttonboxed minusbutton\" onclick='downvote(" + info[0][x]['ID'] + ")'>-</button>";
+                                if(info[0][x]['own'])
+                                    bestreply+="<button class=\"pbuttonboxed plusbutton\" onclick='editreply("+info[0][x]['ID']+")'>edit</button>";
+                                bestreply+="</div></div><input type=\"hidden\"/>";
                             }}
                             
                         }
@@ -343,7 +373,10 @@ $("#relatedQuestion").jqxDataTable("updateBoundData");
                             else{
                                 reply += "<div class=\"questioninfocontainer\"><div class=\"userboxed\" >"+ info[0][x]['username'] +"</div><div class=\"descboxed\">"+ info[0][x]['description_reply'] +"</div></div><div class=\"buttoncontainer\" >";
                             }
-                            reply += "<div class=\"displayupvote\"> "+info[0][x]['total_positive'] +" </div><button class=\"pbuttonboxed plusbutton\" onclick='upvote("+info[0][x]['ID']+")'>+</button><button class= \"mbuttonboxed minusbutton\" onclick='downvote("+info[0][x]['ID']+")'>-</button></div></div><input type=\"hidden\"/></li>";
+                            reply += "<div class=\"displayupvote\"> "+info[0][x]['total_positive'] +" </div><button class=\"pbuttonboxed plusbutton\" onclick='upvote("+info[0][x]['ID']+")'>+</button><button class= \"mbuttonboxed minusbutton\" onclick='downvote("+info[0][x]['ID']+")'>-</button>";
+                            if(info[0][x]['own'])
+                                reply+="<button class=\"pbuttonboxed plusbutton\" onclick='editreply("+info[0][x]['ID']+")'>edit</button>";
+                            reply+="</div></div><input type=\"hidden\"/></li>";
                         }
                     }
                     $('#replies').prepend(bestreply);
@@ -374,6 +407,17 @@ $("#relatedQuestion").jqxDataTable("updateBoundData");
             window.location.href="question.php"; 
 
         }
+        function editreply(id){
+            var directionwindow = document.getElementById("newidreply");
+            directionwindow.value=id;
+            var grissel = document.getElementById("newreply");
+            grissel.value=id;
+            var windowofnewreply = document.getElementById("jqxwindow");
+            windowofnewreply.style.display="block";
+
+
+        }
+
 
         function approve(id){
             var xhttp = new XMLHttpRequest();
@@ -462,6 +506,12 @@ $("#relatedQuestion").jqxDataTable("updateBoundData");
         </ul>
 
     </div>
+    <div id='jqxwindow'>
+        <div>Header</div>
+        <div><textarea id="newreply" type="text" ></textarea><input id="newidreply" type="text" hidden/><button id="savenewreply">save</button></div>
+
+    </div>
+
 
     <div class ="recommendbox"> 
     <h2> Related Questions </h2>

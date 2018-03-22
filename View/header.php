@@ -18,6 +18,7 @@
 	<script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxvalidator.js"></script>
     <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxchart.core.js"></script>
     <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqwidgets/jqxwindow.js"></script>
     <style>
 
     body{
@@ -119,6 +120,16 @@
     }
 		
 		#logincss{
+			margin-left: 150px !important;
+			outline: none !important;
+		    border-radius: 20px !important;
+			padding: 10px !important;
+			border: 2px solid #999 !important;
+			width: 350px ;
+			height: 310px;
+
+
+		}#logincss2{
 			margin-left: 150px !important;
 			outline: none !important;
 		    border-radius: 20px !important;
@@ -435,7 +446,7 @@
 
                         switch(valueinfo[2]){
                             case 0:
-                                $('#bodypart').css('backgroundImage', 'url(../Img/orange2.png)');
+                                $('#bodypart').css('backgroundImage', 'url(../Img/blue2.jpg)');
                                 break;
                             case 1:
                                 switch(valueinfo[3]){
@@ -472,7 +483,7 @@
 
                     }
                     else{
-                    $('#bodypart').css('backgroundImage', 'url(../Img/orange2.png)');}
+                    $('#bodypart').css('backgroundImage', 'url(../Img/blue2.jpg)');}
                 });
             $('#myBtnlogin').click(function () {
                 $("#loginform").show();
@@ -540,7 +551,7 @@
 
                                 switch(valueinfo[2]){
                                     case 0:
-                                        $('#bodypart').css('backgroundImage', 'url(../Img/orange2.png)');
+                                        $('#bodypart').css('backgroundImage', 'url(../Img/blue2.jpg)');
                                         break;
                                     case 1:
                                         switch(valueinfo[3]){
@@ -689,7 +700,7 @@
         </div>
 		<div id="reportform" class="modalreportcss">
 
-            <form  id="logincss" class="modal-contentreportcss animatelogincss" >
+            <form  id="logincss2" class="modal-contentreportcss animatelogincss" >
 			                     <button id="cancelreport" class="cancelbtnlogincss">X</button>
 								 					<h3 id="reportomq">Report User</h3>
                 <div >

@@ -8,6 +8,9 @@ $db= new DB();
 $result = $db->query("Select * from replylist where IDQuestion ='".$_SESSION['idquestion']."'");
 
 while($row = $result->fetch_assoc()){
+    $row['own']=false;
+    if($row['username']==$_SESSION['username'])
+        $row['own']=true;
     $arraytlist[] = $row;
 }
 $result = $db->query("Select user from questionlog where ID ='".$_SESSION['idquestion']."'");
