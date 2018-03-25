@@ -119,6 +119,9 @@
 
              margin-bottom:7px; 
         }
+        #questions{
+            opacity: 0.8;
+        }
         .addbtn1:hover {
             background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #242424), color-stop(1, #424242));
             background:-moz-linear-gradient(top, #242424 5%, #424242 100%);

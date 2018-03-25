@@ -2,6 +2,7 @@
 <html>
 <head>
     <title> List</title>
+    <link rel="stylesheet" href="../Jqwidgets/jqwidgets/styles/custom.css" type="text/css">
     <style>
         body{
             background-color: white;
@@ -46,7 +47,7 @@
         .replybox{
             width:52%;
             float:right;
-            border: 1px solid black;
+
             display:flex;
             flex-direction: column;
 
@@ -55,7 +56,7 @@
         .recommendbox{
             width: 44%;
             float:left;
-            border: 1px solid black;
+
         }
 
 
@@ -173,6 +174,9 @@
         .title{
             text-align:center;
         }
+        #relatedQuestion{
+            opacity: 0.8;
+        }
         .description{
             margin-left: 20%;
             word-wrap: break-word;
@@ -260,7 +264,7 @@
             });
             $("#jqxwindow").jqxWindow({
                 height: 100,
-                width: 270,
+                width: 200,
                 theme: 'energyblue',
                 autoOpen: false
             });
@@ -282,8 +286,9 @@
              pageable: true,
             sortable: true,
              source: dataAdapter,
+             theme: 'custom',
  
-        columns: [{ text: 'title', datafield: 'title', width: 50},{text: 'date', datafield: 'date', width: 100, align:'right',cellsalign:'right'},
+        columns: [{ text: 'title', datafield: 'title', width: 50},{text: 'date', datafield: 'date', width: 200, align:'right',cellsalign:'right'},
             {text: 'Replies', datafield: 'number_replies', width:70 , align:'right',cellsalign:'right'}]
         });
 
@@ -295,6 +300,13 @@ $("#relatedQuestion").jqxDataTable("updateBoundData");
         }
         
         });
+            $("#relatedQuestion").on('rowClick',function(event){
+                $.post('../Controller/idquestionmainpage.php',{value:event.args.row.ID},
+                    function(data){
+                        window.location.href="question.php";
+
+                    });
+            });
 
 
 
@@ -474,29 +486,7 @@ $("#relatedQuestion").jqxDataTable("updateBoundData");
             </div>
 
         </div>
-        <div class="container">
-            <div class="modal fade" id="myModal" role="dialog">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Reply</h4>
-                        </div>
-                        <div class="modal-body">
-                            <p>Enter your reply:</p>
-                            <textarea id="inputReplyInfo" class="replydescription"></textarea>
-                        </div>
-                        <div class="modal-footer">
-
-                            <button type="button" id="addreply" class="btn btn-default" data-dismiss="modal">Add</button>
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-        </div></div>
+        </div>
     <div class="replybox">
         <ul id="replies">
 
@@ -507,8 +497,8 @@ $("#relatedQuestion").jqxDataTable("updateBoundData");
 
     </div>
     <div id='jqxwindow'>
-        <div>Header</div>
-        <div><textarea id="newreply" type="text" ></textarea><input id="newidreply" type="text" hidden/><button id="savenewreply">save</button></div>
+        <div>Edit Reply</div>
+        <div><textarea id="newreply" type="text" style="margin-right: 3%" ></textarea><input id="newidreply" type="text" hidden/><button id="savenewreply">save</button></div>
 
     </div>
 
@@ -520,6 +510,29 @@ $("#relatedQuestion").jqxDataTable("updateBoundData");
 </div>
 
     </div>
+</div>
+<div class="container">
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Reply</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Enter your reply:</p>
+                    <textarea id="inputReplyInfo" class="replydescription"></textarea>
+                </div>
+                <div class="modal-footer">
+
+                    <button type="button" id="addreply" class="btn btn-default" data-dismiss="modal">Add</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
 </div>
 </body>
 </html>

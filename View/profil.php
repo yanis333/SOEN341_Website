@@ -29,7 +29,7 @@
     </style>
     <style>
 
-    #graphinfo, #passwordchange, #achievements {
+    #graphinfo, #passwordchange, #achievements, #backgroundimgchange {
     background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #787878), color-stop(1, #474747));
     background:-moz-linear-gradient(top, #787878 5%, #474747 100%);
     background:-webkit-linear-gradient(top, #787878 5%, #474747 100%);
@@ -52,7 +52,7 @@
     opacity: 0.9;
      margin-bottom:7px; 
 }
-#graphinfo:hover, #passwordchange:hover, #achievements:hover {
+#graphinfo:hover, #passwordchange:hover, #achievements:hover, #backgroundimgchange:hover {
     background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #242424), color-stop(1, #424242));
     background:-moz-linear-gradient(top, #242424 5%, #424242 100%);
     background:-webkit-linear-gradient(top, #242424 5%, #424242 100%);
@@ -62,7 +62,7 @@
     filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#242424', endColorstr='#424242',GradientType=0);
     background-color:#242424;
 }
-#graphinfo:active, #passwordchange:active, #achievements:active {
+#graphinfo:active, #passwordchange:active, #achievements:active, #backgroundimgchange:active {
     position:relative;
     top:1px;
 }
@@ -336,6 +336,7 @@
         $("#backgroundimgchange").click(function(){
             $("#graph").hide();
             $("#password").hide();
+            $("#achievementsTab").hide();
             $("#backgroundimg").show();
         });
 

@@ -3,6 +3,7 @@
 
 <head>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../Jqwidgets/jqwidgets/styles/custom.css" type="text/css">
     <meta charset="UTF-8">
     <title>Search Page</title>
     <style>
@@ -160,6 +161,12 @@
     filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#242424', endColorstr='#424242',GradientType=0);
     background-color:#242424;
 }
+#questions{
+    opacity: 0.8;
+}
+#addquestions{
+    opacity: 0.8;
+}
 .advanced_buttons:active {
     position:relative;
     top:1px;
@@ -177,6 +184,8 @@
     <script type="text/javascript">
         $(document).ready(function(){
             $('#search_button').click(function(){
+                $("#addquestions").hide();
+                $("#questions").show();
                 $("#myTable321").empty();
 
                 $("#questions").on('rowClick',function(event){
@@ -186,6 +195,7 @@
 
                         });
                 });
+
 
          
                 var str="";
@@ -211,8 +221,9 @@
                               pageable: true,
                               sortable: true,
                               source: dataAdapter,
+                              theme: 'custom',
                          
-                          columns: [ {text:'id',datafield:'ID',width:100},{ text: 'title', datafield: 'title', width: 250},{ text: 'user', datafield: 'user', width: 100 },{text: 'date', datafield: 'date', width: 250, align:'right',cellsalign:'right'},{text: 'Replies', datafield: 'number_replies', width:100 , align:'right',cellsalign:'right'}]
+                          columns: [{ text: 'title', datafield: 'title', width: 250},{ text: 'user', datafield: 'user', width: 100 },{text: 'date', datafield: 'date', width: 250, align:'right',cellsalign:'right'},{text: 'Replies', datafield: 'number_replies', width:100 , align:'right',cellsalign:'right'}]
                         });
 
                         dataAdapter.dataBind();
@@ -228,6 +239,7 @@
 
                 checkbox();
                 $('#questions').hide();
+                $('#addquestions').hide();
                 $("#advancedModal").show();
             });
 
@@ -237,11 +249,18 @@
 
             
             $('#advancedsearchbutton').click(function(){
-                $('#questions').show();
+                $('#addquestions').show();
 
                 var val = [];
                 $(':checkbox:checked').each(function(i){
                     val[i] = $(this).val();
+                });
+                $("#addquestions").on('rowClick',function(event){
+                    $.post('../Controller/idquestionmainpage.php',{value:event.args.row.ID},
+                        function(){
+                            window.location.href="question.php";
+
+                        });
                 });
 
 
@@ -262,18 +281,19 @@
                             var dataAdapter = new $.jqx.dataAdapter(source);
 
 
-                        $("#questions").jqxDataTable(
+                        $("#addquestions").jqxDataTable(
                             {
                                 altRows: true,
                                 pageable: true,
                                 sortable: true,
                                 source: dataAdapter,
+                                theme: 'custom',
                              
-                            columns: [ {text:'id',datafield:'ID',width:100},{ text: 'title', datafield: 'title', width: 250},{ text: 'user', datafield: 'user', width: 100 },{text: 'date', datafield: 'date', width: 250, align:'right',cellsalign:'right'},{text: 'Replies', datafield: 'number_replies', width:100 , align:'right',cellsalign:'right'}]
+                            columns: [{ text: 'title', datafield: 'title', width: 250},{ text: 'user', datafield: 'user', width: 100 },{text: 'date', datafield: 'date', width: 250, align:'right',cellsalign:'right'},{text: 'Replies', datafield: 'number_replies', width:100 , align:'right',cellsalign:'right'}]
                         });
 
                         dataAdapter.dataBind();
-    $("#questions").jqxDataTable("updateBoundData");
+    $("#addquestions").jqxDataTable("updateBoundData");
 
                     });
             });
@@ -342,7 +362,8 @@
         </ul>
     </div>
 
-    <div id="questions"></div>
+    <div id="questions" style="margin-left: 25%"></div>
+    <div id="addquestions" style="margin-left: 25%"></div>
 
     <!-- popup thing-->
     <div id="advancedModal" class="modal-advanced" hidden>
