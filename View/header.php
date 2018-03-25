@@ -18,6 +18,7 @@
 	<script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxvalidator.js"></script>
     <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxchart.core.js"></script>
     <script type="text/javascript" src="../Jqwidgets/jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqwidgets/jqxwindow.js"></script>
     <style>
 
     body{
@@ -31,7 +32,12 @@
 
 
         }
-
+    #imgrot{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
         #loginform{
             z-index: 1;
         }
@@ -119,6 +125,16 @@
     }
 		
 		#logincss{
+			margin-left: 150px !important;
+			outline: none !important;
+		    border-radius: 20px !important;
+			padding: 10px !important;
+			border: 2px solid #999 !important;
+			width: 350px ;
+			height: 310px;
+
+
+		}#logincss2{
 			margin-left: 150px !important;
 			outline: none !important;
 		    border-radius: 20px !important;
@@ -403,16 +419,33 @@
 }
 
 
-
     </style>
 
     <script>
 
 
         $(document).ready(function(){
+            var myVar = setInterval(rotatefunction, 8.33);
+            var x=0;
+
+            function rotatefunction(){
+                $("#img1").css({
+
+                    "transform": "rotate("+x+"deg)"
+                });
+                x++;
+                if(x>360)
+                    x=1;
+
+            }
 
 
-			$('#registerform').jqxValidator({ rules: [
+
+
+
+
+
+            $('#registerform').jqxValidator({ rules: [
                 { input: '#register_username', message: 'Minimum 5 characters', action: 'keyup', rule: 'minLength=5' },
                 { input: '#register_email', message: 'Invalid e-mail!', action: 'keyup', rule: 'email'}], theme: 'summer'
 			});
@@ -435,9 +468,11 @@
 
                         switch(valueinfo[2]){
                             case 0:
-                                $('#bodypart').css('backgroundImage', 'url(../Img/orange2.png)');
+                                $('#bodypart').css('backgroundImage', 'url(../Img/blue2.jpg)');
+                                $("#img1").attr("src","../Img/default2.png");
                                 break;
                             case 1:
+                                $("#img1").attr("src","../Img/chopper.png");
                                 switch(valueinfo[3]){
                                     case 0: $('#bodypart').css('backgroundImage', 'url(../Img/onepiece0.jpg)'); break;
                                     case 1: $('#bodypart').css('backgroundImage', 'url(../Img/onepiece1.jpg)'); break;
@@ -446,6 +481,7 @@
 
                                 break;
                             case 2:
+                                $("#img1").attr("src","../Img/sharingan.png");
                                 switch(valueinfo[3]){
                                     case 0: $('#bodypart').css('backgroundImage', 'url(../Img/uchiha0.jpg)'); break;
                                     case 1: $('#bodypart').css('backgroundImage', 'url(../Img/uchiha1.jpg)'); break;
@@ -453,6 +489,7 @@
                                 }
                                 break;
                             case 3:
+                                $("#img1").attr("src","../Img/balls.png");
                                 switch(valueinfo[3]){
                                     case 0: $('#bodypart').css('backgroundImage', 'url(../Img/db0.jpg)'); break;
                                     case 1: $('#bodypart').css('backgroundImage', 'url(../Img/db1.jpg)'); break;
@@ -460,6 +497,7 @@
                                 }
                                 break;
                             case 4:
+                                $("#img1").attr("src","../Img/zanpakuto.png");
                                 switch(valueinfo[3]){
                                     case 0: $('#bodypart').css('backgroundImage', 'url(../Img/bleach0.jpg)'); break;
                                     case 1: $('#bodypart').css('backgroundImage', 'url(../Img/bleach1.jpg)'); break;
@@ -472,7 +510,7 @@
 
                     }
                     else{
-                    $('#bodypart').css('backgroundImage', 'url(../Img/orange2.png)');}
+                    $('#bodypart').css('backgroundImage', 'url(../Img/blue2.jpg)');}
                 });
             $('#myBtnlogin').click(function () {
                 $("#loginform").show();
@@ -540,9 +578,11 @@
 
                                 switch(valueinfo[2]){
                                     case 0:
-                                        $('#bodypart').css('backgroundImage', 'url(../Img/orange2.png)');
+                                        $('#bodypart').css('backgroundImage', 'url(../Img/blue2.jpg)');
+                                        $("#img1").attr("src","../Img/default2.png");
                                         break;
                                     case 1:
+                                        $("#img1").attr("src","../Img/chopper.png");
                                         switch(valueinfo[3]){
                                             case 0: $('#bodypart').css('backgroundImage', 'url(../Img/onepiece0.jpg)'); break;
                                             case 1: $('#bodypart').css('backgroundImage', 'url(../Img/onepiece1.jpg)'); break;
@@ -551,6 +591,7 @@
 
                                         break;
                                     case 2:
+                                        $("#img1").attr("src","../Img/sharingan.png");
                                         switch(valueinfo[3]){
                                             case 0: $('#bodypart').css('backgroundImage', 'url(../Img/uchiha0.jpg)'); break;
                                             case 1: $('#bodypart').css('backgroundImage', 'url(../Img/uchiha1.jpg)'); break;
@@ -558,6 +599,7 @@
                                         }
                                         break;
                                     case 3:
+                                        $("#img1").attr("src","../Img/balls.png");
                                         switch(valueinfo[3]){
                                             case 0: $('#bodypart').css('backgroundImage', 'url(../Img/db0.jpg)'); break;
                                             case 1: $('#bodypart').css('backgroundImage', 'url(../Img/db1.jpg)'); break;
@@ -565,6 +607,7 @@
                                         }
                                         break;
                                     case 4:
+                                        $("#img1").attr("src","../Img/zanpakuto.png");
                                         switch(valueinfo[3]){
                                             case 0: $('#bodypart').css('backgroundImage', 'url(../Img/bleach0.jpg)'); break;
                                             case 1: $('#bodypart').css('backgroundImage', 'url(../Img/bleach1.jpg)'); break;
@@ -629,11 +672,16 @@
 				
 				}
             });
+
 		
         });
+
+
+
     </script>
 </head>
 <body id="bodypart">
+
 
 <nav id="header" class="headerpageright" style="margin-bottom: 70px;">
 
@@ -641,7 +689,7 @@
         <li > <img src="../Img/home2.png" class="homeicon" onclick="window.location.href='index.php'" alt="Logo" height="30px" width="30px"/></li>
 
         <li class="onglet"><a class="elementLiA" href="add.php">Ask a question</a></li>
-        <li class="onglet"><a class="elementLiA" href="LIST.php">Search a question</a></li>
+        <li class="onglet"><a class="elementLiA" href="search.php">Search a question</a></li>
         <li hidden><a class="elementLiA" href="#">Profile</a></li>		
         <li  class="rightFloat">
             <a class="elementLiA" href="#" id="register_btn"> Register</a></li>
@@ -689,7 +737,7 @@
         </div>
 		<div id="reportform" class="modalreportcss">
 
-            <form  id="logincss" class="modal-contentreportcss animatelogincss" >
+            <form  id="logincss2" class="modal-contentreportcss animatelogincss" >
 			                     <button id="cancelreport" class="cancelbtnlogincss">X</button>
 								 					<h3 id="reportomq">Report User</h3>
                 <div >
@@ -720,6 +768,9 @@
         <ul>
 </nav>
 <div class= "body1"></div>
+
+
+
 
 </body>
 

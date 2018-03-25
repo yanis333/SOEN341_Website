@@ -2,6 +2,7 @@
 <html>
 <head>
     <title> List</title>
+    <link rel="stylesheet" href="../Jqwidgets/jqwidgets/styles/custom.css" type="text/css">
     <style>
         body{
             background-color: white;
@@ -46,7 +47,7 @@
         .replybox{
             width:52%;
             float:right;
-            border: 1px solid black;
+
             display:flex;
             flex-direction: column;
 
@@ -55,7 +56,7 @@
         .recommendbox{
             width: 44%;
             float:left;
-            border: 1px solid black;
+
         }
 
 
@@ -173,6 +174,9 @@
         .title{
             text-align:center;
         }
+        #relatedQuestion{
+            opacity: 0.8;
+        }
         .description{
             margin-left: 20%;
             word-wrap: break-word;
@@ -241,6 +245,29 @@
 
 
         $(document).ready(function(){
+            $("#savenewreply").click(function(){
+                if($("#newreply").val()=="")
+                    alert("You did nnot leave your reply blank");
+                else{
+                    $.post("../Controller/editnewreply.php",{
+                            id: $("#newidreply").val(),
+                            desc: $("#newreply").val()
+                        },
+                        function(){
+                        window.location.href="question.php";
+                        });
+                }
+
+            })
+            $("#button").click(function () {
+                $("#jqxwindow").jqxWindow('open');
+            });
+            $("#jqxwindow").jqxWindow({
+                height: 100,
+                width: 200,
+                theme: 'energyblue',
+                autoOpen: false
+            });
             inforeply();
                         $.post("../Controller/relatedQuestion.php", function(data){
                             var dataarray = JSON.parse(data);
@@ -259,8 +286,9 @@
              pageable: true,
             sortable: true,
              source: dataAdapter,
+             theme: 'custom',
  
-        columns: [{ text: 'title', datafield: 'title', width: 50},{text: 'date', datafield: 'date', width: 100, align:'right',cellsalign:'right'},
+        columns: [{ text: 'title', datafield: 'title', width: 50},{text: 'date', datafield: 'date', width: 200, align:'right',cellsalign:'right'},
             {text: 'Replies', datafield: 'number_replies', width:70 , align:'right',cellsalign:'right'}]
         });
 
@@ -272,6 +300,13 @@ $("#relatedQuestion").jqxDataTable("updateBoundData");
         }
         
         });
+            $("#relatedQuestion").on('rowClick',function(event){
+                $.post('../Controller/idquestionmainpage.php',{value:event.args.row.ID},
+                    function(data){
+                        window.location.href="question.php";
+
+                    });
+            });
 
 
 
@@ -317,13 +352,20 @@ $("#relatedQuestion").jqxDataTable("updateBoundData");
                             }
                             bestreply += "<div class=\"questioninfocontainer\"><div class=\"userboxed\" >"+ info[0][x]['username']+"<img src = '../Img/checked.png' style='width:20px;height:20px;'> " +"</div><div class=\"descboxed\">"+ info[0][x]['description_reply'] +"</div></div><div class=\"buttoncontainer\" >";
                             bestreply += "<button class= \"pbuttonboxed plusbutton\" onclick='approve("+info[0][x]['ID']+")'>Approved</button><button class= \"mbuttonboxed minusbutton\" onclick='decline("+info[0][x]['ID']+")'>Decline</button>";
-                            bestreply += "<div class=\"displayupvote\"> "+info[0][x]['total_positive'] +" </div><button class=\"pbuttonboxed plusbutton\" onclick='upvote("+info[0][x]['ID']+")'>+</button><button class= \"mbuttonboxed minusbutton\" onclick='downvote("+info[0][x]['ID']+")'>-</button></div></div><input type=\"hidden\"/></li>";
+                            bestreply += "<div class=\"displayupvote\"> "+info[0][x]['total_positive'] +" </div><button class=\"pbuttonboxed plusbutton\" onclick='upvote("+info[0][x]['ID']+")'>+</button><button class= \"mbuttonboxed minusbutton\" onclick='downvote("+info[0][x]['ID']+")'>-</button>";
+                            if(info[0][x]['own'])
+                                bestreply+="<button class=\"pbuttonboxed plusbutton\" onclick='editreply("+info[0][x]['ID']+")'>edit</button>";
+                            bestreply+="</div></div><input type=\"hidden\"/>";
+
                         }
                         else{
                             if(info[0][x]['validate']==1 ) {
                                 bestreply += "<li><div class=\"questioncontainer\" id=\"helpful\">";
                                 bestreply += "<div class=\"questioninfocontainer\"><div class=\"userboxed\" >" + info[0][x]['username'] +"<img src = '../Img/checked.png' style='width:20px;height:20px;'> " +"</div><div class=\"descboxed\">" + info[0][x]['description_reply'] + "</div></div><div class=\"buttoncontainer\" >";
-                                bestreply += "<div class=\"displayupvote\"> " + info[0][x]['total_positive'] + " </div><button class=\"pbuttonboxed plusbutton\" onclick='upvote(" + info[0][x]['ID'] + ")'>+</button><button class= \"mbuttonboxed minusbutton\" onclick='downvote(" + info[0][x]['ID'] + ")'>-</button></div></div><input type=\"hidden\"/></li>";
+                                bestreply += "<div class=\"displayupvote\"> " + info[0][x]['total_positive'] + " </div><button class=\"pbuttonboxed plusbutton\" onclick='upvote(" + info[0][x]['ID'] + ")'>+</button><button class= \"mbuttonboxed minusbutton\" onclick='downvote(" + info[0][x]['ID'] + ")'>-</button>";
+                                if(info[0][x]['own'])
+                                    bestreply+="<button class=\"pbuttonboxed plusbutton\" onclick='editreply("+info[0][x]['ID']+")'>edit</button>";
+                                bestreply+="</div></div><input type=\"hidden\"/>";
                             }}
                             
                         }
@@ -343,7 +385,10 @@ $("#relatedQuestion").jqxDataTable("updateBoundData");
                             else{
                                 reply += "<div class=\"questioninfocontainer\"><div class=\"userboxed\" >"+ info[0][x]['username'] +"</div><div class=\"descboxed\">"+ info[0][x]['description_reply'] +"</div></div><div class=\"buttoncontainer\" >";
                             }
-                            reply += "<div class=\"displayupvote\"> "+info[0][x]['total_positive'] +" </div><button class=\"pbuttonboxed plusbutton\" onclick='upvote("+info[0][x]['ID']+")'>+</button><button class= \"mbuttonboxed minusbutton\" onclick='downvote("+info[0][x]['ID']+")'>-</button></div></div><input type=\"hidden\"/></li>";
+                            reply += "<div class=\"displayupvote\"> "+info[0][x]['total_positive'] +" </div><button class=\"pbuttonboxed plusbutton\" onclick='upvote("+info[0][x]['ID']+")'>+</button><button class= \"mbuttonboxed minusbutton\" onclick='downvote("+info[0][x]['ID']+")'>-</button>";
+                            if(info[0][x]['own'])
+                                reply+="<button class=\"pbuttonboxed plusbutton\" onclick='editreply("+info[0][x]['ID']+")'>edit</button>";
+                            reply+="</div></div><input type=\"hidden\"/></li>";
                         }
                     }
                     $('#replies').prepend(bestreply);
@@ -374,6 +419,17 @@ $("#relatedQuestion").jqxDataTable("updateBoundData");
             window.location.href="question.php"; 
 
         }
+        function editreply(id){
+            var directionwindow = document.getElementById("newidreply");
+            directionwindow.value=id;
+            var grissel = document.getElementById("newreply");
+            grissel.value=id;
+            var windowofnewreply = document.getElementById("jqxwindow");
+            windowofnewreply.style.display="block";
+
+
+        }
+
 
         function approve(id){
             var xhttp = new XMLHttpRequest();
@@ -430,29 +486,7 @@ $("#relatedQuestion").jqxDataTable("updateBoundData");
             </div>
 
         </div>
-        <div class="container">
-            <div class="modal fade" id="myModal" role="dialog">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Reply</h4>
-                        </div>
-                        <div class="modal-body">
-                            <p>Enter your reply:</p>
-                            <textarea id="inputReplyInfo" class="replydescription"></textarea>
-                        </div>
-                        <div class="modal-footer">
-
-                            <button type="button" id="addreply" class="btn btn-default" data-dismiss="modal">Add</button>
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-        </div></div>
+        </div>
     <div class="replybox">
         <ul id="replies">
 
@@ -462,6 +496,12 @@ $("#relatedQuestion").jqxDataTable("updateBoundData");
         </ul>
 
     </div>
+    <div id='jqxwindow'>
+        <div>Edit Reply</div>
+        <div><textarea id="newreply" type="text" style="margin-right: 3%" ></textarea><input id="newidreply" type="text" hidden/><button id="savenewreply">save</button></div>
+
+    </div>
+
 
     <div class ="recommendbox"> 
     <h2> Related Questions </h2>
@@ -470,6 +510,29 @@ $("#relatedQuestion").jqxDataTable("updateBoundData");
 </div>
 
     </div>
+</div>
+<div class="container">
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Reply</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Enter your reply:</p>
+                    <textarea id="inputReplyInfo" class="replydescription"></textarea>
+                </div>
+                <div class="modal-footer">
+
+                    <button type="button" id="addreply" class="btn btn-default" data-dismiss="modal">Add</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
 </div>
 </body>
 </html>

@@ -206,14 +206,15 @@
                         },
 
                         function(data){
+                                var item = JSON.parse(data);
+                                if(item[0]){
+                                    alert("Question added Successfully");
+                                }
+                                else {
+                                    alert("You need to be login to create a question");
+                                }
 
-                            var item = JSON.parse(data);
-                            if(item[0]){
-                                alert("Question added Successfully");
-                            }
-                            else {
-                                alert("You need to be login to create a question");
-                            }
+
                         });
                 }
 
@@ -237,6 +238,7 @@
 <form id="askquestion">
 
     <div class="questionform">
+        <img id="img1" src="../Img/zanpakuto.png" alt="cog1" width="40" height="40" >
         <h2 hidden id="check0"><br/>Successful</h2>
         <br /><h id="titlelabel">Title</h>
         <h hidden id="check1"><br />Title is missing.</h>

@@ -201,7 +201,6 @@
                 $("#test").trigger('play');
             });
             $("#onpieceI").mouseout(function(){
-                alert($("#test").currentTime);
                 $("#test").trigger('load');
             });
             $("#uchihaI").mouseover(function(){
@@ -327,7 +326,7 @@
 <div style="text-align: center">
     <h1 style="color: white" id="mainSubject" >Welcome to the Anime World! </h1>
     <h1 id="mainSubject2" hidden>Click here to start your adventure</h1>
-    <h3 id="text1" style="color: white">Nani?</h3>
+
 </div>
 
 <div id="onepicediv" class="one_piece">
